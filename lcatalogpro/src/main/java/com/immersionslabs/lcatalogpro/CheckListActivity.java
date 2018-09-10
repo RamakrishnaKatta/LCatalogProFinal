@@ -2,9 +2,9 @@ package com.immersionslabs.lcatalogpro;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,10 +29,9 @@ import com.amazonaws.services.simpleemail.model.SendCustomVerificationEmailResul
 import com.amazonaws.services.simpleemail.model.SendRawEmailRequest;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.immersionslabs.lcatalogpro.adapters.CheckListAdapter;
 import com.immersionslabs.lcatalogpro.utils.EnvConstants;
 import com.immersionslabs.lcatalogpro.utils.Manager_CheckList;
 import com.immersionslabs.lcatalogpro.utils.SessionManager;
@@ -116,9 +115,9 @@ public class CheckListActivity extends AppCompatActivity {
         recycler_checklist.setHasFixedSize(true);
         recycler_checklist.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
-        set_list = new HashSet<String>();
-        set_checklist_vendorids = new HashSet<String>();
-        set_checklist_articlevendorids = new HashSet<String>();
+        set_list = new HashSet<>();
+        set_checklist_vendorids = new HashSet<>();
+        set_checklist_articlevendorids = new HashSet<>();
 
         map_vendorarticleids = new HashMap<>();
         map_vendorids = new HashMap<>();
@@ -157,71 +156,63 @@ public class CheckListActivity extends AppCompatActivity {
         item_dimensions = new ArrayList<>();
         item_3ds = new ArrayList<>();
 
-        Place_enquiry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (EnvConstants.user_type.equals("CUSTOMER")) {
-                    if (set_checklist_vendorids != null && !set_checklist_vendorids.isEmpty()) {
-                        HashMap userDetails = sessionManager.getUserDetails();
-                        _user_email = userDetails.get(SessionManager.KEY_EMAIL).toString();
-                        Log.e(TAG, "User Email" + _user_email);
-                        try {
-                            is_email_valid_boolean = is_email_valid(_user_email);
-                            if (is_email_valid_boolean) {
-                                Log.e(TAG, "ArticleId Set" + set_checklist_vendorids);
-                                Iterator iterator = set_checklist_vendorids.iterator();
+        Place_enquiry.setOnClickListener(v -> {
+            if (EnvConstants.user_type.equals("CUSTOMER")) {
+                if (set_checklist_vendorids != null && !set_checklist_vendorids.isEmpty()) {
+                    HashMap userDetails = sessionManager.getUserDetails();
+                    _user_email = userDetails.get(SessionManager.KEY_EMAIL).toString();
+                    Log.e(TAG, "User Email" + _user_email);
+                    try {
+                        is_email_valid_boolean = is_email_valid(_user_email);
+                        if (is_email_valid_boolean) {
+                            Log.e(TAG, "ArticleId Set" + set_checklist_vendorids);
+                            Iterator iterator = set_checklist_vendorids.iterator();
 
-                                while (iterator.hasNext()) {
-                                    String vendor_id = iterator.next().toString();
-                                    String vendor_id_clone = vendor_id;
-                                    Integer integer_vendor_id = Integer.parseInt(vendor_id) + 1;
-                                    vendor_id = String.valueOf(integer_vendor_id);
-                                    Log.e(TAG, "VendorId from sent email" + vendor_id);
-                                    HashMap hashMap = map_vendordetails.get(vendor_id);
-                                    String vendor_email = hashMap.get(vendor_id + SessionManager.KEY_VENDOR_EMAIL).toString();
-                                    Set articleids = map_vendorarticleids.get(vendor_id_clone);
-                                    if (articleids != null) {
-                                        sendEmail(articleids, vendor_email, _user_email);
-                                    }
+                            while (iterator.hasNext()) {
+                                String vendor_id = iterator.next().toString();
+                                String vendor_id_clone = vendor_id;
+                                Integer integer_vendor_id = Integer.parseInt(vendor_id) + 1;
+                                vendor_id = String.valueOf(integer_vendor_id);
+                                Log.e(TAG, "VendorId from sent email" + vendor_id);
+                                HashMap hashMap = map_vendordetails.get(vendor_id);
+                                String vendor_email = hashMap.get(vendor_id + SessionManager.KEY_VENDOR_EMAIL).toString();
+                                Set articleids = map_vendorarticleids.get(vendor_id_clone);
+                                if (articleids != null) {
+                                    sendEmail(articleids, vendor_email, _user_email);
                                 }
-                            } else {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(CheckListActivity.this, R.style.AppCompatAlertDialogStyle);
-                                builder.setTitle("Verification");
-                                builder.setMessage("Your email is not a verified email, do you want to proceed with the verification?");
-                                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        VerifyEmail(_user_email);
-
-                                    }
-                                });
-                                builder.setNegativeButton("CANCEL", null);
-                                builder.show();
                             }
-                        } catch (NullPointerException e) {
-                            Toast.makeText(CheckListActivity.this, "Please Add Products in your checkList", Toast.LENGTH_SHORT).show();
-                            e.printStackTrace();
+                        } else {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(CheckListActivity.this, R.style.AppCompatAlertDialogStyle);
+                            builder.setTitle("Verification");
+                            builder.setMessage("Your email is not a verified email, do you want to proceed with the verification?");
+                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    VerifyEmail(_user_email);
+                                }
+                            });
+                            builder.setNegativeButton("CANCEL", null);
+                            builder.show();
                         }
-                    } else {
+                    } catch (NullPointerException e) {
                         Toast.makeText(CheckListActivity.this, "Please Add Products in your checkList", Toast.LENGTH_SHORT).show();
-
+                        e.printStackTrace();
                     }
-
                 } else {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(CheckListActivity.this, R.style.AppCompatAlertDialogStyle);
-                    builder.setTitle("Verification");
-                    builder.setMessage("This feature is Not available for Guest User,Kindly Signup for more features");
-                    builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-                            Intent intent = new Intent(CheckListActivity.this, SignupActivity.class);
-                            startActivity(intent);
-                        }
-                    });
-                    builder.setNegativeButton("NO", null);
-                    builder.show();
+                    Toast.makeText(CheckListActivity.this, "Please Add Products in your checkList", Toast.LENGTH_SHORT).show();
                 }
+
+            } else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(CheckListActivity.this, R.style.AppCompatAlertDialogStyle);
+                builder.setTitle("Verification");
+                builder.setMessage("This feature is Not available for Guest User,Kindly Signup for more features");
+                builder.setPositiveButton("YES", (dialog, which) -> {
+
+                    Intent intent = new Intent(CheckListActivity.this, SignupActivity.class);
+                    startActivity(intent);
+                });
+                builder.setNegativeButton("NO", null);
+                builder.show();
             }
         });
 
@@ -229,7 +220,6 @@ public class CheckListActivity extends AppCompatActivity {
         Log.e(TAG, "Set Checklist Vendor Ids" + set_checklist_vendorids);
 
         if (null == set_checklist_vendorids) {
-
         } else {
             Iterator iterator1 = set_checklist_vendorids.iterator();
             while (iterator1.hasNext()) {
@@ -244,7 +234,6 @@ public class CheckListActivity extends AppCompatActivity {
                 }
             }
             Log.e(TAG, "Map Article Vendor" + map_vendorarticleids);
-
         }
         if (set_checklist_vendorids != null) {
             Iterator iterator = set_checklist_vendorids.iterator();
@@ -253,7 +242,6 @@ public class CheckListActivity extends AppCompatActivity {
                 int vendorid_int = Integer.parseInt(vendorid) + 1;
                 vendorid = Integer.toString(vendorid_int);
                 map_vendordetails.put(vendorid, sessionManager.GetVendorDetails(vendorid));
-
             }
             Log.e(TAG, "Vendor Details" + map_vendordetails);
         }
@@ -271,23 +259,17 @@ public class CheckListActivity extends AppCompatActivity {
                 Iterator iterator = set_list.iterator();
                 while (iterator.hasNext()) {
                     String temp_checklist_url = CHECKLIST_URL + iterator.next().toString();
-                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, temp_checklist_url, null, new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            JSONObject RESP = null;
-                            try {
-                                RESP = response.getJSONObject("data");
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                            assert RESP != null;
-                            GetData(RESP);
+                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, temp_checklist_url, null, response -> {
+                        JSONObject RESP = null;
+                        try {
+                            RESP = response.getJSONObject("data");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        assert RESP != null;
+                        GetData(RESP);
 
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                        }
+                    }, error -> {
                     });
                     RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
                     requestQueue.add(jsonObjectRequest);
@@ -302,24 +284,16 @@ public class CheckListActivity extends AppCompatActivity {
                 Iterator iterator = strings.iterator();
                 while (iterator.hasNext()) {
                     String temp_budgtet_url = CHECKLIST_URL + iterator.next().toString();
-                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, temp_budgtet_url, null, new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            JSONObject RESP = null;
-                            try {
-                                RESP = response.getJSONObject("data");
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                            assert RESP != null;
-                            GetData(RESP);
-
+                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, temp_budgtet_url, null, response -> {
+                        JSONObject RESP = null;
+                        try {
+                            RESP = response.getJSONObject("data");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-
-                        }
+                        assert RESP != null;
+                        GetData(RESP);
+                    }, error -> {
                     });
                     RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
                     requestQueue.add(jsonObjectRequest);
@@ -331,29 +305,25 @@ public class CheckListActivity extends AppCompatActivity {
     private boolean is_email_valid(String email_id) {
 
         final String email = email_id;
-        Thread EmailValidationThread = new Thread(new Runnable() {
-            public void run() {
-                try {
-                    CognitoCachingCredentialsProvider credentials = new CognitoCachingCredentialsProvider(CheckListActivity.this
-                            , "ap-south-1:61aae02f-4102-4e79-9d88-3566b8301aae", Regions.AP_SOUTH_1);
-                    AmazonSimpleEmailServiceClient ses = new AmazonSimpleEmailServiceClient(credentials);
-                    ListVerifiedEmailAddressesResult listVerifiedEmailAddressesResult = ses.listVerifiedEmailAddresses();
-                    List l_verifiedids = listVerifiedEmailAddressesResult.getVerifiedEmailAddresses();
-                    List l_ids = ses.listIdentities().getIdentities();
-                    Log.e(TAG, "List Ids: " + l_ids);
-                    Log.e(TAG, "List VerifiedIds: " + l_verifiedids);
+        Thread EmailValidationThread = new Thread(() -> {
+            try {
+                CognitoCachingCredentialsProvider credentials = new CognitoCachingCredentialsProvider(CheckListActivity.this
+                        , "ap-south-1:61aae02f-4102-4e79-9d88-3566b8301aae", Regions.AP_SOUTH_1);
+                AmazonSimpleEmailServiceClient ses = new AmazonSimpleEmailServiceClient(credentials);
+                ListVerifiedEmailAddressesResult listVerifiedEmailAddressesResult = ses.listVerifiedEmailAddresses();
+                List l_verifiedids = listVerifiedEmailAddressesResult.getVerifiedEmailAddresses();
+                List l_ids = ses.listIdentities().getIdentities();
+                Log.e(TAG, "List Ids: " + l_ids);
+                Log.e(TAG, "List VerifiedIds: " + l_verifiedids);
 
-                    if (l_verifiedids.contains(email)) {
-                        //the address is verified so
-                        returnval_emaivalidation = true;
-                    } else if (l_ids.contains(email)) {
-                        Toast.makeText(CheckListActivity.this, "Mail is already sent to your registered mail please go through the link to complete the verification process", Toast.LENGTH_LONG).show();
-
-                    }
-
-                } catch (Exception e) {
-                    Log.e(TAG, "Is Email Verified Error: " + e.getMessage());
+                if (l_verifiedids.contains(email)) {
+                    //the address is verified so
+                    returnval_emaivalidation = true;
+                } else if (l_ids.contains(email)) {
+                    Toast.makeText(CheckListActivity.this, "Mail is already sent to your registered mail please go through the link to complete the verification process", Toast.LENGTH_LONG).show();
                 }
+            } catch (Exception e) {
+                Log.e(TAG, "Is Email Verified Error: " + e.getMessage());
             }
         });
 
@@ -372,23 +342,21 @@ public class CheckListActivity extends AppCompatActivity {
 
     private void VerifyEmail(final String email) {
 
-        Thread verifyEmailThread = new Thread(new Runnable() {
-            public void run() {
-                try {
-                    CognitoCachingCredentialsProvider credentials = new CognitoCachingCredentialsProvider(CheckListActivity.this
-                            , "ap-south-1:61aae02f-4102-4e79-9d88-3566b8301aae", Regions.AP_SOUTH_1);
-                    final AmazonSimpleEmailServiceClient client = new AmazonSimpleEmailServiceClient(credentials);
-                    client.setRegion(Region.getRegion(Regions.US_EAST_1));
+        Thread verifyEmailThread = new Thread(() -> {
+            try {
+                CognitoCachingCredentialsProvider credentials = new CognitoCachingCredentialsProvider(CheckListActivity.this
+                        , "ap-south-1:61aae02f-4102-4e79-9d88-3566b8301aae", Regions.AP_SOUTH_1);
+                final AmazonSimpleEmailServiceClient client = new AmazonSimpleEmailServiceClient(credentials);
+                client.setRegion(Region.getRegion(Regions.US_EAST_1));
 //                    VerifyEmailIdentityRequest request = new VerifyEmailIdentityRequest().withEmailAddress(email);
-                    SendCustomVerificationEmailRequest EmailRequest = new SendCustomVerificationEmailRequest().withEmailAddress(email).withTemplateName("VerificationTemplate");
-                    SendCustomVerificationEmailResult result = client.sendCustomVerificationEmail(EmailRequest);
-                    Log.e(TAG, "Verify Email result: " + result.getMessageId());
+                SendCustomVerificationEmailRequest EmailRequest = new SendCustomVerificationEmailRequest().withEmailAddress(email).withTemplateName("VerificationTemplate");
+                SendCustomVerificationEmailResult result = client.sendCustomVerificationEmail(EmailRequest);
+                Log.e(TAG, "Verify Email result: " + result.getMessageId());
 
 //                 VerifyEmailIdentityResult response = client.verifyEmailIdentity(request);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Log.e(TAG, "Verify Email Exception: " + e.getMessage());
-                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.e(TAG, "Verify Email Exception: " + e.getMessage());
             }
         });
 
@@ -537,23 +505,21 @@ public class CheckListActivity extends AppCompatActivity {
 //        final Message message = new Message(subject, body);
 
         // CREATES SEPARATE THREAD TO ATTEMPT TO SEND EMAIL
-        Thread sendEmailThread = new Thread(new Runnable() {
-            public void run() {
-                try {
+        Thread sendEmailThread = new Thread(() -> {
+            try {
 
-                    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                    mimeMessage.writeTo(outputStream);
-                    RawMessage rawMessage =
-                            new RawMessage(ByteBuffer.wrap(outputStream.toByteArray()));
-                    SendRawEmailRequest rawEmailRequest =
-                            new SendRawEmailRequest(rawMessage);
-                    client.sendRawEmail(rawEmailRequest);
-                    result = SUCCESS;
+                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                mimeMessage.writeTo(outputStream);
+                RawMessage rawMessage =
+                        new RawMessage(ByteBuffer.wrap(outputStream.toByteArray()));
+                SendRawEmailRequest rawEmailRequest =
+                        new SendRawEmailRequest(rawMessage);
+                client.sendRawEmail(rawEmailRequest);
+                result = SUCCESS;
 
-                } catch (Exception e) {
-                    result = ERROR;
-                    Log.e(TAG, "Email Error: " + e.getMessage());
-                }
+            } catch (Exception e) {
+                result = ERROR;
+                Log.e(TAG, "Email Error: " + e.getMessage());
             }
         });
 
@@ -579,7 +545,6 @@ public class CheckListActivity extends AppCompatActivity {
     }
 
     private void GetData(JSONObject obj) {
-
         try {
             item_ids.add(obj.getString("_id"));
             item_names.add(obj.getString("name"));

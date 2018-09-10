@@ -7,6 +7,8 @@ import android.opengl.GLES20;
 import android.opengl.GLUtils;
 import android.util.Log;
 
+import com.immersionslabs.lcatalogpro.utils.EnvConstants;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;

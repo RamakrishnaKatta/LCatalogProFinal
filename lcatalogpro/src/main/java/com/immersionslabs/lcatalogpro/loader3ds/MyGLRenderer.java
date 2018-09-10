@@ -5,6 +5,8 @@ import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
 
+import com.immersionslabs.lcatalogpro.R;
+
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -16,6 +18,7 @@ import javax.microedition.khronos.opengles.GL10;
 public class MyGLRenderer implements GLSurfaceView.Renderer {
 
     private static final String TAG = "MyGLRenderer";
+
     private final Context mActivityContext;
     /**
      * Used to hold a light centered on the origin in model space. We need a 4th coordinate so we can get translations to work when
@@ -82,7 +85,7 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 
         //We need to pass the Main activity context
         mActivityContext = activityContext;
-        this.DOWNLOAD_URL=DOWNLOAD_URL;
+        this.DOWNLOAD_URL = DOWNLOAD_URL;
     }
 
     @Override
@@ -156,7 +159,6 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
         // NOTE: In OpenGL 1, a ModelView matrix is used, which is a combination of a model and
         // view matrix. In OpenGL 2, we can keep track of these matrices separately if we choose.
         Matrix.setLookAtM(mViewMatrix, 0, eyeX, eyeY, eyeZ, lookX, lookY, lookZ, upX, upY, upZ);
-
     }
 
     @Override
@@ -267,7 +269,4 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
     public void changeScale(float val) {
         model[currentObject].changeScale(val);
     }
-
 }
-
-

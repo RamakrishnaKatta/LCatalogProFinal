@@ -1,6 +1,5 @@
 package com.immersionslabs.lcatalogpro;
 
-
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -12,7 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
-import com.immersionslabs.lcatalogpro.Adapters.VendorCatalogAdapter;
+import com.immersionslabs.lcatalogpro.adapters.VendorCatalogAdapter;
 import com.immersionslabs.lcatalogpro.network.ApiCommunication;
 import com.immersionslabs.lcatalogpro.network.ApiService;
 import com.immersionslabs.lcatalogpro.utils.EnvConstants;
@@ -22,6 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class VendorCatalogActivity extends AppCompatActivity implements ApiCommunication {
 
@@ -75,7 +75,7 @@ public class VendorCatalogActivity extends AppCompatActivity implements ApiCommu
         final Bundle vendor_data = getIntent().getExtras();
 
         assert vendor_data != null;
-        vendor_id = vendor_data.getString("vendor_id").trim();
+        vendor_id = Objects.requireNonNull(vendor_data.getString("vendor_id")).trim();
         vendor_id_no = Integer.parseInt(vendor_id);
         vendor_id_no = vendor_id_no + 1;
 
@@ -85,14 +85,10 @@ public class VendorCatalogActivity extends AppCompatActivity implements ApiCommu
         VENDOR_URL = REGISTER_URL + vendor_id;
         Log.e(TAG, "VENDOR_URL" + VENDOR_URL);
 
-        try {
-            CommonGetData();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        CommonGetData();
     }
 
-    private void CommonGetData() throws JSONException {
+    private void CommonGetData() {
 
         Log.e(TAG, "CommonGetData: " + REGISTER_URL);
         final JSONObject object = new JSONObject();

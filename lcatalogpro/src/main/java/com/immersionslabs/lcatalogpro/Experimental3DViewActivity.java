@@ -1,8 +1,8 @@
 package com.immersionslabs.lcatalogpro;
 
 import android.annotation.SuppressLint;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
@@ -10,7 +10,6 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.immersionslabs.lcatalogpro.utils.EnvConstants;
-
 
 public class Experimental3DViewActivity extends AppCompatActivity {
 

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Manager_BudgetList {
 
     private static Long Current_Budget = 0L, Total_Budget = 0L, Remaining_Budget = 0L;
-    private static ArrayList<String> Articles = new ArrayList<String>();
+    private static ArrayList<String> Articles = new ArrayList<>();
 
     public Long BUDGET_GET_CURRENT() {
         return Current_Budget;

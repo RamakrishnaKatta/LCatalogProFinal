@@ -1,7 +1,7 @@
 package com.immersionslabs.lcatalogpro;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -148,7 +148,6 @@ public class FAQActivity extends AppCompatActivity {
         step_text20.setVisibility(View.GONE);
         step_text21_1.setVisibility(View.GONE);
         step_text21_2.setVisibility(View.GONE);
-
     }
 
     //OnClick functions ----------------------------------------------------

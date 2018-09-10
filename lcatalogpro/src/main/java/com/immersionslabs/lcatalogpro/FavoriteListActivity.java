@@ -1,7 +1,7 @@
 package com.immersionslabs.lcatalogpro;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
-import com.immersionslabs.lcatalogpro.Adapters.MyFavoriteAdapter;
+import com.immersionslabs.lcatalogpro.adapters.MyFavoriteAdapter;
 import com.immersionslabs.lcatalogpro.network.ApiCommunication;
 import com.immersionslabs.lcatalogpro.network.ApiService;
 import com.immersionslabs.lcatalogpro.utils.EnvConstants;
@@ -85,7 +85,6 @@ public class FavoriteListActivity extends AppCompatActivity implements ApiCommun
         item_discounts = new ArrayList<>();
         item_dimensions = new ArrayList<>();
         item_3ds = new ArrayList<>();
-
     }
 
     private void CommongetData() {
@@ -242,4 +241,3 @@ public class FavoriteListActivity extends AppCompatActivity implements ApiCommun
         super.onPause();
     }
 }
-

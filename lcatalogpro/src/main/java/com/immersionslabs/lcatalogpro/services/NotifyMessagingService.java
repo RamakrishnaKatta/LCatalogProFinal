@@ -15,6 +15,7 @@ import com.immersionslabs.lcatalogpro.MainActivity;
 import com.immersionslabs.lcatalogpro.R;
 
 public class NotifyMessagingService extends FirebaseMessagingService {
+
     public static final String TAG = "NotifyMessagingService";
 
     @Override

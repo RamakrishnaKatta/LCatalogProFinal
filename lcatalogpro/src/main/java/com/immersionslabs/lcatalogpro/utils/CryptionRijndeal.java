@@ -14,7 +14,6 @@ public class CryptionRijndeal {
     private String Password = "IMMERSIONSLABS";
 
     public String decrypt(String outputString) throws Exception {
-
         SecretKeySpec key = generatekey(Password);
         Cipher c = getInstance("AES");
         c.init(Cipher.DECRYPT_MODE, key);

@@ -9,7 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 
-
+import com.immersionslabs.lcatalogpro.adapters.ProductFragmentAdapter;
+import com.immersionslabs.lcatalogpro.utils.EnvConstants;
 
 import org.json.JSONException;
 import org.json.JSONObject;

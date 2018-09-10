@@ -9,7 +9,12 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
 import com.android.volley.VolleyError;
+import com.immersionslabs.lcatalogpro.adapters.ProjectAdapter;
+import com.immersionslabs.lcatalogpro.network.ApiCommunication;
+import com.immersionslabs.lcatalogpro.network.ApiService;
+import com.immersionslabs.lcatalogpro.utils.EnvConstants;
 
 import org.json.JSONArray;
 import org.json.JSONException;

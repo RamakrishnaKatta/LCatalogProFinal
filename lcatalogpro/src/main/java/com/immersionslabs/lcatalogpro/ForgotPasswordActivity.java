@@ -2,9 +2,9 @@ package com.immersionslabs.lcatalogpro;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
@@ -69,14 +69,11 @@ public class ForgotPasswordActivity extends AppCompatActivity implements ApiComm
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        _submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    submit();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+        _submitButton.setOnClickListener(v -> {
+            try {
+                submit();
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
         });
 
@@ -91,16 +88,11 @@ public class ForgotPasswordActivity extends AppCompatActivity implements ApiComm
         final View view = this.getWindow().getDecorView().findViewById(android.R.id.content);
         final Snackbar snackbar = Snackbar.make(view, "Please Check Your Internet connection", Snackbar.LENGTH_INDEFINITE);
         snackbar.setActionTextColor(getResources().getColor(R.color.red));
-        snackbar.setAction("RETRY", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                snackbar.dismiss();
-                if (NetworkConnectivity.checkInternetConnection(ForgotPasswordActivity.this)) {
-
-                } else {
-
-                    InternetMessage();
-                }
+        snackbar.setAction("RETRY", v -> {
+            snackbar.dismiss();
+            if (NetworkConnectivity.checkInternetConnection(ForgotPasswordActivity.this)) {
+            } else {
+                InternetMessage();
             }
         });
         snackbar.show();
@@ -136,23 +128,19 @@ public class ForgotPasswordActivity extends AppCompatActivity implements ApiComm
         Log.e(TAG, "Request--" + password_update_parameters);
 
         ApiService.getInstance(this).postData(this, PASSWORD_UPDATE_URL, password_update_parameters, "FORGOT PASSWORD ACTIVITY", "POST_PASSWORD");
-        new android.os.Handler().postDelayed(new Runnable() {
-            public void run() {
-                // On complete call either onLoginSuccess or onLoginFailed
-
-                if (Objects.equals(code, "200")) {
-                    onSubmitSuccess();
-                } else {
-                    onSubmitFailed();
-                }
-                progressDialog.dismiss();
+        new android.os.Handler().postDelayed(() -> {
+            // On complete call either onLoginSuccess or onLoginFailed
+            if (Objects.equals(code, "200")) {
+                onSubmitSuccess();
+            } else {
+                onSubmitFailed();
             }
+            progressDialog.dismiss();
         }, 3000);
     }
 
     @Override
     public void onResponseCallback(JSONObject requestResponse, String flag) {
-
         if (flag.equals("POST_PASSWORD")) {
             Log.e(TAG, "response--" + requestResponse);
             try {

@@ -2,7 +2,7 @@ package com.immersionslabs.lcatalogpro.utils;
 
 public class GetItems {
 
-    String userId, userName, userAddress, userEmail, userPhone, userPassword;
+    private String userId, userName, userAddress, userEmail, userPhone, userPassword;
 
     public String getUserName() {
         return userName;
@@ -18,7 +18,6 @@ public class GetItems {
 
     public void setUserId(String userId) {
         this.userId = userId;
-
     }
 
     public String getUserAddress() {
@@ -27,7 +26,6 @@ public class GetItems {
 
     public void setUserAddress(String userAddress) {
         this.userAddress = userAddress;
-
     }
 
     public String getUserEmail() {
@@ -36,7 +34,6 @@ public class GetItems {
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
-
     }
 
     public String getUserPhone() {

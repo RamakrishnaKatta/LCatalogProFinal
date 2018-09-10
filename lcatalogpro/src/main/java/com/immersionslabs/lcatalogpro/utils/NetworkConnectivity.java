@@ -6,6 +6,7 @@ import android.net.NetworkInfo;
 import android.util.Log;
 
 public class NetworkConnectivity {
+
     public static boolean checkInternetConnection(Context context) {
 
         ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);

@@ -61,4 +61,3 @@ public class UserCheckUtil {
         return Environment.MEDIA_MOUNTED.equals(extStorageState);
     }
 }
-

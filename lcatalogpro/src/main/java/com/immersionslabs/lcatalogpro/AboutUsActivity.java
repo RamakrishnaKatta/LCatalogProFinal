@@ -2,9 +2,9 @@ package com.immersionslabs.lcatalogpro;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -42,46 +42,31 @@ public class AboutUsActivity extends AppCompatActivity implements ConnectionRece
 //        heading4.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 //        heading4.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
 
-        facebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String facebook_url = "https://www.facebook.com/immersionslabs/";
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(facebook_url));
-                startActivity(browserIntent);
-            }
+        facebook.setOnClickListener(v -> {
+            String facebook_url = "https://www.facebook.com/immersionslabs/";
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(facebook_url));
+            startActivity(browserIntent);
         });
-        instagram.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String instagram_url = "https://www.instagram.com/immersionslabs/";
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(instagram_url));
-                startActivity(browserIntent);
-            }
+        instagram.setOnClickListener(v -> {
+            String instagram_url = "https://www.instagram.com/immersionslabs/";
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(instagram_url));
+            startActivity(browserIntent);
         });
-        twitter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String twitter_url = "https://twitter.com/immersionslabs/";
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(twitter_url));
-                startActivity(browserIntent);
-            }
+        twitter.setOnClickListener(v -> {
+            String twitter_url = "https://twitter.com/immersionslabs/";
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(twitter_url));
+            startActivity(browserIntent);
         });
-        linkedIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String linkedIn_url = "https://www.linkedin.com/company/13387281/";
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(linkedIn_url));
-                startActivity(browserIntent);
-            }
+        linkedIn.setOnClickListener(v -> {
+            String linkedIn_url = "https://www.linkedin.com/company/13387281/";
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(linkedIn_url));
+            startActivity(browserIntent);
         });
 
-        youtube.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String youtube_url = "https://www.youtube.com/channel/UCbFTPamOyx9GqVdlYqjckqQ/";
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(youtube_url));
-                startActivity(browserIntent);
-            }
+        youtube.setOnClickListener(v -> {
+            String youtube_url = "https://www.youtube.com/channel/UCbFTPamOyx9GqVdlYqjckqQ/";
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(youtube_url));
+            startActivity(browserIntent);
         });
 
         Toolbar toolbar = findViewById(R.id.toolbar_about_us);
@@ -92,8 +77,6 @@ public class AboutUsActivity extends AppCompatActivity implements ConnectionRece
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
-
-
     }
 
     private void InternetMessage() {
@@ -116,14 +99,12 @@ public class AboutUsActivity extends AppCompatActivity implements ConnectionRece
     @Override
     public void onResume() {
         ARNativeApplication.getInstance().setConnectionListener(this);
-
         super.onResume();
     }
 
     public void onStart() {
         super.onStart();
         ARNativeApplication.getInstance().setConnectionListener(this);
-
     }
 
     @Override
@@ -137,9 +118,7 @@ public class AboutUsActivity extends AppCompatActivity implements ConnectionRece
     public void onPause() {
         super.onPause();
         ARNativeApplication.getInstance().setConnectionListener(this);
-
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -157,10 +136,9 @@ public class AboutUsActivity extends AppCompatActivity implements ConnectionRece
             Intent intent = new Intent(AboutUsActivity.this, BlankActivity.class);
             startActivity(intent);
         } else {
-            Toast.makeText(this, "Inetreashiusaihfkjsajfhaskfhksalkfas", Toast.LENGTH_LONG).show();
-            Log.e(TAG, "onNetworkConnectionChanged: I'm fucked" + isConnected);
+            Toast.makeText(this, "There is a change in the network connection", Toast.LENGTH_LONG).show();
+            Log.e(TAG, "onNetworkConnectionChanged " + isConnected);
         }
-
     }
 
     private void checkConnection() {
@@ -175,4 +153,3 @@ public class AboutUsActivity extends AppCompatActivity implements ConnectionRece
         }
     }
 }
-

@@ -1,22 +1,23 @@
 package com.immersionslabs.lcatalogpro;
 
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.immersionslabs.lcatalogpro.Adapters.GridViewImageAdapter;
+import com.immersionslabs.lcatalogpro.adapters.GridViewImageAdapter;
 import com.immersionslabs.lcatalogpro.utils.ImageUtils;
 import com.immersionslabs.lcatalogpro.utils.NetworkConnectivity;
 
 import java.util.ArrayList;
 
 public class GalleryActivity extends AppCompatActivity {
-    private static final String TAG = "Gallery";
+
+    private static final String TAG = "GalleryActivity";
 
     RecyclerView recycler;
     GridLayoutManager manager;
@@ -59,15 +60,11 @@ public class GalleryActivity extends AppCompatActivity {
         final View view = this.getWindow().getDecorView().findViewById(android.R.id.content);
         final Snackbar snackbar = Snackbar.make(view, "Please Check Your Internet connection", Snackbar.LENGTH_INDEFINITE);
         snackbar.setActionTextColor(getResources().getColor(R.color.red));
-        snackbar.setAction("RETRY", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                snackbar.dismiss();
-                if (NetworkConnectivity.checkInternetConnection(GalleryActivity.this)) {
-
-                } else {
-                    InternetMessage();
-                }
+        snackbar.setAction("RETRY", v -> {
+            snackbar.dismiss();
+            if (NetworkConnectivity.checkInternetConnection(GalleryActivity.this)) {
+            } else {
+                InternetMessage();
             }
         });
         snackbar.show();
@@ -99,5 +96,4 @@ public class GalleryActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
     }
-
 }

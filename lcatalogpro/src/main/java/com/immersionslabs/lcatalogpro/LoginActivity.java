@@ -5,13 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.AppCompatImageButton;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -46,6 +46,8 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import static com.immersionslabs.lcatalogpro.utils.EnvConstants.user_Favourite_list;
+
 public class LoginActivity extends AppCompatActivity implements ApiCommunication {
 
     private static final String TAG = "LoginActivity";
@@ -72,7 +74,7 @@ public class LoginActivity extends AppCompatActivity implements ApiCommunication
     String email, password;
     File file_customer;
     String[] text_from_customer_file;
-    ArrayList<String> temp = new ArrayList<String>();
+    ArrayList<String> temp = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -111,34 +113,23 @@ public class LoginActivity extends AppCompatActivity implements ApiCommunication
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        get_details.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setData();
-            }
-        });
+        get_details.setOnClickListener(v -> setData());
 
-        _loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (NetworkConnectivity.checkInternetConnection(LoginActivity.this)) {
-                    try {
-                        login();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }else {
-                    InternetMessage();
+        _loginButton.setOnClickListener(v -> {
+            if (NetworkConnectivity.checkInternetConnection(LoginActivity.this)) {
+                try {
+                    login();
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
+            } else {
+                InternetMessage();
             }
         });
 
-        _forgot_password.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ForgotPasswordActivity.class);
-                startActivityForResult(intent, REQUEST_FORGOT_PASSWORD);
-            }
+        _forgot_password.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), ForgotPasswordActivity.class);
+            startActivityForResult(intent, REQUEST_FORGOT_PASSWORD);
         });
 
         prefManager5 = new PrefManager(this);
@@ -146,22 +137,17 @@ public class LoginActivity extends AppCompatActivity implements ApiCommunication
         if (prefManager5.LoginActivityScreenLaunch()) {
             showcaseview();
         }
-
     }
 
     private void InternetMessage() {
         final View view = this.getWindow().getDecorView().findViewById(android.R.id.content);
         final Snackbar snackbar = Snackbar.make(view, "Please Check Your Internet connection", Snackbar.LENGTH_INDEFINITE);
         snackbar.setActionTextColor(getResources().getColor(R.color.red));
-        snackbar.setAction("RETRY", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                snackbar.dismiss();
-                if (NetworkConnectivity.checkInternetConnection(LoginActivity.this)) {
-
-                } else {
-                    InternetMessage();
-                }
+        snackbar.setAction("RETRY", v -> {
+            snackbar.dismiss();
+            if (NetworkConnectivity.checkInternetConnection(LoginActivity.this)) {
+            } else {
+                InternetMessage();
             }
         });
         snackbar.show();
@@ -260,16 +246,14 @@ public class LoginActivity extends AppCompatActivity implements ApiCommunication
 
         ApiService.getInstance(this).postData(this, LOGIN_URL, login_parameters, "LOGIN", "USER_LOGIN");
 
-        new android.os.Handler().postDelayed(new Runnable() {
-            public void run() {
-                // On complete call either onLoginSuccess or onLoginFailed
-                if (Objects.equals(message, "FAILURE") || Objects.equals(code, "500")) {
-                    onLoginFailed();
-                } else {
-                    onLoginSuccess();
-                }
-                progressDialog.dismiss();
+        new android.os.Handler().postDelayed(() -> {
+            // On complete call either onLoginSuccess or onLoginFailed
+            if (Objects.equals(message, "FAILURE") || Objects.equals(code, "500")) {
+                onLoginFailed();
+            } else {
+                onLoginSuccess();
             }
+            progressDialog.dismiss();
         }, 3000);
     }
 

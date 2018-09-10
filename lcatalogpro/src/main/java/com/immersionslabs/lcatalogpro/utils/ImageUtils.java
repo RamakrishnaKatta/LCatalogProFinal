@@ -115,4 +115,3 @@ public class ImageUtils {
         return columnWidth;
     }
 }
-

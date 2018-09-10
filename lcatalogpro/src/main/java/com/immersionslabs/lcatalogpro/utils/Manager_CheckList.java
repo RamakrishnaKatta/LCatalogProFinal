@@ -7,7 +7,7 @@ public class Manager_CheckList {
 
     private static Long Current_Value = 0L;
     private static ArrayList<String> Articles = new ArrayList<String>();
-    private static HashMap<String,String> vendorarticle = new HashMap<>();
+    private static HashMap<String, String> vendorarticle = new HashMap<>();
 
     public Long CHECKLIST_GET_CURRENT() {
         return Current_Value;
@@ -19,7 +19,7 @@ public class Manager_CheckList {
 
     public void CHECKLIST_ADD_ARTICLE(String article_id, String article_vendor_id) {
         Articles.add(article_id);
-        vendorarticle.put(article_id,article_vendor_id);
+        vendorarticle.put(article_id, article_vendor_id);
     }
 
     public void CHECKLIST_REMOVE_ARTICLE(String article_id, Long price) {
@@ -50,8 +50,7 @@ public class Manager_CheckList {
         Current_Value = 0L;
     }
 
-    public HashMap CHECKLIST_GET_VENDORARTICLES()
-    {
+    public HashMap CHECKLIST_GET_VENDORARTICLES() {
         return vendorarticle;
     }
 }

@@ -13,6 +13,7 @@ public class PrefManager {
     private static final String PREF_NAME_3 = " L_Catalog_GuestActivityScreen ";
     private static final String PREF_NAME_4 = " L_Catalog_MainActivityScreen ";
     private static final String PREF_NAME_5 = " L_Catalog_ProductPageActivityScreen ";
+
     private static final String WELCOMEACTIVITY_SCREEN_LAUNCH = "WelcomeActivityScreenLaunch";
     private static final String USERTYPEACTIVITY_LAUNCH_SCREEN = "UserTypeActivityLaunchScreen";
     private static final String GUESTACTIVITY_LAUNCH_SCREEN = "GuestActivityLaunchScreen";
@@ -26,19 +27,17 @@ public class PrefManager {
     @SuppressLint("CommitPrefEdits")
     public PrefManager(Context context) {
         int PRIVATE_MODE = 0;
+
         pref = context.getSharedPreferences(PREF_NAME_1, PRIVATE_MODE);
         editor = pref.edit();
-
         pref1 = context.getSharedPreferences(PREF_NAME_2, PRIVATE_MODE);
         editor1 = pref1.edit();
-
         pref2 = context.getSharedPreferences(PREF_NAME_3, PRIVATE_MODE);
         editor2 = pref2.edit();
         pref3 = context.getSharedPreferences(PREF_NAME_4, PRIVATE_MODE);
         editor3 = pref3.edit();
         pref4 = context.getSharedPreferences(PREF_NAME_5, PRIVATE_MODE);
         editor4 = pref4.edit();
-
         pref5 = context.getSharedPreferences(PREF_NAME_6, PRIVATE_MODE);
         editor5 = pref5.edit();
     }

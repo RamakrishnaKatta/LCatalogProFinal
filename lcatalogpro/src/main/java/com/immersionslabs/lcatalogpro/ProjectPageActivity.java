@@ -1,6 +1,5 @@
 package com.immersionslabs.lcatalogpro;
 
-
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.design.widget.TabLayout;
@@ -10,7 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 
-import com.immersionslabs.lcatalog.adapters.ProjectFragmentAdapter;
+import com.immersionslabs.lcatalogpro.adapters.ProjectFragmentAdapter;
 
 public class ProjectPageActivity extends AppCompatActivity {
 

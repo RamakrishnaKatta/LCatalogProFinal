@@ -5,11 +5,11 @@ import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.AppCompatImageButton;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -22,11 +22,15 @@ import android.widget.Toast;
 
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetView;
+import com.immersionslabs.lcatalogpro.utils.CustomMessage;
+import com.immersionslabs.lcatalogpro.utils.NetworkConnectivity;
+import com.immersionslabs.lcatalogpro.utils.PrefManager;
+import com.immersionslabs.lcatalogpro.utils.SessionManager;
+import com.immersionslabs.lcatalogpro.utils.UserCheckUtil;
 
 import java.io.File;
 import java.util.Calendar;
 import java.util.Objects;
-
 
 public class GuestActivity extends AppCompatActivity {
 
@@ -69,20 +73,12 @@ public class GuestActivity extends AppCompatActivity {
         //Disables the keyboard to appear on the activity launch
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-        get_details.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setData();
-                _guestLoginButton.setEnabled(true);
-            }
+        get_details.setOnClickListener(v -> {
+            setData();
+            _guestLoginButton.setEnabled(true);
         });
 
-        _guestLoginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                guest_login();
-            }
-        });
+        _guestLoginButton.setOnClickListener(v -> guest_login());
 
         prefManager2 = new PrefManager(this);
         Log.e(TAG, "" + prefManager2.GuestActivityScreenLaunch());
@@ -91,7 +87,6 @@ public class GuestActivity extends AppCompatActivity {
         }
 
         if (NetworkConnectivity.checkInternetConnection(GuestActivity.this)) {
-
         } else {
             InternetMessage();
         }
@@ -101,14 +96,11 @@ public class GuestActivity extends AppCompatActivity {
         final View view = this.getWindow().getDecorView().findViewById(android.R.id.content);
         final Snackbar snackbar = Snackbar.make(view, "Please Check Your Internet connection", Snackbar.LENGTH_INDEFINITE);
         snackbar.setActionTextColor(getResources().getColor(R.color.red));
-        snackbar.setAction("RETRY", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                snackbar.dismiss();
-                if (NetworkConnectivity.checkInternetConnection(GuestActivity.this)) {
-                } else {
-                    InternetMessage();
-                }
+        snackbar.setAction("RETRY", v -> {
+            snackbar.dismiss();
+            if (NetworkConnectivity.checkInternetConnection(GuestActivity.this)) {
+            } else {
+                InternetMessage();
             }
         });
         snackbar.show();
@@ -310,5 +302,4 @@ public class GuestActivity extends AppCompatActivity {
     public void onDestroy() {
         super.onDestroy();
     }
-
 }

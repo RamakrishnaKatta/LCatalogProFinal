@@ -1,11 +1,11 @@
 package com.immersionslabs.lcatalogpro;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.hardware.Camera;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -16,7 +16,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -28,7 +27,7 @@ import android.widget.Toast;
 import com.android.volley.VolleyError;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
-import com.immersionslabs.lcatalogpro.Adapters.MainPageAdapter;
+import com.immersionslabs.lcatalogpro.adapters.MainPageAdapter;
 import com.immersionslabs.lcatalogpro.network.ApiCommunication;
 import com.immersionslabs.lcatalogpro.network.ApiService;
 import com.immersionslabs.lcatalogpro.utils.ConnectionReceiver;
@@ -49,9 +48,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
+import static com.immersionslabs.lcatalogpro.utils.EnvConstants.user_Favourite_list;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ApiCommunication {
 
     private static final String TAG = "MainActivity";
+
     private static final String VENDOR_URL = EnvConstants.APP_BASE_URL + "/vendors";
     private static final String VENDOR_SPECIFIC_URL = EnvConstants.APP_BASE_URL + "/vendors/specific/";
 
@@ -76,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Camera cam=Camera.open();
+        Camera cam = Camera.open();
         Camera.Parameters params = cam.getParameters();
         List<Camera.Size> previewSizes = params.getSupportedPreviewSizes();
         cam.release();
@@ -85,8 +87,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         for (int i = 0; i < previewSizes.size(); i++) {
             int w = previewSizes.get(i).width;
             int h = previewSizes.get(i).height;
-            Log.e(TAG,"displaywidth"+w);
-            Log.e(TAG,"displayheight"+h);
+            Log.e(TAG, "displaywidth" + w);
+            Log.e(TAG, "displayheight" + h);
 
         }
         hash_vendor = new HashMap<>();
@@ -167,6 +169,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             final Bundle guest_data = getIntent().getExtras();
             Log.d(TAG, "Dummy -- " + guest_data);
 
+            assert guest_data != null;
             guest_name = guest_data.getString("guest_name");
             Log.e(TAG, "guest name:  " + guest_name);
 
@@ -344,19 +347,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
             builder.setTitle("Watch the welcome Slider, If you missed it");
             builder.setMessage("To see the welcome slider again, either you can go to Settings -> apps -> welcome slider -> clear data or Press OK ");
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
+            builder.setPositiveButton("OK", (dialog, which) -> {
 
-                    // We normally won't show the welcome slider again in real app but this is for testing
-                    PrefManager prefManager = new PrefManager(getApplicationContext());
+                // We normally won't show the welcome slider again in real app but this is for testing
+                PrefManager prefManager = new PrefManager(getApplicationContext());
 
-                    // make first time launch TRUE
-                    prefManager.SetWelcomeActivityScreenLaunch(true);
+                // make first time launch TRUE
+                prefManager.SetWelcomeActivityScreenLaunch(true);
 
-                    startActivity(new Intent(MainActivity.this, OnBoarding.class));
-                    finish();
-                }
+                startActivity(new Intent(MainActivity.this, OnBoarding.class));
+                finish();
             });
             builder.setNegativeButton("CANCEL", null);
             builder.show();
@@ -366,7 +366,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public boolean onNavigationItemSelected(MenuItem Nav_item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem Nav_item) {
 
         // Handle navigation view item clicks here.
         int id = Nav_item.getItemId();
@@ -381,14 +381,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
 
         } else if (id == R.id.nav_augment) {
-                    Intent intent = new Intent(MainActivity.this, AugmentActivity.class);
-                    startActivity(intent);
-                }
-         else if (id == R.id.nav_project_campaign) {
-            if(NetworkConnectivity.checkInternetConnection(MainActivity.this)){
+            Intent intent = new Intent(MainActivity.this, AugmentActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_project_campaign) {
+            if (NetworkConnectivity.checkInternetConnection(MainActivity.this)) {
                 Intent intent = new Intent(this, ProjectCatalogActivity.class);
                 startActivity(intent);
-            }else {
+            } else {
                 InternetMessage();
             }
 
@@ -409,11 +408,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
 
         } else if (id == R.id.nav_ven) {
-            if (NetworkConnectivity.checkInternetConnection(MainActivity.this)){
+            if (NetworkConnectivity.checkInternetConnection(MainActivity.this)) {
                 Toast.makeText(this, "We will not disappoint you, Lets get in Touch !!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, VendorListActivity.class);
                 startActivity(intent);
-            }else {
+            } else {
                 InternetMessage();
             }
 
@@ -469,19 +468,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
             builder.setTitle("Sign Out");
             builder.setMessage("Your BudgetList and CheckList will be Erased. \n Are you sure want to SignOut ?");
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
+            builder.setPositiveButton("OK", (dialog, which) -> {
 
-                    Toast.makeText(MainActivity.this, "Successfully Signed Out", Toast.LENGTH_SHORT).show();
-                    user_Favourite_list.clear();
-                    sessionmanager.logoutUser();
-                    manager_budgetList.BUDGET_CLEAR_ARRAY_ARTICLES();
-                    manager_checkList.CHECKLIST_CLEAR_ARRAY_ARTICLES();
-                    Intent intent = new Intent(MainActivity.this, UserTypeActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
+                Toast.makeText(MainActivity.this, "Successfully Signed Out", Toast.LENGTH_SHORT).show();
+                user_Favourite_list.clear();
+                sessionmanager.logoutUser();
+                manager_budgetList.BUDGET_CLEAR_ARRAY_ARTICLES();
+                manager_checkList.CHECKLIST_CLEAR_ARRAY_ARTICLES();
+                Intent intent = new Intent(MainActivity.this, UserTypeActivity.class);
+                startActivity(intent);
+                finish();
             });
             builder.setNegativeButton("CANCEL", null);
             builder.show();
@@ -509,19 +505,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         final View view = this.getWindow().getDecorView().findViewById(android.R.id.content);
         final Snackbar snackbar = Snackbar.make(view, "Please Check Your Internet connection", Snackbar.LENGTH_INDEFINITE);
         snackbar.setActionTextColor(getResources().getColor(R.color.red));
-        snackbar.setAction("RETRY", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                snackbar.dismiss();
+        snackbar.setAction("RETRY", v -> {
+            snackbar.dismiss();
+            if (ConnectionReceiver.isConnected()) {
                 if (ConnectionReceiver.isConnected()) {
-                    if (ConnectionReceiver.isConnected()) {
-                        snackbar.dismiss();
-                        onStart();
-                        Log.e(TAG, "onClick: brrrrrruuuuuuuuuuh");
-                    }
-                } else {
-                    InternetMessage();
+                    snackbar.dismiss();
+                    onStart();
+                    Log.e(TAG, "onClick: brrrrrruuuuuuuuuuh");
                 }
+            } else {
+                InternetMessage();
             }
         });
         snackbar.show();
@@ -590,9 +583,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (flag.equals("UNIQUE")) {
             try {
                 JSONObject jsonObject = response.getJSONObject("other_details");
-                JSONArray jsonArray=response.getJSONArray("data");
-                JSONObject jsonObject1=jsonArray.getJSONObject(0);
-                vendor_logo_img=jsonObject1.getString("logo");
+                JSONArray jsonArray = response.getJSONArray("data");
+                JSONObject jsonObject1 = jsonArray.getJSONObject(0);
+                vendor_logo_img = jsonObject1.getString("logo");
                 GetFullDetails(jsonObject);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -626,8 +619,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             hash_vendor.put(id + SessionManager.KEY_VENDOR_MOBILE, mobile_no);
             hash_vendor.put(id + SessionManager.KEY_VENDOR_OTHERDETAILS, other_details);
             hash_vendor.put(id + SessionManager.KEY_VENDOR_ID, vendor_id);
-            hash_vendor.put(id+SessionManager.KEY_VENDOR_ADDRESS,adress);
-            hash_vendor.put(id+SessionManager.KEY_VENDOR_LOGO,vendor_logo_img
+            hash_vendor.put(id + SessionManager.KEY_VENDOR_ADDRESS, adress);
+            hash_vendor.put(id + SessionManager.KEY_VENDOR_LOGO, vendor_logo_img
             );
             sessionmanager.SetVendorDetails(id, hash_vendor);
             Log.e(TAG, "GetFullDetails: session" + hash_vendor);

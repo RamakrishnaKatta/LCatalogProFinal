@@ -4,19 +4,17 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
 import com.android.volley.ServerError;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
+import com.immersionslabs.lcatalogpro.utils.EnvConstants;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,19 +24,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class NotifyIDService extends FirebaseInstanceIdService {
+
     private static final String TAG = "NotifyIDService";
+
     private static final String REGISTER_URL = EnvConstants.APP_BASE_URL + "/userTokens";
     private static String TOKEN_REG_URL = null;
+
     String refreshedToken;
     String resp, code, message;
     Context context;
 
     @Override
     public void onTokenRefresh() {
-
-
         // Get updated InstanceID token.
-
         try {
             refreshedToken = FirebaseInstanceId.getInstance().getToken();
             Log.d(TAG, "onTokenRefresh: Refreshed Token " + refreshedToken);
@@ -69,32 +67,24 @@ public class NotifyIDService extends FirebaseInstanceIdService {
         baseclass.put("token_id", refreshedToken);
 
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, REGISTER_URL, baseclass, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-
-                try {
-                    resp = response.getString("success");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, REGISTER_URL, baseclass, response -> {
+            try {
+                resp = response.getString("success");
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(NotifyIDService.this, "Internal Error", Toast.LENGTH_LONG).show();
-                // As of f605da3 the following should work
-                NetworkResponse response = error.networkResponse;
-                if (error instanceof ServerError && response != null) {
-                    try {
-                        String res = new String(response.data, HttpHeaderParser.parseCharset(response.headers, "utf-8"));
-                        // Now you can use any deserializer to make sense of data
-                        JSONObject request = new JSONObject(res);
-                    } catch (UnsupportedEncodingException | JSONException e1) {
-                        // Couldn't properly decode data to string
-                        e1.printStackTrace();
-                    }
+        }, error -> {
+            Toast.makeText(NotifyIDService.this, "Internal Error", Toast.LENGTH_LONG).show();
+            // As of f605da3 the following should work
+            NetworkResponse response = error.networkResponse;
+            if (error instanceof ServerError && response != null) {
+                try {
+                    String res = new String(response.data, HttpHeaderParser.parseCharset(response.headers, "utf-8"));
+                    // Now you can use any deserializer to make sense of data
+                    JSONObject request = new JSONObject(res);
+                } catch (UnsupportedEncodingException | JSONException e1) {
+                    // Couldn't properly decode data to string
+                    e1.printStackTrace();
                 }
             }
         }) {
@@ -105,7 +95,7 @@ public class NotifyIDService extends FirebaseInstanceIdService {
                 return params;
             }
 
-            public Map<String, String> getHeaders() throws AuthFailureError {
+            public Map<String, String> getHeaders() {
                 HashMap<String, String> headers = new HashMap<>();
                 headers.put("Content-Type", "application/json");
                 return headers;
@@ -114,6 +104,5 @@ public class NotifyIDService extends FirebaseInstanceIdService {
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(40000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(jsonObjectRequest);
-
     }
 }

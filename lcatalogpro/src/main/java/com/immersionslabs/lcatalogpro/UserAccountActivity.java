@@ -1,6 +1,5 @@
 package com.immersionslabs.lcatalogpro;
 
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,6 +16,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
+import com.immersionslabs.lcatalogpro.network.ApiCommunication;
+import com.immersionslabs.lcatalogpro.network.ApiService;
+import com.immersionslabs.lcatalogpro.utils.CryptionRijndeal;
+import com.immersionslabs.lcatalogpro.utils.CustomMessage;
+import com.immersionslabs.lcatalogpro.utils.NetworkConnectivity;
+import com.immersionslabs.lcatalogpro.utils.SessionManager;
+import com.immersionslabs.lcatalogpro.utils.UserCheckUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,7 +30,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Objects;
 
-import static com.immersionslabs.lcatalog.Utils.EnvConstants.APP_BASE_URL;
+import static com.immersionslabs.lcatalogpro.utils.EnvConstants.APP_BASE_URL;
 
 public class UserAccountActivity extends AppCompatActivity implements ApiCommunication {
 
@@ -88,25 +94,17 @@ public class UserAccountActivity extends AppCompatActivity implements ApiCommuni
         mobile.setText(user_phone);
 
         edit_user = findViewById(R.id.btn_edit_account);
-        edit_user.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v1) {
+        edit_user.setOnClickListener(v1 -> {
 
-                enableEditText(name);
-                enableEditText(email);
-                enableEditText(address);
-                enableEditText(mobile);
+            enableEditText(name);
+            enableEditText(email);
+            enableEditText(address);
+            enableEditText(mobile);
 
-                edit_user.setVisibility(View.GONE);
-                update_user = findViewById(R.id.btn_update_account);
-                update_user.setVisibility(View.VISIBLE);
-                update_user.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        update();
-                    }
-                });
-            }
+            edit_user.setVisibility(View.GONE);
+            update_user = findViewById(R.id.btn_update_account);
+            update_user.setVisibility(View.VISIBLE);
+            update_user.setOnClickListener(v -> update());
         });
 
         if (NetworkConnectivity.checkInternetConnection(UserAccountActivity.this)) {
@@ -120,14 +118,11 @@ public class UserAccountActivity extends AppCompatActivity implements ApiCommuni
         final View view = this.getWindow().getDecorView().findViewById(android.R.id.content);
         final Snackbar snackbar = Snackbar.make(view, "Please Check Your Internet connection", Snackbar.LENGTH_INDEFINITE);
         snackbar.setActionTextColor(getResources().getColor(R.color.red));
-        snackbar.setAction("RETRY", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                snackbar.dismiss();
-                if (NetworkConnectivity.checkInternetConnection(UserAccountActivity.this)) {
-                } else {
-                    InternetMessage();
-                }
+        snackbar.setAction("RETRY", v -> {
+            snackbar.dismiss();
+            if (NetworkConnectivity.checkInternetConnection(UserAccountActivity.this)) {
+            } else {
+                InternetMessage();
             }
         });
         snackbar.show();
@@ -171,15 +166,13 @@ public class UserAccountActivity extends AppCompatActivity implements ApiCommuni
             e.printStackTrace();
         }
         new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        if (Objects.equals(message, "FAILURE")) {
-                            UpdateFailed();
-                        } else {
-                            updateSuccess();
-                        }
-                        progressDialog.dismiss();
+                () -> {
+                    if (Objects.equals(message, "FAILURE")) {
+                        UpdateFailed();
+                    } else {
+                        updateSuccess();
                     }
+                    progressDialog.dismiss();
                 }, 3000);
     }
 

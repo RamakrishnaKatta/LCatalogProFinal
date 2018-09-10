@@ -1,9 +1,7 @@
 package com.immersionslabs.lcatalogpro.utils;
 
 import android.app.ActivityManager;
-import android.content.ComponentName;
 import android.content.Context;
-import android.os.Build;
 
 import java.util.List;
 
@@ -22,7 +20,6 @@ public class background {
                 }
             }
         }
-
         return isInBackground;
     }
 }

@@ -1,6 +1,5 @@
 package com.immersionslabs.lcatalogpro;
 
-
 import android.annotation.TargetApi;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,7 +25,10 @@ import android.widget.Toast;
 
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
-
+import com.immersionslabs.lcatalogpro.utils.CustomMessage;
+import com.immersionslabs.lcatalogpro.utils.NetworkConnectivity;
+import com.immersionslabs.lcatalogpro.utils.PrefManager;
+import com.immersionslabs.lcatalogpro.utils.SessionManager;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -36,7 +38,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-
+import static com.immersionslabs.lcatalogpro.utils.UserCheckUtil.isExternalStorageAvailable;
+import static com.immersionslabs.lcatalogpro.utils.UserCheckUtil.isExternalStorageReadOnly;
 
 public class UserTypeActivity extends AppCompatActivity {
 
@@ -66,88 +69,76 @@ public class UserTypeActivity extends AppCompatActivity {
         RequestPermissions();
 
         delete_cache = findViewById(R.id.icon);
-        delete_cache.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        delete_cache.setOnClickListener(v -> {
 
-                boolean delete_patterns = false;
-                boolean delete_data = false;
+            boolean delete_patterns = false;
+            boolean delete_data = false;
 
-                File dir_patterns = new File(Environment.getExternalStorageDirectory() + "/L_CATALOG/cache/Data/patterns");
-                File dir_data = new File(Environment.getExternalStorageDirectory() + "/L_CATALOG/cache/Data");
+            File dir_patterns = new File(Environment.getExternalStorageDirectory() + "/L_CATALOG/cache/Data/patterns");
+            File dir_data = new File(Environment.getExternalStorageDirectory() + "/L_CATALOG/cache/Data");
 
-                if (dir_patterns.isDirectory()) {
-                    String[] children_patterns = dir_patterns.list();
+            if (dir_patterns.isDirectory()) {
+                String[] children_patterns = dir_patterns.list();
 
-                    Log.e(TAG, "" + Arrays.toString(children_patterns));
+                Log.e(TAG, "" + Arrays.toString(children_patterns));
 
-                    for (String children_pattern : children_patterns) {
-                        delete_patterns = new File(dir_patterns, children_pattern).delete();
-                    }
-                    Log.e(TAG, "Files inside Patterns Folder deleted : " + delete_patterns);
+                for (String children_pattern : children_patterns) {
+                    delete_patterns = new File(dir_patterns, children_pattern).delete();
                 }
+                Log.e(TAG, "Files inside Patterns Folder deleted : " + delete_patterns);
+            }
 
-                if (dir_data.isDirectory()) {
-                    String[] children_data = dir_data.list();
+            if (dir_data.isDirectory()) {
+                String[] children_data = dir_data.list();
 
-                    Log.e(TAG, "" + Arrays.toString(children_data));
+                Log.e(TAG, "" + Arrays.toString(children_data));
 
-                    for (int i = 0; i < children_data.length; i++) {
-                        delete_data = new File(dir_data, children_data[i]).delete();
-                    }
-                    Log.e(TAG, "Files inside Data Folder deleted : " + delete_data);
+                for (int i = 0; i < children_data.length; i++) {
+                    delete_data = new File(dir_data, children_data[i]).delete();
                 }
+                Log.e(TAG, "Files inside Data Folder deleted : " + delete_data);
+            }
 
-                if (delete_patterns || delete_data) {
-                    Toast.makeText(getBaseContext(), "Debugging: Cache Files Removed", Toast.LENGTH_SHORT).show();
-                } else {
-                    if (toast != null)
-                        toast.cancel();
-                    toast = Toast.makeText(getBaseContext(), "Debugging: Cache doesn't exist", Toast.LENGTH_SHORT);
-                    toast.show();
-                }
+            if (delete_patterns || delete_data) {
+                Toast.makeText(getBaseContext(), "Debugging: Cache Files Removed", Toast.LENGTH_SHORT).show();
+            } else {
+                if (toast != null)
+                    toast.cancel();
+                toast = Toast.makeText(getBaseContext(), "Debugging: Cache doesn't exist", Toast.LENGTH_SHORT);
+                toast.show();
             }
         });
 
         _customer = findViewById(R.id.btn_customer);
-        _customer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UserTypeActivity.this, LoginActivity.class);
-                startActivity(intent);
+        _customer.setOnClickListener(v -> {
+            Intent intent = new Intent(UserTypeActivity.this, LoginActivity.class);
+            startActivity(intent);
 
-                if (!isExternalStorageReadOnly() && isExternalStorageAvailable()) {
-                    Log.e(TAG, "Enter this loop of Folder Creation");
-                    CreateFolderStructure();
-                }
+            if (!isExternalStorageReadOnly() && isExternalStorageAvailable()) {
+                Log.e(TAG, "Enter this loop of Folder Creation");
+                CreateFolderStructure();
             }
         });
 
         _newCustomer = findViewById(R.id.btn_new_customer);
-        _newCustomer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UserTypeActivity.this, SignupActivity.class);
-                startActivity(intent);
+        _newCustomer.setOnClickListener(v -> {
+            Intent intent = new Intent(UserTypeActivity.this, SignupActivity.class);
+            startActivity(intent);
 
-                if (!isExternalStorageReadOnly() && isExternalStorageAvailable()) {
-                    Log.e(TAG, "Enter this loop of Folder Creation");
-                    CreateFolderStructure();
-                }
+            if (!isExternalStorageReadOnly() && isExternalStorageAvailable()) {
+                Log.e(TAG, "Enter this loop of Folder Creation");
+                CreateFolderStructure();
             }
         });
 
         _shopper = findViewById(R.id.btn_shopper);
-        _shopper.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UserTypeActivity.this, GuestActivity.class);
-                startActivity(intent);
+        _shopper.setOnClickListener(v -> {
+            Intent intent = new Intent(UserTypeActivity.this, GuestActivity.class);
+            startActivity(intent);
 
-                if (!isExternalStorageReadOnly() && isExternalStorageAvailable()) {
-                    Log.e(TAG, "Enter this loop of Folder Creation");
-                    CreateFolderStructure();
-                }
+            if (!isExternalStorageReadOnly() && isExternalStorageAvailable()) {
+                Log.e(TAG, "Enter this loop of Folder Creation");
+                CreateFolderStructure();
             }
         });
 
@@ -162,7 +153,6 @@ public class UserTypeActivity extends AppCompatActivity {
 
         // checkInternetConnection();
         if (NetworkConnectivity.checkInternetConnection(UserTypeActivity.this)) {
-
         } else {
             InternetMessage();
         }
@@ -172,14 +162,11 @@ public class UserTypeActivity extends AppCompatActivity {
         final View view = this.getWindow().getDecorView().findViewById(android.R.id.content);
         final Snackbar snackbar = Snackbar.make(view, "Please Check Your Internet connection", Snackbar.LENGTH_INDEFINITE);
         snackbar.setActionTextColor(getResources().getColor(R.color.red));
-        snackbar.setAction("RETRY", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                snackbar.dismiss();
-                if (NetworkConnectivity.checkInternetConnection(UserTypeActivity.this)) {
-                } else {
-                    InternetMessage();
-                }
+        snackbar.setAction("RETRY", v -> {
+            snackbar.dismiss();
+            if (NetworkConnectivity.checkInternetConnection(UserTypeActivity.this)) {
+            } else {
+                InternetMessage();
             }
         });
         snackbar.show();
@@ -280,18 +267,15 @@ public class UserTypeActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
         builder.setTitle("Alert");
         builder.setMessage("Press OK to get out of this App");
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        builder.setPositiveButton("OK", (dialog, which) -> {
 
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.addCategory(Intent.CATEGORY_HOME);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                android.os.Process.killProcess(android.os.Process.myPid());
-                System.exit(0);
-                UserTypeActivity.super.onDestroy();
-            }
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            android.os.Process.killProcess(android.os.Process.myPid());
+            System.exit(0);
+            UserTypeActivity.super.onDestroy();
         });
         builder.setNegativeButton("CANCEL", null);
         builder.show();
@@ -363,22 +347,18 @@ public class UserTypeActivity extends AppCompatActivity {
                                 ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) ||
                                 ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
 
-                            showDialogOK(
-                                    new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            switch (which) {
-                                                case DialogInterface.BUTTON_POSITIVE:
-                                                    RequestPermissions();
-                                                    break;
-                                                case DialogInterface.BUTTON_NEGATIVE:
-                                                    // proceed with logic by disabling the related features or quit the app.
-                                                    android.os.Process.killProcess(android.os.Process.myPid());
-                                                    System.exit(0);
-                                                    break;
-                                            }
-                                        }
-                                    });
+                            showDialogOK((dialog, which) -> {
+                                switch (which) {
+                                    case DialogInterface.BUTTON_POSITIVE:
+                                        RequestPermissions();
+                                        break;
+                                    case DialogInterface.BUTTON_NEGATIVE:
+                                        // proceed with logic by disabling the related features or quit the app.
+                                        android.os.Process.killProcess(android.os.Process.myPid());
+                                        System.exit(0);
+                                        break;
+                                }
+                            });
                         }
                         // permission is denied (and never ask again is checked)
                         // shouldShowRequestPermissionRationale will return false

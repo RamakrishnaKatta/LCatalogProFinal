@@ -19,6 +19,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class ApiService {
+
     private static ApiService instance;
     private static Context mCtx;
     private static Context context;
@@ -76,24 +77,16 @@ public class ApiService {
     public void getData(final ApiCommunication listener, boolean iscached, final String SCREEN_NAME, final String url, final String flag) {
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        listener.onResponseCallback(response, flag);
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        if (error.networkResponse != null) {
-                            try {
-                                Toast.makeText(mCtx, "Internal Error", Toast.LENGTH_SHORT).show();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
+                (Request.Method.GET, url, null, response -> listener.onResponseCallback(response, flag), error -> {
+                    if (error.networkResponse != null) {
+                        try {
+                            Toast.makeText(mCtx, "Internal Error", Toast.LENGTH_SHORT).show();
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
-                        listener.onErrorCallback(error, flag);
-                        getRequestQueue().getCache().remove(url);
                     }
+                    listener.onErrorCallback(error, flag);
+                    getRequestQueue().getCache().remove(url);
                 });
         jsObjRequest.setRetryPolicy(new DefaultRetryPolicy(
                 4000,
@@ -107,12 +100,7 @@ public class ApiService {
     public void postData(final ApiCommunication listener, final String url, JSONObject params, final String SCREEN_NAME, final String flag) {
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, params, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        listener.onResponseCallback(response, flag);
-                    }
-                }, new Response.ErrorListener() {
+                (Request.Method.POST, url, params, response -> listener.onResponseCallback(response, flag), new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         if (error.networkResponse != null) {
@@ -139,26 +127,20 @@ public class ApiService {
     public void putData(final ApiCommunication listener, final String url, JSONObject params, final String SCREEN_NAME, final String flag) {
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.PUT, url, params, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        ////Log.e(SCREEN_NAME, response + "");
-                        listener.onResponseCallback(response, flag);
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        if (error.networkResponse != null) {
-                            try {
-                                Log.e(SCREEN_NAME + "-" + flag, error.networkResponse.data.toString() + "");
-                                Toast.makeText(mCtx, "Out Data", Toast.LENGTH_SHORT).show();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
+                (Request.Method.PUT, url, params, response -> {
+                    ////Log.e(SCREEN_NAME, response + "");
+                    listener.onResponseCallback(response, flag);
+                }, error -> {
+                    if (error.networkResponse != null) {
+                        try {
+                            Log.e(SCREEN_NAME + "-" + flag, error.networkResponse.data.toString() + "");
+                            Toast.makeText(mCtx, "Out Data", Toast.LENGTH_SHORT).show();
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
-                        listener.onErrorCallback(error, flag);
-                        getRequestQueue().getCache().remove(url);
                     }
+                    listener.onErrorCallback(error, flag);
+                    getRequestQueue().getCache().remove(url);
                 });
         jsObjRequest.setRetryPolicy(new DefaultRetryPolicy(
                 4000,
@@ -172,26 +154,20 @@ public class ApiService {
     public void deleteData(final ApiCommunication listener, boolean isCached, final String SCREEN_NAME, final String url, final String flag) {
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.DELETE, url, null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        ////System.out.println("___" + response + "___");
-                        listener.onResponseCallback(response, flag);
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        if (error.networkResponse != null) {
-                            try {
-                                Log.e(SCREEN_NAME + "-" + flag, error.networkResponse.data.toString() + "");
-                                Toast.makeText(mCtx, "Out Data", Toast.LENGTH_SHORT).show();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
+                (Request.Method.DELETE, url, null, response -> {
+                    ////System.out.println("___" + response + "___");
+                    listener.onResponseCallback(response, flag);
+                }, error -> {
+                    if (error.networkResponse != null) {
+                        try {
+                            Log.e(SCREEN_NAME + "-" + flag, error.networkResponse.data.toString() + "");
+                            Toast.makeText(mCtx, "Out Data", Toast.LENGTH_SHORT).show();
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
-                        listener.onErrorCallback(error, flag);
-                        getRequestQueue().getCache().remove(url);
                     }
+                    listener.onErrorCallback(error, flag);
+                    getRequestQueue().getCache().remove(url);
                 });
         jsObjRequest.setRetryPolicy(new DefaultRetryPolicy(
                 4000,
@@ -202,4 +178,3 @@ public class ApiService {
         Log.e(SCREEN_NAME, jsObjRequest.getUrl() + " ");
     }
 }
-

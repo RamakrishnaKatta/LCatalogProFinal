@@ -1,6 +1,5 @@
 package com.immersionslabs.lcatalogpro;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -17,10 +16,10 @@ import android.widget.Toast;
 import com.android.volley.VolleyError;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.immersionslabs.lcatalog.Utils.EnvConstants;
-import com.immersionslabs.lcatalog.Utils.NetworkConnectivity;
-import com.immersionslabs.lcatalog.network.ApiCommunication;
-import com.immersionslabs.lcatalog.network.ApiService;
+import com.immersionslabs.lcatalogpro.network.ApiCommunication;
+import com.immersionslabs.lcatalogpro.network.ApiService;
+import com.immersionslabs.lcatalogpro.utils.EnvConstants;
+import com.immersionslabs.lcatalogpro.utils.NetworkConnectivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -57,15 +56,12 @@ public class VendorProfileActivity extends AppCompatActivity implements ApiCommu
         profile_vendor_logo = findViewById(R.id.profile_vendor_image);
         profile_vendor_articles_list = findViewById(R.id.profile_vendor_articles_list);
 
-        profile_vendor_articles_list.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle vendor_data = new Bundle();
-                vendor_data.putString("vendor_id", vendor_id);
+        profile_vendor_articles_list.setOnClickListener(v -> {
+            Bundle vendor_data = new Bundle();
+            vendor_data.putString("vendor_id", vendor_id);
 
-                Intent intent = new Intent(VendorProfileActivity.this, VendorCatalogActivity.class).putExtras(vendor_data);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(VendorProfileActivity.this, VendorCatalogActivity.class).putExtras(vendor_data);
+            startActivity(intent);
         });
 
         final Bundle vendor_data = getIntent().getExtras();
@@ -75,11 +71,7 @@ public class VendorProfileActivity extends AppCompatActivity implements ApiCommu
         VENDOR_URL = REGISTER_URL + vendor_id;
         Log.e(TAG, "VENDOR_URL--" + VENDOR_URL);
 
-        try {
-            getVendorData();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        getVendorData();
 
         if (NetworkConnectivity.checkInternetConnection(VendorProfileActivity.this)) {
 
@@ -88,7 +80,7 @@ public class VendorProfileActivity extends AppCompatActivity implements ApiCommu
         }
     }
 
-    private void getVendorData() throws JSONException {
+    private void getVendorData() {
 
         final JSONObject baseclass = new JSONObject();
         ApiService.getInstance(this).getData(this, false, "VENDOR PROFILE ACTIVITY", VENDOR_URL, "VENDOR_PROFILE");
@@ -156,14 +148,11 @@ public class VendorProfileActivity extends AppCompatActivity implements ApiCommu
         final View view = this.getWindow().getDecorView().findViewById(android.R.id.content);
         final Snackbar snackbar = Snackbar.make(view, "Please Check Your Internet connection", Snackbar.LENGTH_INDEFINITE);
         snackbar.setActionTextColor(getResources().getColor(R.color.red));
-        snackbar.setAction("RETRY", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                snackbar.dismiss();
-                if (NetworkConnectivity.checkInternetConnection(VendorProfileActivity.this)) {
-                } else {
-                    InternetMessage();
-                }
+        snackbar.setAction("RETRY", v -> {
+            snackbar.dismiss();
+            if (NetworkConnectivity.checkInternetConnection(VendorProfileActivity.this)) {
+            } else {
+                InternetMessage();
             }
         });
         snackbar.show();

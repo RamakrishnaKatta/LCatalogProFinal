@@ -1,16 +1,16 @@
 package com.immersionslabs.lcatalogpro;
 
 import android.app.ProgressDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import com.android.volley.VolleyError;
 import com.immersionslabs.lcatalogpro.network.ApiCommunication;
 import com.immersionslabs.lcatalogpro.network.ApiService;
@@ -53,14 +53,11 @@ public class FeedbackActivity extends AppCompatActivity implements ApiCommunicat
 
         feed_Submit = findViewById(R.id.btn_feed_submit);
 
-        feed_Submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    feedback();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+        feed_Submit.setOnClickListener(v -> {
+            try {
+                feedback();
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
         });
     }
@@ -89,16 +86,13 @@ public class FeedbackActivity extends AppCompatActivity implements ApiCommunicat
         Log.e(TAG, "feedback: Request" + feedback);
 
         ApiService.getInstance(this).postData(this, FEEDBACK_URL, feedback, "FEED", "FEEDBACK_SUBMIT");
-        new android.os.Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (Objects.equals(code, "200")) {
-                    FeedSuccess();
-                } else {
-                    FeedFailed();
-                }
-                progressDialog.dismiss();
+        new android.os.Handler().postDelayed(() -> {
+            if (Objects.equals(code, "200")) {
+                FeedSuccess();
+            } else {
+                FeedFailed();
             }
+            progressDialog.dismiss();
         }, 3000);
     }
 
@@ -106,7 +100,6 @@ public class FeedbackActivity extends AppCompatActivity implements ApiCommunicat
         feed_Submit = findViewById(R.id.btn_feed_submit);
         feed_Submit.setEnabled(true);
         CustomMessage.getInstance().CustomMessage(this, "Please try again");
-
     }
 
     private void FeedSuccess() {
@@ -159,4 +152,3 @@ public class FeedbackActivity extends AppCompatActivity implements ApiCommunicat
         super.onPause();
     }
 }
-

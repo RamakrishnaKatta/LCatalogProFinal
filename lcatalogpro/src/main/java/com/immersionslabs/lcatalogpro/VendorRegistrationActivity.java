@@ -1,6 +1,5 @@
 package com.immersionslabs.lcatalogpro;
 
-
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -15,11 +14,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
-import com.immersionslabs.lcatalog.Utils.CustomMessage;
-import com.immersionslabs.lcatalog.Utils.EnvConstants;
-import com.immersionslabs.lcatalog.Utils.NetworkConnectivity;
-import com.immersionslabs.lcatalog.network.ApiCommunication;
-import com.immersionslabs.lcatalog.network.ApiService;
 import com.immersionslabs.lcatalogpro.network.ApiCommunication;
 import com.immersionslabs.lcatalogpro.network.ApiService;
 import com.immersionslabs.lcatalogpro.utils.CustomMessage;
@@ -69,18 +63,15 @@ public class VendorRegistrationActivity extends AppCompatActivity implements Api
         }
 
         v_registerButton = findViewById(R.id.btn_vendor_submit);
-        v_registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (NetworkConnectivity.checkInternetConnection(VendorRegistrationActivity.this)) {
-                    try {
-                        vendorRegister();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }else {
-                    InternetMessage();
+        v_registerButton.setOnClickListener(v -> {
+            if (NetworkConnectivity.checkInternetConnection(VendorRegistrationActivity.this)) {
+                try {
+                    vendorRegister();
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
+            } else {
+                InternetMessage();
             }
         });
 
@@ -95,14 +86,11 @@ public class VendorRegistrationActivity extends AppCompatActivity implements Api
         final View view = this.getWindow().getDecorView().findViewById(android.R.id.content);
         final Snackbar snackbar = Snackbar.make(view, "Please Check Your Internet connection", Snackbar.LENGTH_INDEFINITE);
         snackbar.setActionTextColor(getResources().getColor(R.color.red));
-        snackbar.setAction("RETRY", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                snackbar.dismiss();
-                if (NetworkConnectivity.checkInternetConnection(VendorRegistrationActivity.this)) {
-                } else {
-                    InternetMessage();
-                }
+        snackbar.setAction("RETRY", v -> {
+            snackbar.dismiss();
+            if (NetworkConnectivity.checkInternetConnection(VendorRegistrationActivity.this)) {
+            } else {
+                InternetMessage();
             }
         });
         snackbar.show();
@@ -188,18 +176,15 @@ public class VendorRegistrationActivity extends AppCompatActivity implements Api
 
         ApiService.getInstance(this).postData(this, REGISTER_URL, vendor_request, "VENDOR_REQUEST", "VENDOR_REQUEST");
 
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        // On complete call either onSignupSuccess or onSignupFailed depending on success
-                        if (Objects.equals(resp, "success")) {
-                            onVendorRegistrationSuccess();
-                        } else {
-                            onVendorRegistrationFailed();
-                        }
-                        progressDialog.dismiss();
-                    }
-                }, 3000);
+        new android.os.Handler().postDelayed(() -> {
+            // On complete call either onSignupSuccess or onSignupFailed depending on success
+            if (Objects.equals(resp, "success")) {
+                onVendorRegistrationSuccess();
+            } else {
+                onVendorRegistrationFailed();
+            }
+            progressDialog.dismiss();
+        }, 3000);
     }
 
     @Override

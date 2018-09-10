@@ -1,6 +1,5 @@
 package com.immersionslabs.lcatalogpro;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -14,11 +13,14 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.immersionslabs.lcatalogpro.utils.NetworkConnectivity;
 
+import static com.immersionslabs.lcatalogpro.utils.ConnectionReceiver.isConnected;
 
 public class SplashScreenActivity extends AppCompatActivity implements Animation.AnimationListener {
 
     public static final String TAG = "SplashScreenActivity";
+
     Animation animFadeIn;
     LinearLayout linearLayout;
     TextView app_name, powered;
@@ -55,19 +57,16 @@ public class SplashScreenActivity extends AppCompatActivity implements Animation
         final View view = this.getWindow().getDecorView().findViewById(android.R.id.content);
         final Snackbar snackbar = Snackbar.make(view, "Please Check Your Internet connection", Snackbar.LENGTH_INDEFINITE);
         snackbar.setActionTextColor(getResources().getColor(R.color.red));
-        snackbar.setAction("RETRY", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                snackbar.dismiss();
-                if (ConnectionReceiver.isConnected()) {
-                    if (isConnected()) {
-                        snackbar.dismiss();
-                        animate();
-                        Log.e(TAG, "He");
-                    }
-                } else {
-                    InternetMessage();
+        snackbar.setAction("RETRY", v -> {
+            snackbar.dismiss();
+            if (isConnected()) {
+                if (isConnected()) {
+                    snackbar.dismiss();
+                    animate();
+                    Log.e(TAG, "He");
                 }
+            } else {
+                InternetMessage();
             }
         });
         snackbar.show();
@@ -104,7 +103,6 @@ public class SplashScreenActivity extends AppCompatActivity implements Animation
 
             @Override
             public void onAnimationEnd(Animation animation) {
-
                 // Start Main Screen
                 Intent i = new Intent(SplashScreenActivity.this, OnBoarding.class);
                 startActivity(i);

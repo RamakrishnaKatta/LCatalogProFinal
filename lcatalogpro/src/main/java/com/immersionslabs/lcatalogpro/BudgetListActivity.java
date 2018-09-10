@@ -1,13 +1,11 @@
 package com.immersionslabs.lcatalogpro;
 
-import android.annotation.TargetApi;
 import android.content.DialogInterface;
 import android.graphics.Color;
-import android.os.Build;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,10 +21,9 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.immersionslabs.lcatalogpro.Adapters.BudgetListAdapter;
+import com.immersionslabs.lcatalogpro.adapters.BudgetListAdapter;
 import com.immersionslabs.lcatalogpro.utils.EnvConstants;
 import com.immersionslabs.lcatalogpro.utils.Manager_BudgetList;
 import com.immersionslabs.lcatalogpro.utils.NetworkConnectivity;
@@ -88,7 +85,7 @@ public class BudgetListActivity extends AppCompatActivity {
         budgetlist_recycler = findViewById(R.id.budget_recycler);
         budgetlist_recycler.setHasFixedSize(true);
         budgetlist_recycler.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
-        set_list = new HashSet<String>();
+        set_list = new HashSet<>();
 
         Toolbar toolbar = findViewById(R.id.toolbar_budget_list);
         toolbar.setTitleTextAppearance(this, R.style.LCatalogCustomText_ToolBar);
@@ -124,118 +121,99 @@ public class BudgetListActivity extends AppCompatActivity {
         item_dimensions = new ArrayList<>();
         item_3ds = new ArrayList<>();
 
-        Alter_Budget.setOnClickListener(new View.OnClickListener() {
-            @TargetApi(Build.VERSION_CODES.O)
-            @Override
-            public void onClick(View v) {
-                if (NetworkConnectivity.checkInternetConnection(BudgetListActivity.this)) {
-                    Alter_Budget.setVisibility(View.GONE);
-                    Update_Budget.setVisibility(View.VISIBLE);
-                    Total_budget.setFocusableInTouchMode(true);
-                    Total_budget.focusSearch(View.FOCUS_RIGHT);
-                    Total_budget.requestFocus();
-                    Total_budget.setSelection(Total_budget.getText().length());
-                    Total_budget.getShowSoftInputOnFocus();
-                    Total_budget.setTextColor(getResources().getColor(R.color.red));
-                    enableEditText(Total_budget);
-                } else {
-                    InternetMessage();
-                }
-
+        Alter_Budget.setOnClickListener(v -> {
+            if (NetworkConnectivity.checkInternetConnection(BudgetListActivity.this)) {
+                Alter_Budget.setVisibility(View.GONE);
+                Update_Budget.setVisibility(View.VISIBLE);
+                Total_budget.setFocusableInTouchMode(true);
+                Total_budget.focusSearch(View.FOCUS_RIGHT);
+                Total_budget.requestFocus();
+                Total_budget.setSelection(Total_budget.getText().length());
+                Total_budget.getShowSoftInputOnFocus();
+                Total_budget.setTextColor(getResources().getColor(R.color.red));
+                enableEditText(Total_budget);
+            } else {
+                InternetMessage();
             }
+
         });
 
-        Update_Budget.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (NetworkConnectivity.checkInternetConnection(BudgetListActivity.this)) {
+        Update_Budget.setOnClickListener(v -> {
+            if (NetworkConnectivity.checkInternetConnection(BudgetListActivity.this)) {
 
 
-                    String Total_value_String = Total_budget.getText().toString();
-                    if (Total_value_String.isEmpty()) {
-                        Toast.makeText(BudgetListActivity.this, "Invalid input,no value entered", Toast.LENGTH_LONG).show();
+                String Total_value_String = Total_budget.getText().toString();
+                if (Total_value_String.isEmpty()) {
+                    Toast.makeText(BudgetListActivity.this, "Invalid input,no value entered", Toast.LENGTH_LONG).show();
+                } else {
+                    Long Total_value = Long.parseLong(Total_budget.getText().toString());
+                    if (EnvConstants.user_type.equals("CUSTOMER")) {
+                        Long Current_value = sessionManager.BUDGET_GET_CURRENT_VALUE();
+                        if (Total_value_String.isEmpty()) {
+                            Toast.makeText(BudgetListActivity.this, "Invalid input,enter a higher value", Toast.LENGTH_LONG).show();
+                        } else if (Total_value < Current_value) {
+                            Toast.makeText(BudgetListActivity.this, "Invalid input,enter a higher value", Toast.LENGTH_LONG).show();
+                        } else if (!(Total_value_String.isEmpty()) && !(Total_value < Current_value)) {
+                            sessionManager.BUDGET_SET_TOTAL_VALUE(Total_value);
+                        }
                     } else {
-                        Long Total_value = Long.parseLong(Total_budget.getText().toString());
-                        if (EnvConstants.user_type.equals("CUSTOMER")) {
-                            Long Current_value = sessionManager.BUDGET_GET_CURRENT_VALUE();
-                            if (Total_value_String.isEmpty()) {
-                                Toast.makeText(BudgetListActivity.this, "Invalid input,enter a higher value", Toast.LENGTH_LONG).show();
-                            } else if (Total_value < Current_value) {
-                                Toast.makeText(BudgetListActivity.this, "Invalid input,enter a higher value", Toast.LENGTH_LONG).show();
-                            } else if (!(Total_value_String.isEmpty()) && !(Total_value < Current_value)) {
-                                sessionManager.BUDGET_SET_TOTAL_VALUE(Total_value);
-                            }
-                        } else {
-                            Long Current_value = manager_budgetList.BUDGET_GET_CURRENT();
-                            if (Total_value_String.isEmpty()) {
-                                Toast.makeText(BudgetListActivity.this, "Invalid input,enter a higher value", Toast.LENGTH_LONG).show();
-                            } else if (Total_value < Current_value) {
-                                Toast.makeText(BudgetListActivity.this, "Invalid input,enter a higher value", Toast.LENGTH_LONG).show();
-                            } else if (!(Total_value_String.isEmpty()) && !(Total_value < Current_value)) {
-                                manager_budgetList.BUDGET_SET_TOTAL(Total_value);
-                            }
+                        Long Current_value = manager_budgetList.BUDGET_GET_CURRENT();
+                        if (Total_value_String.isEmpty()) {
+                            Toast.makeText(BudgetListActivity.this, "Invalid input,enter a higher value", Toast.LENGTH_LONG).show();
+                        } else if (Total_value < Current_value) {
+                            Toast.makeText(BudgetListActivity.this, "Invalid input,enter a higher value", Toast.LENGTH_LONG).show();
+                        } else if (!(Total_value_String.isEmpty()) && !(Total_value < Current_value)) {
+                            manager_budgetList.BUDGET_SET_TOTAL(Total_value);
                         }
                     }
-                    Update_Budget.setVisibility(View.GONE);
-                    Alter_Budget.setVisibility(View.VISIBLE);
-                    disableEditText(Total_budget);
-                    onResume();
-                } else {
-                    InternetMessage();
                 }
+                Update_Budget.setVisibility(View.GONE);
+                Alter_Budget.setVisibility(View.VISIBLE);
+                disableEditText(Total_budget);
+                onResume();
+            } else {
+                InternetMessage();
             }
         });
 
-        Clear_Budget.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (NetworkConnectivity.checkInternetConnection(BudgetListActivity.this)) {
+        Clear_Budget.setOnClickListener(v -> {
+            if (NetworkConnectivity.checkInternetConnection(BudgetListActivity.this)) {
 
-                    if (EnvConstants.user_type.equals("CUSTOMER")) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(BudgetListActivity.this, R.style.AppCompatAlertDialogStyle);
-                        builder.setTitle("ARE YOU SURE YOU WANT TO CLEAR THE BUDGET?");
+                if (EnvConstants.user_type.equals("CUSTOMER")) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(BudgetListActivity.this, R.style.AppCompatAlertDialogStyle);
+                    builder.setTitle("ARE YOU SURE YOU WANT TO CLEAR THE BUDGET?");
 
-                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                sessionManager.BUDGET_CLEAR_ARTICLES();
-                                onResume();
-                            }
-                        });
-                        builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        });
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            sessionManager.BUDGET_CLEAR_ARTICLES();
+                            onResume();
+                        }
+                    });
+                    builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
 
-                        builder.show();
+                    builder.show();
 
-                    } else {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(BudgetListActivity.this, R.style.AppCompatAlertDialogStyle);
-                        builder.setTitle("ARE YOU SURE YOU WANT TO CLEAR THE BUDGET?");
+                } else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(BudgetListActivity.this, R.style.AppCompatAlertDialogStyle);
+                    builder.setTitle("ARE YOU SURE YOU WANT TO CLEAR THE BUDGET?");
 
-                        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton("OK", (dialog, which) -> {
+                        manager_budgetList.BUDGET_CLEAR_ARRAY_ARTICLES();
+                        onResume();
+                    });
+                    builder.setNegativeButton("CANCEL", (dialog, which) -> dialog.cancel());
 
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                manager_budgetList.BUDGET_CLEAR_ARRAY_ARTICLES();
-                                onResume();
-                            }
-                        });
-                        builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        });
-
-                        builder.show();
-                    }
-                }else {
-                    InternetMessage();
+                    builder.show();
                 }
+            } else {
+                InternetMessage();
             }
         });
     }
@@ -244,16 +222,11 @@ public class BudgetListActivity extends AppCompatActivity {
         final View view = this.getWindow().getDecorView().findViewById(android.R.id.content);
         final Snackbar snackbar = Snackbar.make(view, "Please Check Your Internet connection", Snackbar.LENGTH_INDEFINITE);
         snackbar.setActionTextColor(getResources().getColor(R.color.red));
-        snackbar.setAction("RETRY", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                snackbar.dismiss();
-                if (NetworkConnectivity.checkInternetConnection(BudgetListActivity.this)) {
-
-                } else {
-
-                    InternetMessage();
-                }
+        snackbar.setAction("RETRY", v -> {
+            snackbar.dismiss();
+            if (NetworkConnectivity.checkInternetConnection(BudgetListActivity.this)) {
+            } else {
+                InternetMessage();
             }
         });
         snackbar.show();
@@ -281,12 +254,8 @@ public class BudgetListActivity extends AppCompatActivity {
                             }
                             assert RESP != null;
                             GetData(RESP);
-
                         }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                        }
+                    }, error -> {
                     });
                     RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
                     requestQueue.add(jsonObjectRequest);
@@ -312,11 +281,7 @@ public class BudgetListActivity extends AppCompatActivity {
                             GetData(RESP);
 
                         }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-
-                        }
+                    }, error -> {
                     });
                     RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
                     requestQueue.add(jsonObjectRequest);

@@ -19,10 +19,10 @@ public class Parser3ds {
      */
     private final int mTextureCoordinateDataSize = 2;
     float[] vertices;
-    ArrayList<Object3ds> models = new ArrayList<Object3ds>();
+    ArrayList<Object3ds> models = new ArrayList<>();
     int[] faces;
     int numFaces;
-    ArrayList<String[]> materials = new ArrayList<String[]>();
+    ArrayList<String[]> materials = new ArrayList<>();
     private BufferedInputStream stream;
     private int pos;
     private int limit;
@@ -313,7 +313,6 @@ public class Parser3ds {
 
                 GLES20.glEnableVertexAttribArray(mTextureCoordinateHandle);
 
-
                 // This multiplies the view matrix by the model matrix, and stores the result in the MVP matrix
                 // (which currently contains model * view).
                 Matrix.multiplyMM(mvp[4], 0, mvp[1], 0, mvp[0], 0);
@@ -337,7 +336,6 @@ public class Parser3ds {
                 //Finally we can draw the actual elements
                 GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, obj.getNumFaces() * 3);
             }
-
         }
     }
 
@@ -348,4 +346,3 @@ public class Parser3ds {
         scaleFactor = initialScaleFactor + initialScaleFactor * val;
     }
 }
-

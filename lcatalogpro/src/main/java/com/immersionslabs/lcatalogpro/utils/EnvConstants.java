@@ -36,4 +36,3 @@ public class EnvConstants {
     public static HashMap<String, String> part_article__discounts = new HashMap<>();
     public static HashMap<String, String> part_articles_price = new HashMap<>();
 }
-

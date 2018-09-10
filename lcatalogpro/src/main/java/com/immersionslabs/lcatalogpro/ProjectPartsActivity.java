@@ -1,9 +1,7 @@
 package com.immersionslabs.lcatalogpro;
 
-
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -25,7 +23,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
-
+import com.immersionslabs.lcatalogpro.adapters.ProjectPartDetailsAdapter;
+import com.immersionslabs.lcatalogpro.adapters.ProjectPartImageSliderAdapter;
+import com.immersionslabs.lcatalogpro.network.ApiCommunication;
+import com.immersionslabs.lcatalogpro.network.ApiService;
+import com.immersionslabs.lcatalogpro.utils.EnvConstants;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -164,45 +166,31 @@ public class ProjectPartsActivity extends AppCompatActivity implements ApiCommun
             }
         });
 
-        part_augment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext(), R.style.AppCompatAlertDialogStyle);
-                builder.setTitle("You are about to enter Augment Enabled Camera");
-                builder.setMessage("This requires 2min of your patience, Do you wish to enter ?");
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+        part_augment.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext(), R.style.AppCompatAlertDialogStyle);
+            builder.setTitle("You are about to enter Augment Enabled Camera");
+            builder.setMessage("This requires 2min of your patience, Do you wish to enter ?");
+            builder.setPositiveButton("OK", (dialog, which) -> {
 
-                        Intent intent = new Intent(ProjectPartsActivity.this, ARNativeActivity.class);
-                        startActivity(intent);
-                    }
-                });
-                builder.setNegativeButton("CANCEL", null);
-                builder.show();
-            }
+                Intent intent = new Intent(ProjectPartsActivity.this, AugmentActivity.class);
+                startActivity(intent);
+            });
+            builder.setNegativeButton("CANCEL", null);
+            builder.show();
         });
 
-        part_3dview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle b5 = new Bundle();
-                b5.putString("part3dsName", p_3ds);
-                b5.putString("name_project", p_id);
-                Intent _3d_intent = new Intent(ProjectPartsActivity.this, Article3dViewActivity.class).putExtras(b5);
-                startActivity(_3d_intent);
-            }
+        part_3dview.setOnClickListener(v -> {
+            Bundle b5 = new Bundle();
+            b5.putString("part3dsName", p_3ds);
+            b5.putString("name_project", p_id);
+            Intent _3d_intent = new Intent(ProjectPartsActivity.this, Article3dViewActivity.class).putExtras(b5);
+            startActivity(_3d_intent);
         });
 
         PROJECT_PART_ARTICLE_URL = REGISTER_URL + p_id;
         Log.e(TAG, "PROJECT_PART_URL------" + PROJECT_PART_ARTICLE_URL);
 
-        try {
-            getpartData();
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        getpartData();
     }
 
     private void addBottomDots(int currentPage) {
@@ -234,7 +222,7 @@ public class ProjectPartsActivity extends AppCompatActivity implements ApiCommun
         }
     };
 
-    private void getpartData() throws JSONException {
+    private void getpartData() {
         ApiService.getInstance(this).getData(this, false, "PROJECT_PART_DATA", PROJECT_PART_ARTICLE_URL, "PART_ARTICLE");
     }
 

@@ -16,7 +16,14 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-
+import com.android.volley.VolleyError;
+import com.immersionslabs.lcatalogpro.adapters.GridViewAdapter;
+import com.immersionslabs.lcatalogpro.adapters.ListViewHorizontalAdapter;
+import com.immersionslabs.lcatalogpro.adapters.ListViewVerticalAdapter;
+import com.immersionslabs.lcatalogpro.network.ApiCommunication;
+import com.immersionslabs.lcatalogpro.network.ApiService;
+import com.immersionslabs.lcatalogpro.utils.EnvConstants;
+import com.immersionslabs.lcatalogpro.utils.NetworkConnectivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -99,39 +106,30 @@ public class ProductCatalogActivity extends AppCompatActivity implements ApiComm
         commonGetdata();
 
         /*Floating Button for Grid View*/
-        fab_grid.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fab_vertical.setSize(1);
-                fab_horizontal.setSize(1);
-                fab_grid.setSize(0);
-                base_recycler.setLayoutManager(Grid_Manager);
-                base_recycler.setAdapter(grid_Adapter);
-            }
+        fab_grid.setOnClickListener(v -> {
+            fab_vertical.setSize(1);
+            fab_horizontal.setSize(1);
+            fab_grid.setSize(0);
+            base_recycler.setLayoutManager(Grid_Manager);
+            base_recycler.setAdapter(grid_Adapter);
         });
 
         /*Floating Button for Vertical List View*/
-        fab_vertical.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fab_vertical.setSize(0);
-                fab_horizontal.setSize(1);
-                fab_grid.setSize(1);
-                base_recycler.setLayoutManager(Vertical_Manager);
-                base_recycler.setAdapter(Vertical_Adapter);
-            }
+        fab_vertical.setOnClickListener(v -> {
+            fab_vertical.setSize(0);
+            fab_horizontal.setSize(1);
+            fab_grid.setSize(1);
+            base_recycler.setLayoutManager(Vertical_Manager);
+            base_recycler.setAdapter(Vertical_Adapter);
         });
 
         /*Floating Button for Horizontal List View*/
-        fab_horizontal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fab_vertical.setSize(1);
-                fab_horizontal.setSize(0);
-                fab_grid.setSize(1);
-                base_recycler.setLayoutManager(Horizontal_Manager);
-                base_recycler.setAdapter(horizontal_Adapter);
-            }
+        fab_horizontal.setOnClickListener(v -> {
+            fab_vertical.setSize(1);
+            fab_horizontal.setSize(0);
+            fab_grid.setSize(1);
+            base_recycler.setLayoutManager(Horizontal_Manager);
+            base_recycler.setAdapter(horizontal_Adapter);
         });
 
 //        checkInternetConnection();
@@ -139,24 +137,21 @@ public class ProductCatalogActivity extends AppCompatActivity implements ApiComm
         } else {
             InternetMessage();
         }
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                if (NetworkConnectivity.checkInternetConnection(ProductCatalogActivity.this)) {
-                    refreshLayout.setRefreshing(true);
+        refreshLayout.setOnRefreshListener(() -> {
+            if (NetworkConnectivity.checkInternetConnection(ProductCatalogActivity.this)) {
+                refreshLayout.setRefreshing(true);
 
-                    item_ids.clear();
-                    item_names.clear();
-                    item_descriptions.clear();
-                    item_prices.clear();
-                    item_discounts.clear();
-                    item_vendors.clear();
-                    item_images.clear();
-                    item_dimensions.clear();
-                    item_patterns.clear();
+                item_ids.clear();
+                item_names.clear();
+                item_descriptions.clear();
+                item_prices.clear();
+                item_discounts.clear();
+                item_vendors.clear();
+                item_images.clear();
+                item_dimensions.clear();
+                item_patterns.clear();
 
-                    commonGetdata();
-                }
+                commonGetdata();
             }
         });
     }
@@ -164,9 +159,7 @@ public class ProductCatalogActivity extends AppCompatActivity implements ApiComm
     private void commonGetdata() {
         Log.e(TAG, "commonGetdata: " + REGISTER_URL);
         final JSONObject baseclass = new JSONObject();
-
         ApiService.getInstance(this).getData(this, false, "CATALOGUE ACTIVITY", REGISTER_URL, "GETDATA");
-
     }
 
     /*Internet message for Network connectivity*/
@@ -196,14 +189,11 @@ public class ProductCatalogActivity extends AppCompatActivity implements ApiComm
         final View view = this.getWindow().getDecorView().findViewById(android.R.id.content);
         final Snackbar snackbar = Snackbar.make(view, "Please Check Your Internet connection", Snackbar.LENGTH_INDEFINITE);
         snackbar.setActionTextColor(getResources().getColor(R.color.red));
-        snackbar.setAction("RETRY", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                snackbar.dismiss();
-                if (NetworkConnectivity.checkInternetConnection(ProductCatalogActivity.this)) {
-                } else {
-                    InternetMessage();
-                }
+        snackbar.setAction("RETRY", v -> {
+            snackbar.dismiss();
+            if (NetworkConnectivity.checkInternetConnection(ProductCatalogActivity.this)) {
+            } else {
+                InternetMessage();
             }
         });
         snackbar.show();
@@ -293,8 +283,7 @@ public class ProductCatalogActivity extends AppCompatActivity implements ApiComm
         super.onPause();
     }
 
-//    Api response ======================================
-
+    //    Api response ======================================
     @Override
     public void onResponseCallback(JSONObject response, String flag) {
         if (flag.equals("GETDATA")) {

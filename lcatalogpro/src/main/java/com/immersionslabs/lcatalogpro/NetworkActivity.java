@@ -8,16 +8,15 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import com.immersionslabs.lcatalog.Utils.ConnectionReceiver;
+import com.immersionslabs.lcatalogpro.utils.ConnectionReceiver;
 
 public class NetworkActivity extends Activity {
+
     public static final String WIFI = "Wi-Fi";
     public static final String ANY = "Any";
     private static final String URL = "http://stackoverflow.com/feeds/tag?tagnames=android&sort=newest";
-
 
     private static boolean wifiConnected = false;
     // Whether there is a mobile connection.
@@ -25,11 +24,9 @@ public class NetworkActivity extends Activity {
     // Whether the display should be refreshed.
     public static boolean refreshDisplay = true;
 
-
     public static String sPref = null;
 
     private ConnectionReceiver receiver = new ConnectionReceiver();
-
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +77,7 @@ public class NetworkActivity extends Activity {
         ConnectivityManager connMgr = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
 
+        assert connMgr != null;
         NetworkInfo activeInfo = connMgr.getActiveNetworkInfo();
         if (activeInfo != null && activeInfo.isConnected()) {
             wifiConnected = activeInfo.getType() == ConnectivityManager.TYPE_WIFI;
@@ -89,5 +87,4 @@ public class NetworkActivity extends Activity {
             mobileConnected = false;
         }
     }
-
 }

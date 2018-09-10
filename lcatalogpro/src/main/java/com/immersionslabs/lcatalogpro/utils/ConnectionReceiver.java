@@ -9,6 +9,7 @@ import android.net.NetworkInfo;
 import com.immersionslabs.lcatalogpro.ARNativeApplication;
 
 public class ConnectionReceiver extends BroadcastReceiver {
+
     public static ConnectionReceiverListener connectionReceiverListener;
 
     public ConnectionReceiver() {
@@ -29,13 +30,13 @@ public class ConnectionReceiver extends BroadcastReceiver {
     }
 
     public static boolean isConnected() {
-        ConnectivityManager  cm = (ConnectivityManager) ARNativeApplication.getInstance().getApplicationContext()
+        ConnectivityManager cm = (ConnectivityManager) ARNativeApplication.getInstance().getApplicationContext()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert cm != null;
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         return activeNetwork != null
                 && activeNetwork.isConnectedOrConnecting();
     }
-
 
     public interface ConnectionReceiverListener {
         void onNetworkConnectionChanged(boolean isConnected);

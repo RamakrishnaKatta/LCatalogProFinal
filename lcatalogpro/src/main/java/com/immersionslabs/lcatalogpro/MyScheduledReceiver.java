@@ -18,21 +18,17 @@ public class MyScheduledReceiver extends BroadcastReceiver {
 
         Log.v("MyScheduledReceiver", "Intent Fired");
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Log.d(TAG, "run:here we go ");
-                System.out.println("here we go");
+        new Handler().postDelayed(() -> {
+            Log.d(TAG, "run:here we go ");
+            System.out.println("here we go");
 
-                Intent broadcastIntent = new Intent(context, UserTypeActivity.class);
-                broadcastIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                broadcastIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(broadcastIntent);
+            Intent broadcastIntent = new Intent(context, UserTypeActivity.class);
+            broadcastIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            broadcastIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(broadcastIntent);
 
 //                Toast.makeText(context, "Your Guest Session will Expires in 2 minutes ", Toast.LENGTH_LONG).show();
 
-            }
         }, 2 * 60 * 1000);
-
     }
 }

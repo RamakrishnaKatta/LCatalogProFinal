@@ -16,8 +16,6 @@ public class SessionManager {
 
     private static final String TAG = "SessionManager";
 
-
-
     private SharedPreferences pref;
     SharedPreferences.Editor editor;
     Context context;
@@ -50,7 +48,7 @@ public class SessionManager {
     public static final String KEY_VENDOR_ID = "vendor_ID";
     public static final String KEY_VENDOR_TYPE = "vendor_type";
     public static final String KEY_VENDOR_OTHERDETAILS = "vendor_otherdetails";
-    public static final String KEY_VENDOR_ADDRESS ="vendoradresskey" ;
+    public static final String KEY_VENDOR_ADDRESS = "vendoradresskey";
     public static final String KEY_VENDOR_LOGO = "vendorlogoimg";
 
     Set<String> set = new HashSet<String>();
@@ -420,7 +418,7 @@ public class SessionManager {
         String Unique_check_vendorId = Global_id + KEY_CHECKLIST_VENDOR_ID;
 
         Set set = pref.getStringSet(Unique_check_vendorId, null);
-        if(set!=null) {
+        if (set != null) {
             Iterator iterator = set.iterator();
             while (iterator.hasNext()) {
                 String vendor_id = iterator.next().toString();
@@ -519,8 +517,8 @@ public class SessionManager {
         String type = map.get(id + KEY_VENDOR_TYPE).toString();
         String otherDetails = map.get(id + KEY_VENDOR_OTHERDETAILS).toString();
         String vendorId = map.get(id + KEY_VENDOR_ID).toString();
-        String address=map.get(id+KEY_VENDOR_ADDRESS).toString();
-        String vendorLogo=map.get(id+KEY_VENDOR_LOGO).toString();
+        String address = map.get(id + KEY_VENDOR_ADDRESS).toString();
+        String vendorLogo = map.get(id + KEY_VENDOR_LOGO).toString();
         Log.e(TAG, "SetVendorDetails: \n name, email, mobile, type, otherDetails, vendorId \n"
                 + name + ", " + email + ", " + mobile + ", " + type + ", " + otherDetails + ", " + vendorId);
 
@@ -530,8 +528,8 @@ public class SessionManager {
         editor.putString(id + KEY_VENDOR_TYPE, type);
         editor.putString(id + KEY_VENDOR_OTHERDETAILS, otherDetails);
         editor.putString(id + KEY_VENDOR_ID, vendorId);
-        editor.putString(id+KEY_VENDOR_LOGO,vendorLogo);
-        editor.putString(id+KEY_VENDOR_ADDRESS,address);
+        editor.putString(id + KEY_VENDOR_LOGO, vendorLogo);
+        editor.putString(id + KEY_VENDOR_ADDRESS, address);
         editor.commit();
     }
 
@@ -546,8 +544,8 @@ public class SessionManager {
         String type = pref.getString(id + KEY_VENDOR_TYPE, null);
         String otherDetails = pref.getString(id + KEY_VENDOR_OTHERDETAILS, null);
         String vendorId = pref.getString(id + KEY_VENDOR_ID, null);
-        String vendoraddress=pref.getString(id+KEY_VENDOR_ADDRESS,null);
-        String vendorimage=pref.getString(id+KEY_VENDOR_LOGO,null);
+        String vendoraddress = pref.getString(id + KEY_VENDOR_ADDRESS, null);
+        String vendorimage = pref.getString(id + KEY_VENDOR_LOGO, null);
         Log.e(TAG, "GetVendorDetails: \n name, email, mobile, type, otherDetails, vendorId \n"
                 + name + ", " + email + ", " + mobile + ", " + type + ", " + otherDetails + ", " + vendorId);
 
@@ -557,8 +555,8 @@ public class SessionManager {
         map.put(id + KEY_VENDOR_MOBILE, mobile);
         map.put(id + KEY_VENDOR_OTHERDETAILS, otherDetails);
         map.put(id + KEY_VENDOR_ID, vendorId);
-        map.put(id+KEY_VENDOR_ADDRESS,vendoraddress);
-        map.put(id+KEY_VENDOR_LOGO,vendorimage);
+        map.put(id + KEY_VENDOR_ADDRESS, vendoraddress);
+        map.put(id + KEY_VENDOR_LOGO, vendorimage);
         return map;
     }
 }

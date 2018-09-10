@@ -1,6 +1,5 @@
 package com.immersionslabs.lcatalogpro;
 
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +17,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
-
+import com.immersionslabs.lcatalogpro.network.ApiCommunication;
+import com.immersionslabs.lcatalogpro.network.ApiService;
+import com.immersionslabs.lcatalogpro.utils.CustomMessage;
+import com.immersionslabs.lcatalogpro.utils.EnvConstants;
+import com.immersionslabs.lcatalogpro.utils.NetworkConnectivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -67,18 +70,15 @@ public class SignupActivity extends AppCompatActivity implements ApiCommunicatio
         }
 
         _signupButton = findViewById(R.id.btn_signup);
-        _signupButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (NetworkConnectivity.checkInternetConnection(SignupActivity.this)) {
-                    try {
-                        signup();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }else {
-                    InternetMessage();
+        _signupButton.setOnClickListener(v -> {
+            if (NetworkConnectivity.checkInternetConnection(SignupActivity.this)) {
+                try {
+                    signup();
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
+            } else {
+                InternetMessage();
             }
         });
 //        if (NetworkConnectivity.checkInternetConnection(SignupActivity.this)) {
@@ -91,14 +91,11 @@ public class SignupActivity extends AppCompatActivity implements ApiCommunicatio
         final View view = this.getWindow().getDecorView().findViewById(android.R.id.content);
         final Snackbar snackbar = Snackbar.make(view, "Please Check Your Internet connection", Snackbar.LENGTH_INDEFINITE);
         snackbar.setActionTextColor(getResources().getColor(R.color.red));
-        snackbar.setAction("RETRY", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                snackbar.dismiss();
-                if (NetworkConnectivity.checkInternetConnection(SignupActivity.this)) {
-                } else {
-                    InternetMessage();
-                }
+        snackbar.setAction("RETRY", v -> {
+            snackbar.dismiss();
+            if (NetworkConnectivity.checkInternetConnection(SignupActivity.this)) {
+            } else {
+                InternetMessage();
             }
         });
         snackbar.show();
@@ -178,15 +175,13 @@ public class SignupActivity extends AppCompatActivity implements ApiCommunicatio
 
         ApiService.getInstance(this).postData(this, REGISTER_URL, signup_parameters, "SIGNUP", "USER_SIGNUP");
         new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        if (Objects.equals(message, "SUCCESS") || Objects.equals(code, "200")) {
-                            onSignupSuccess();
-                        } else {
-                            onSignupFailed();
-                        }
-//                        progressDialog.dismiss();
+                () -> {
+                    if (Objects.equals(message, "SUCCESS") || Objects.equals(code, "200")) {
+                        onSignupSuccess();
+                    } else {
+                        onSignupFailed();
                     }
+//                        progressDialog.dismiss();
                 }, 3000);
     }
 

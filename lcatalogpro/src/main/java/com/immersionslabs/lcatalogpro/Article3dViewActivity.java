@@ -4,9 +4,9 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.ConfigurationInfo;
 import android.graphics.PixelFormat;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -69,14 +69,11 @@ public class Article3dViewActivity extends AppCompatActivity {
             DOWNLOAD_URL = EnvConstants.APP_BASE_URL + "/upload/partview_3d/" + part_3ds_file_name;
 
         FloatingActionButton fab = findViewById(R.id.fab_3dView);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (scaleBar.getVisibility() == View.INVISIBLE) {
-                    scaleBar.setVisibility(View.VISIBLE);
-                } else if (scaleBar.getVisibility() == View.VISIBLE) {
-                    scaleBar.setVisibility(View.INVISIBLE);
-                }
+        fab.setOnClickListener((View.OnClickListener) view -> {
+            if (scaleBar.getVisibility() == View.INVISIBLE) {
+                scaleBar.setVisibility(View.VISIBLE);
+            } else if (scaleBar.getVisibility() == View.VISIBLE) {
+                scaleBar.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -157,5 +154,3 @@ public class Article3dViewActivity extends AppCompatActivity {
         super.onPause();
     }
 }
-
-
