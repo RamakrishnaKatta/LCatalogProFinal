@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:fitsSystemWindows="true"
+    tools:context=".UserTypeActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_10">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/icon"
+                android:layout_width="@dimen/margin_100"
+                android:layout_height="@dimen/margin_100"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:src="@drawable/companyicon" />
+
+            <TextView
+                android:id="@+id/application_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/graduate"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_max" />
+
+            <TextView
+                android:id="@+id/immersionslabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cookie"
+                android:gravity="center"
+                android:text="@string/powered_immersionslabs"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_large"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/welcome_aboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cookie"
+                android:gravity="center"
+                android:padding="@dimen/margin_10"
+                android:text="@string/welcome_aboard"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_xxxlarge" />
+
+            <TextView
+                android:id="@+id/who_are_you"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cookie"
+                android:gravity="center"
+                android:padding="@dimen/margin_10"
+                android:text="@string/firstly_who_you_are_matters"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_xxxlarge" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_3"
+                    android:gravity="start"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatImageButton
+                        android:id="@+id/btn_customer"
+                        android:layout_width="@dimen/margin_40"
+                        android:layout_height="@dimen/margin_40"
+                        android:adjustViewBounds="true"
+                        android:background="@color/complete_transparent"
+                        android:contentDescription="@null"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/ic_l" />
+
+                    <TextView
+                        android:id="@+id/txt_customer_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/btn_customer"
+                        android:fontFamily="@font/graduate"
+                        android:text="@string/login_sign"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_xlarge"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txt_customer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/txt_customer_text"
+                        android:fontFamily="@font/cookie"
+                        android:padding="@dimen/margin_10"
+                        android:text="@string/login_hint"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_large"
+                        tools:ignore="RtlSymmetry" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:gravity="left"
+                    android:orientation="horizontal"
+                    tools:ignore="RtlHardcoded">
+
+                    <android.support.v7.widget.AppCompatImageButton
+                        android:id="@+id/btn_new_customer"
+                        android:layout_width="@dimen/margin_40"
+                        android:layout_height="@dimen/margin_40"
+                        android:adjustViewBounds="true"
+                        android:layout_centerVertical="true"
+                        android:background="@color/complete_transparent"
+                        android:contentDescription="@null"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/ic_s" />
+
+                    <TextView
+                        android:id="@+id/txt_new_customer_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/btn_new_customer"
+                        android:layout_toRightOf="@+id/btn_new_customer"
+                        android:fontFamily="@font/graduate"
+                        android:text="@string/signup_sign"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_xlarge"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txt_new_customer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/txt_new_customer_text"
+                        android:fontFamily="@font/cookie"
+                        android:padding="@dimen/margin_10"
+                        android:text="@string/signup_hint"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_large" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layout3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:gravity="start"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatImageButton
+                        android:id="@+id/btn_shopper"
+                        android:layout_width="@dimen/margin_40"
+                        android:layout_height="@dimen/margin_40"
+                        android:layout_centerVertical="true"
+                        android:adjustViewBounds="true"
+                        android:background="@color/complete_transparent"
+                        android:contentDescription="@null"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/ic_g" />
+
+                    <TextView
+                        android:id="@+id/txt_shopper_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/btn_shopper"
+                        android:fontFamily="@font/graduate"
+                        android:text="@string/guest_sign"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_xlarge"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txt_shopper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/txt_shopper_text"
+                        android:fontFamily="@font/cookie"
+                        android:padding="@dimen/margin_10"
+                        android:text="@string/guest_hint"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_large" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

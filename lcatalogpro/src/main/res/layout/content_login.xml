@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".LoginActivity"
+    tools:showIn="@layout/activity_login">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_20"
+            android:paddingTop="@dimen/margin_50">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/icon"
+                android:layout_width="@dimen/margin_100"
+                android:layout_height="@dimen/margin_100"
+                android:layout_gravity="center_horizontal"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:src="@drawable/companyicon" />
+
+            <TextView
+                android:id="@+id/application_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_3"
+                android:fontFamily="@font/graduate"
+                android:gravity="center"
+                android:text="@string/app_name"
+                android:textSize="@dimen/text_size_max" />
+
+            <TextView
+                android:id="@+id/immersionslabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_3"
+                android:fontFamily="@font/cookie"
+                android:gravity="center"
+                android:text="@string/powered_immersionslabs"
+                android:textSize="@dimen/text_size_large"
+                android:textStyle="bold" />
+
+            <!--  Email Label -->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/area_input_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_3"
+                android:visibility="visible">
+
+                <EditText
+                    android:id="@+id/input_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress" />
+            </android.support.design.widget.TextInputLayout>
+
+            <!--  Password Label -->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/area_input_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_3"
+                android:visibility="visible"
+                app:passwordToggleEnabled="true">
+
+                <EditText
+                    android:id="@+id/input_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password"
+                    android:inputType="textPassword" />
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_3"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/btn_login"
+                    android:layout_width="@dimen/margin_200"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_3"
+                    android:fontFamily="@font/overlock_sc"
+                    android:gravity="center"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/btn_login"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/text_size_large" />
+
+                <android.support.v7.widget.AppCompatImageButton
+                    android:id="@+id/btn_get_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    app:srcCompat="@mipmap/ic_get_details" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/link_forgot_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_3"
+                android:fontFamily="@font/cookie"
+                android:gravity="center"
+                android:text="@string/btn_forgot_password"
+                android:textSize="@dimen/text_size_xlarge" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

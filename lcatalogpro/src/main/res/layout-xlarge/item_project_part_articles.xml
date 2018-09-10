@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_6"
+    app:cardBackgroundColor="@color/primary_dark"
+    app:cardCornerRadius="@dimen/margin_6">
+
+    <RelativeLayout
+        android:id="@+id/part_article_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/part_item_image_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/part_article_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_400"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/part_article_name_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/part_item_image_layout"
+            android:background="@color/primary_dark">
+
+            <TextView
+                android:id="@+id/part_article_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:fontFamily="@font/overlock_sc"
+                android:gravity="center"
+                android:maxLines="2"
+                android:padding="@dimen/margin_6"
+                android:text="@string/article_title"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_tab_small"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

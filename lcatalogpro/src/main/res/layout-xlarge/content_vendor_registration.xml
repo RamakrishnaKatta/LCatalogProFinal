@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".VendorRegistrationActivity"
+    tools:showIn="@layout/activity_vendor_registration">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingEnd="@dimen/margin_40"
+            android:paddingStart="@dimen/margin_40"
+            android:paddingTop="@dimen/margin_40">
+
+            <!-- Vendor Name Label -->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/vendor_name_new"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_6">
+
+                <EditText
+                    android:id="@+id/vendor_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/new_vendor_name"
+                    android:inputType="textPersonName"
+                    android:textSize="@dimen/text_tab_small" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!-- Vendor Address Label -->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/vendor_address_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_6">
+
+                <EditText
+                    android:id="@+id/vendor_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/new_vendor_address"
+                    android:inputType="textPostalAddress"
+                    android:textSize="@dimen/text_tab_small" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!-- Vendor Address Label -->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/vendor_location_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_6">
+
+                <EditText
+                    android:id="@+id/vendor_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/new_vendor_location"
+                    android:inputType="textPostalAddress"
+                    android:textSize="@dimen/text_tab_small" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!-- Vendor Location - State Label -->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/vendor_state_detials"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_6">
+
+                <EditText
+                    android:id="@+id/vendor_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/new_vendor_state"
+                    android:inputType="textPersonName"
+                    android:textSize="@dimen/text_tab_small" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!-- Vendor Location - Pincode label -->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/vendor_pincode_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_6">
+
+                <EditText
+                    android:id="@+id/vendor_pincode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/new_vendor_pincode"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:textSize="@dimen/text_tab_small" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!-- Vendor Contact Label -->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/vendor_contact_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_10">
+
+                <EditText
+                    android:id="@+id/vendor_contact_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/new_vendor_contact_person"
+                    android:inputType="textPersonName"
+                    android:textSize="@dimen/text_tab_small" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!--  Vendor Email Label -->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/vendor_email_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_6">
+
+                <EditText
+                    android:id="@+id/vendor_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/new_vendor_email"
+                    android:inputType="textEmailAddress"
+                    android:textSize="@dimen/text_tab_small" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!-- Vendor models/designs request label -->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/vendor_modelcount_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_6">
+
+                <EditText
+                    android:id="@+id/vendor_modelcount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/new_vendor_no_of_models_req"
+                    android:inputType="number"
+                    android:textSize="@dimen/text_tab_small" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!-- Vendor mobile number -->
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/vendor_mobile_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_6">
+
+                <EditText
+                    android:id="@+id/vendor_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/new_vendor_ph_no"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:textSize="@dimen/text_tab_small" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <!-- Vendor Signup/register Button -->
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_vendor_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_6"
+                android:fontFamily="@font/overlock_sc"
+                android:padding="@dimen/margin_24"
+                android:text="@string/new_vendor_submit"
+                android:textAlignment="center"
+                android:textSize="@dimen/text_tab_small"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

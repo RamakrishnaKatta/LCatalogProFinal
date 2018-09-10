@@ -1,0 +1,422 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment_ProductDesign">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/article_image_slider_area"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_250"
+            android:gravity="top">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/article_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/margin_25"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:scaleType="fitCenter" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/article_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/article_slider_dots"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_30"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_1" />
+
+        <LinearLayout
+            android:id="@+id/bottom_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/complete_transparent"
+            android:gravity="bottom"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_10">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_1"
+                android:background="@color/zobra" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_40"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:id="@+id/article_fav_icon_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <com.like.LikeButton
+                        android:id="@+id/article_fav_icon"
+                        android:layout_width="48dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:paddingEnd="@dimen/margin_4"
+                        android:paddingStart="@dimen/margin_4"
+                        app:icon_size="@dimen/margin_60"
+                        app:icon_type="heart"
+                        app:like_drawable="@mipmap/ic_fav_on"
+                        app:unlike_drawable="@mipmap/ic_fav_off" />
+
+                    <TextView
+                        android:id="@+id/favourite_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/overlock_sc"
+                        android:gravity="center|start"
+                        android:paddingEnd="@dimen/margin_4"
+                        android:paddingStart="@dimen/margin_4"
+                        android:text="@string/btn_favourite"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="@dimen/margin_1"
+                    android:layout_height="@dimen/margin_30"
+                    android:layout_gravity="center"
+                    android:background="@color/zobra" />
+
+                <LinearLayout
+                    android:id="@+id/article_share_icon_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatImageButton
+                        android:id="@+id/article_share_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:background="@color/complete_transparent"
+                        android:contentDescription="@null"
+                        android:paddingEnd="@dimen/margin_4"
+                        android:paddingStart="@dimen/margin_4"
+                        app:srcCompat="@mipmap/ic_menu_share" />
+
+                    <TextView
+                        android:id="@+id/share_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/overlock_sc"
+                        android:gravity="center|start"
+                        android:paddingEnd="@dimen/margin_4"
+                        android:paddingStart="@dimen/margin_4"
+                        android:text="@string/btn_share"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_1"
+                android:background="@color/zobra" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_40"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:id="@+id/article_augment_icon_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatImageButton
+                        android:id="@+id/article_augment_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:background="@color/complete_transparent"
+                        android:contentDescription="@null"
+                        android:paddingEnd="@dimen/margin_4"
+                        android:paddingStart="@dimen/margin_4"
+                        app:srcCompat="@mipmap/ic_augment"
+                        tools:ignore="VectorDrawableCompat" />
+
+                    <TextView
+                        android:id="@+id/augment_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/overlock_sc"
+                        android:gravity="center|start"
+                        android:paddingEnd="@dimen/margin_4"
+                        android:paddingStart="@dimen/margin_4"
+                        android:text="@string/menu_augment"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="@dimen/margin_1"
+                    android:layout_height="@dimen/margin_30"
+                    android:layout_gravity="center"
+                    android:background="@color/zobra" />
+
+                <LinearLayout
+                    android:id="@+id/article_3dview_icon_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatImageButton
+                        android:id="@+id/article_3dview_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:background="@color/complete_transparent"
+                        android:contentDescription="@null"
+                        android:paddingEnd="@dimen/margin_4"
+                        android:paddingStart="@dimen/margin_4"
+                        android:visibility="visible"
+                        app:srcCompat="@mipmap/ic_3d" />
+
+                    <TextView
+                        android:id="@+id/view3d_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/overlock_sc"
+                        android:gravity="center|start"
+                        android:paddingEnd="@dimen/margin_4"
+                        android:paddingStart="@dimen/margin_4"
+                        android:text="@string/btn_3d_view"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_1"
+                android:background="@color/zobra" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_40"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:id="@+id/article_checklist_icon_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatImageButton
+                        android:id="@+id/article_checklist_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:background="@color/complete_transparent"
+                        android:contentDescription="@null"
+                        android:paddingEnd="@dimen/margin_4"
+                        android:paddingStart="@dimen/margin_4"
+                        app:srcCompat="@mipmap/ic_checklist" />
+
+                    <TextView
+                        android:id="@+id/checklist_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/overlock_sc"
+                        android:gravity="center|start"
+                        android:paddingEnd="@dimen/margin_4"
+                        android:paddingStart="@dimen/margin_4"
+                        android:text="@string/btn_check_list"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="@dimen/margin_1"
+                    android:layout_height="@dimen/margin_30"
+                    android:layout_gravity="center"
+                    android:background="@color/zobra" />
+
+                <LinearLayout
+                    android:id="@+id/article_budget_icon_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:gravity="start"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatImageButton
+                        android:id="@+id/article_budget_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:background="@color/complete_transparent"
+                        android:contentDescription="@null"
+                        android:paddingEnd="@dimen/margin_4"
+                        android:paddingStart="@dimen/margin_4"
+                        app:srcCompat="@mipmap/ic_add" />
+
+                    <android.support.v7.widget.AppCompatImageButton
+                        android:id="@+id/article_remove_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:background="@color/complete_transparent"
+                        android:contentDescription="@null"
+                        android:paddingEnd="@dimen/margin_4"
+                        android:paddingStart="@dimen/margin_4"
+                        android:visibility="gone"
+                        app:srcCompat="@mipmap/ic_remove" />
+
+                    <TextView
+                        android:id="@+id/add_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/overlock_sc"
+                        android:gravity="center|start"
+                        android:paddingEnd="@dimen/margin_4"
+                        android:paddingStart="@dimen/margin_4"
+                        android:text="@string/btn_budget_list"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_1"
+                android:background="@color/zobra" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_40"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:id="@+id/article_3dview_exp_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatImageButton
+                        android:id="@+id/article_3dview_exp_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:background="@color/complete_transparent"
+                        android:contentDescription="@null"
+                        android:paddingEnd="@dimen/margin_4"
+                        android:paddingStart="@dimen/margin_4"
+                        android:src="@mipmap/ic_web_3ds_view" />
+
+                    <TextView
+                        android:id="@+id/article_3dview_exp_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/overlock_sc"
+                        android:gravity="center|start"
+                        android:paddingEnd="@dimen/margin_4"
+                        android:paddingStart="@dimen/margin_4"
+                        android:text="@string/btn_3dView_exp"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="@dimen/margin_1"
+                    android:layout_height="@dimen/margin_30"
+                    android:layout_gravity="center"
+                    android:background="@color/zobra" />
+
+                <LinearLayout
+                    android:id="@+id/article_augment_exp_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.AppCompatImageButton
+                        android:id="@+id/article_augment_exp_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:background="@color/complete_transparent"
+                        android:contentDescription="@null"
+                        android:paddingEnd="@dimen/margin_4"
+                        android:paddingStart="@dimen/margin_4"
+                        android:src="@mipmap/ic_web_3ds_view" />
+
+                    <TextView
+                        android:id="@+id/article_augment_exp_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/overlock_sc"
+                        android:gravity="center|start"
+                        android:paddingEnd="@dimen/margin_4"
+                        android:paddingStart="@dimen/margin_4"
+                        android:text="@string/btn_Augment_exp"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_1"
+                android:background="@color/zobra" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

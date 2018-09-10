@@ -9,6 +9,7 @@
         android:required="true" />
 
     <application
+        android:name=".ARNativeApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -26,7 +27,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AugmentActivity"></activity>
+        <activity android:name=".AugmentActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".AboutUsActivity" />
+        <activity android:name=".Article3dViewActivity" />
+        <activity android:name=".BlankActivity" />
+        <activity android:name=".BudgetListActivity" />
+        <activity android:name=".CheckListActivity" />
+        <activity android:name=".Experimental3DViewActivity" />
+        <activity android:name=".ExperimentalAugmentActivity" />
+        <activity android:name=".FAQActivity" />
+        <activity android:name=".FavoriteListActivity" />
+        <activity android:name=".FeedbackActivity" />
+        <activity android:name=".ForgotPasswordActivity" />
+        <activity android:name=".Fragment_Illustration" />
+        <activity android:name=".FullScreenImageViewActivity" />
+        <activity android:name=".GalleryActivity" />
+        <activity android:name=".GuestActivity"></activity>
     </application>
 
 </manifest>

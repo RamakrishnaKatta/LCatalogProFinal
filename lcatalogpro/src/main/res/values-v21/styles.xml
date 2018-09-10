@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
+        <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
+        <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
+    </style>
+
+    <style name="AppTheme.Dark" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/complete_transparent</item>
+
+        <item name="colorPrimary">@color/complete_transparent</item>
+        <item name="colorPrimaryDark">@color/primary_darker</item>
+        <item name="colorAccent">@color/white</item>
+
+        <item name="android:windowBackground">@color/primary_dark</item>
+
+        <item name="colorControlNormal">@color/iron</item>
+        <item name="colorControlActivated">@color/white</item>
+        <item name="colorControlHighlight">@color/white</item>
+        <item name="android:textColorHint">@color/iron</item>
+
+        <item name="colorButtonNormal">@color/primary_dark</item>
+        <item name="android:colorButtonNormal">@color/primary_dark</item>
+        <item name="android:colorBackground">@color/complete_transparent</item>
+    </style>
+
+    <style name="AppTheme.Dark.NavigationViewStyle">
+        <item name="android:textSize">@dimen/text_size_medium</item> <!-- menu item text size-->
+        <item name="android:listPreferredItemHeightSmall">@dimen/margin_35
+        </item><!-- menu item height-->
+        <item name="colorPrimary">@color/primary_darker</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/white</item>
+    </style>
+
+    <style name="AppTheme.Dark.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorPrimary">@color/complete_transparent</item>
+    </style>
+
+    <style name="AppTheme.Dark.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/primary_dark</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:background">@color/primary</item>
+    </style>
+
+</resources>

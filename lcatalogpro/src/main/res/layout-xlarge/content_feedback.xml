@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Feedbacklayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".FeedbackActivity"
+    tools:showIn="@layout/activity_feedback">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_40"
+        android:fitsSystemWindows="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <!-- Name Label -->
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/area_input_feed_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_6"
+            android:layout_marginTop="@dimen/margin_6"
+            android:visibility="visible">
+
+            <EditText
+                android:id="@+id/input_feed_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/name"
+                android:inputType="textPersonName"
+                android:maxLength="50" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <!-- Number Label -->
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/area_input_feed_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_6"
+            android:layout_marginTop="@dimen/margin_6"
+            android:visibility="visible">
+
+            <EditText
+                android:id="@+id/input_feed_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/mobile_number"
+                android:inputType="number"
+                android:maxLength="10" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <!--Feedback Label-->
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/area_input_feed_subject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_6"
+            android:layout_marginTop="@dimen/margin_6"
+            android:visibility="visible">
+
+            <EditText
+                android:id="@+id/input_feed_subject"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top|start"
+                android:hint="@string/FeedBack_Subject"
+                android:inputType="textMultiLine"
+                android:lines="10"
+                android:maxLines="15"
+                android:scrollbars="vertical" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_feed_submit"
+            android:layout_width="@dimen/margin_250"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_6"
+            android:layout_marginTop="@dimen/margin_6"
+            android:fontFamily="@font/overlock_sc"
+            android:gravity="center"
+            android:padding="@dimen/margin_6"
+            android:text="@string/btn_submit_app_feedback"
+            android:textAlignment="center"
+            android:textSize="@dimen/text_tab_tiny"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

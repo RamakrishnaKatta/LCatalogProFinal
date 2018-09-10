@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_6"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="@dimen/margin_6">
+
+    <RelativeLayout
+        android:id="@+id/grid_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/grid_item_image_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/grid_item_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_300"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/grid_item_name_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/grid_item_image_layout"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/grid_item_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:ellipsize="end"
+                android:fontFamily="@font/overlock_sc"
+                android:gravity="center"
+                android:maxLines="1"
+                android:padding="@dimen/margin_6"
+                android:text="@string/article_title_text"
+                android:textColor="@color/primary_darker"
+                android:textSize="@dimen/text_tab_tootiny"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/grid_item_description_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/grid_item_name_area"
+            android:background="@color/primary_dark">
+
+            <TextView
+                android:id="@+id/grid_item_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:ellipsize="end"
+                android:fontFamily="@font/assistant_semibold"
+                android:gravity="center"
+                android:maxLength="80"
+                android:maxLines="1"
+                android:padding="@dimen/margin_6"
+                android:text="@string/article_desc_text"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_tab_tootiny"
+                android:textStyle="italic" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/grid_item_description_area"
+            android:background="@color/primary_darker"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/margin_6">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingEnd="@dimen/margin_6"
+                android:paddingStart="@dimen/margin_6">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_6"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:text="@string/article_price_tag_symbol"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_tab_tootiny" />
+
+                <TextView
+                    android:id="@+id/grid_item_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:text="@string/article_original_price"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_tab_tootiny" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:paddingEnd="@dimen/margin_6"
+                    android:paddingStart="@dimen/margin_0"
+                    android:text="@string/article_price_tag"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_tab_tootiny" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingEnd="@dimen/margin_6"
+                android:paddingStart="@dimen/margin_6">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_6"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:text="@string/article_price_tag_symbol"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_tab_tiny" />
+
+                <TextView
+                    android:id="@+id/grid_item_price_new"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:text="@string/article_after_discount_price"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_tab_tiny"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:text="@string/article_price_tag"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_tab_tiny" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-30dp"
+        android:gravity="start"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="@dimen/margin_150"
+            android:layout_height="@dimen/margin_50"
+            android:background="@mipmap/ic_discount"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/grid_item_discount_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:text="@string/article_discount_value"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_tab_tootiny"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:text="@string/article_percentage_symbol"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_tab_tootiny"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_6"
+                    android:fontFamily="@font/overlock_sc"
+                    android:text="@string/article_discount_off"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_tab_tootiny"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

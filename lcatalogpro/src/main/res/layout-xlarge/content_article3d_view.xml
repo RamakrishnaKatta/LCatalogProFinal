@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/complete_transparent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Article3dViewActivity"
+    tools:showIn="@layout/activity_article3d_view">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.immersionslabs.lcatalog.loader3ds.MyGLSurfaceView
+            android:id="@+id/glView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:paddingBottom="@dimen/margin_10"
+            android:paddingEnd="@dimen/margin_100"
+            android:paddingStart="@dimen/margin_60">
+
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/seekbar1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_80"
+                android:layout_gravity="bottom|center"
+                android:background="@color/transparent"
+                android:thumbTint="@color/primary"
+                android:visibility="invisible" />
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+</android.support.constraint.ConstraintLayout>

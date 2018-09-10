@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Present in all applications-->
+
+    <string name="google_app_id" translatable="false">1:273525625562:android:2f43636e3b6b8672</string>
+
+    <!--Present in applications with the appropriate services configured-->
+
+    <string name="gcm_defaultSenderId" translatable="false">273525625562</string>
+
+    <string name="default_web_client_id" translatable="false">273525625562-im6i9iq31svvvqngvjbgm1cu8b3ms2r2.apps.googleusercontent.com</string>
+
+    <string name="firebase_database_url" translatable="false">https://l-catalog-prod.firebaseio.com</string>
+
+    <string name="google_api_key" translatable="false">AIzaSyBSDuQI7IZIwW8ewQvYyAIbTcHdVXre7uU</string>
+
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBSDuQI7IZIwW8ewQvYyAIbTcHdVXre7uU</string>
+
+</resources>

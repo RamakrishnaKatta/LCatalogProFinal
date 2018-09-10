@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/menu_catalogues">
+        <menu>
+            <item
+                android:id="@+id/nav_catalog"
+                android:icon="@mipmap/ic_catalog"
+                android:title="@string/menu_catalog" />
+            <item
+                android:id="@+id/nav_project_campaign"
+                android:icon="@mipmap/ic_campaign"
+                android:title="@string/menu_project_campaign" />
+            <item
+                android:id="@+id/nav_ven"
+                android:icon="@mipmap/ic_vendors"
+                android:title="@string/menu_vendor_catalog" />
+        </menu>
+    </item>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_augment"
+            android:icon="@mipmap/ic_augment"
+            android:title="@string/menu_augment" />
+    </group>
+
+    <item android:title="@string/menu_my_profile">
+        <menu>
+            <item
+                android:id="@+id/nav_gallery"
+                android:icon="@mipmap/ic_menu_slideshow"
+                android:title="@string/menu_gallery" />
+            <item
+                android:id="@+id/nav_user_account"
+                android:icon="@mipmap/ic_menu_user_account"
+                android:title="@string/menu_my_account" />
+            <item
+                android:id="@+id/nav_user_notify"
+                android:icon="@mipmap/ic_notifications"
+                android:title="@string/menu_my_notifications" />
+            <item
+                android:id="@+id/nav_user_favourites"
+                android:icon="@mipmap/ic_fav"
+                android:title="@string/menu_my_favorites" />
+            <item
+                android:id="@+id/nav_user_budget_bar"
+                android:icon="@mipmap/ic_budget"
+                android:title="@string/menu_my_budget_list" />
+            <item
+                android:id="@+id/nav_user_check_list"
+                android:icon="@mipmap/ic_checklist"
+                android:title="@string/menu_my_checklist" />
+            <item
+                android:id="@+id/nav_sign_up"
+                android:icon="@mipmap/ic_signup"
+                android:title="@string/menu_sign_up" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@mipmap/ic_signout"
+                android:title="@string/menu_sign_out" />
+        </menu>
+    </item>
+
+    <item android:title="@string/menu_vendor_campaign">
+        <menu>
+            <item
+                android:id="@+id/nav_ven_reg"
+                android:icon="@mipmap/ic_vendor_register"
+                android:title="@string/menu_vendor_registration" />
+        </menu>
+    </item>
+
+    <item android:title="@string/menu_help_and_support">
+        <menu>
+            <item
+                android:id="@+id/nav_feedback"
+                android:icon="@mipmap/ic_feedback"
+                android:title="@string/menu_feedback" />
+            <item
+                android:id="@+id/nav_terms_conditions"
+                android:icon="@mipmap/ic_terms_conditions"
+                android:title="@string/menu_terms_conditions" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@mipmap/ic_about"
+                android:title="@string/menu_about" />
+            <item
+                android:id="@+id/nav_faq"
+                android:icon="@mipmap/ic_faq"
+                android:title="@string/menu_faq" />
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.immersionslabs.lcatalog.VendorProfileActivity"
+    tools:showIn="@layout/activity_vendor_profile">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/profile_vendor_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_250" />
+
+        <TextView
+            android:id="@+id/profile_vendor_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/overlock_sc"
+            android:gravity="center"
+            android:padding="@dimen/margin_10"
+            android:text="Vendor Name"
+            android:textAllCaps="true"
+            android:textSize="@dimen/text_size_large"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/profile_vendor_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/assistant_semibold"
+            android:gravity="center"
+            android:padding="@dimen/margin_10"
+            android:text="Vendor Address"
+            android:textAllCaps="false"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="bold" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/profile_vendor_articles_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/margin_25"
+            android:layout_marginTop="@dimen/margin_10"
+            android:fontFamily="@font/overlock_sc"
+            android:padding="@dimen/margin_10"
+            android:text="Vendor Articles"
+            android:textAlignment="center"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

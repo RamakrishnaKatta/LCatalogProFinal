@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/side_nav_bar"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_16">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/margin_20"
+        android:paddingTop="@dimen/margin_20">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/icon_image"
+            android:layout_width="@dimen/margin_75"
+            android:layout_height="@dimen/margin_75"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            app:srcCompat="@drawable/companyicon" />
+
+        <TextView
+            android:id="@+id/application_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/graduate"
+            android:padding="@dimen/margin_6"
+            android:text="@string/app_name"
+            android:textSize="@dimen/text_tab_xlarge" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/margin_2"
+        android:background="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/margin_6"
+            android:text="@string/nav_hi"
+            android:textSize="@dimen/text_tab_tootiny" />
+
+        <TextView
+            android:id="@+id/user_type_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/margin_0"
+            android:paddingStart="@dimen/margin_6"
+            android:paddingTop="@dimen/margin_6"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_tab_tootiny"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:paddingTop="@dimen/margin_6"
+        android:text="@string/Logged_userName"
+        android:textSize="@dimen/text_tab_tootiny" />
+
+    <TextView
+        android:id="@+id/user_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autoLink="email"
+        android:gravity="start"
+        android:text="@string/email_phone_number"
+        android:textSize="@dimen/text_tab_tootiny" />
+
+</LinearLayout>

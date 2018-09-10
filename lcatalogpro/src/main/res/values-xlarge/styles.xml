@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="LCatalogCustomText_ToolBar">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">@font/overlock_sc</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_tab_small</item>
+        <item name="android:textColor">@color/primary</item>
+    </style>
+
+    <style name="LCatalogCustomText_TabView">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">@font/assistant_semibold</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_tab_small</item>
+        <item name="android:textColor">@color/primary</item>
+    </style>
+
+</resources>

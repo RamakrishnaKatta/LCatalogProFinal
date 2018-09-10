@@ -1,3 +1,355 @@
 <resources>
-    <string name="app_name">LCatalog Pro</string>
+
+    // Activity Titles
+    <string name="title_activity_Login">User Login </string>
+    <string name="title_activity_SignUp">User SignUp </string>
+    <string name="title_activity_Guest">Guest Login </string>
+    <string name="title_activity_ForgotPassword">Forgot Password </string>
+    <string name="title_activity_UserAccount">Account Details</string>
+    <string name="title_activity_AboutUs">About Us</string>
+    <string name="title_activity_Feedback">User Feedback </string>
+    <string name="title_activity_VendorRegistration">Vendor Registration</string>
+    <string name="title_activity_Notify">Notifications</string>
+    <string name="title_activity_Gallery">Screenshot Gallery</string>
+    <string name="title_activity_catalog">Product Catalog</string>
+    <string name="title_activity_vendor_details">Vendor Details</string>
+    <string name="title_activity_vendor_catalog">Vendor Catalog</string>
+    <string name="title_activity_vendor_list">Our Vendors</string>
+    <string name="title_activity_Campaign">Project Catalog</string>
+    <string name="title_activity_ProductPage">Product Details</string>
+    <string name="title_activity_ProjectDetails">Project Details</string>
+    <string name="title_activity_ProjectPartDetails">Project details by Part</string>
+    <string name="title_activity_CheckList">User CheckList</string>
+    <string name="title_activity_favourite_list">User Favourites</string>
+    <string name="title_activity_budget_list">User BudgetList</string>
+    <string name="title_activity_budget_bar">Budget Bar</string>
+    <string name="title_activity_Article3dView">3D Article View</string>
+    <string name="title_activity_faq">F A Q</string>
+    <string name="title_activity_experimental_3dview">Experimental Web 3DView</string>
+    <string name="title_activity_experimental_augment">Experimental Web Augment</string>
+
+    //App default Resources
+    <string name="app_name">L CATALOG</string>
+    <string name="powered_by">Powered by</string>
+    <string name="powered_by_symbol">&#8471;</string>
+    <string name="company_name">Immersion Software Labs Pvt. Ltd.</string>
+    <string name="company_tag_line">…the next big immersive experience</string>
+    <string name="powered_immersionslabs">Powered by Immersion Software Labs.</string>
+    <string name="powered_symbol_immersionslabs"> Immersion Software Labs. &#8471;</string>
+
+    // OnBoarding Activity - Sliders
+    <string name="slide2_title">AUGMENT</string>
+    <string name="slide2_desc">Augment Feature will let you see the object chosen by you and Project into the real world with the help of a pattern \n available at </string>
+    <string name="slide2_link"><param>http://lcatalog.immersionslabs.com/</param></string>
+    <string name="slide3_title">360&#xb0; Object Rotation</string>
+    <string name="slide3_desc">This feature lets you rotate the object in and around, to get a clear picture of what you are exactly buying.</string>
+    <string name="slide4_desc">This feature lets you capture the surrounds after the objects are augmented. Also lets you share between the close ones.</string>
+    <string name="slide4_title_capture">CAPTURE</string>
+    <string name="slide4_title_share">SHARE</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">START</string>
+
+    // UserType Activity
+    <string name="welcome_aboard">Welcome Aboard</string>
+    <string name="firstly_who_you_are_matters">Firstly for Us, Who you are matters !!</string>
+    <string name="login_sign">OGIN</string>
+    <string name="login_hint">If you are a customer already…</string>
+    <string name="signup_sign">IGNUP</string>
+    <string name="signup_hint">If you want to become a customer…</string>
+    <string name="guest_sign">UEST</string>
+    <string name="guest_hint">If you are a oneTime Shopper…</string>
+
+    //User Login Activity
+    <string name="btn_login">LOGIN</string>
+    <string name="autofill_details">Auto Fill</string>
+
+    //User SignUp Activity
+    <string name="name">Name</string>
+    <string name="address">Address</string>
+    <string name="email">Email Address</string>
+    <string name="mobile_number">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="re_enter_password">Re Enter Password</string>
+    <string name="btn_create_account">CREATE ACCOUNT</string>
+    <string name="btn_forgot_password"><u>Forgot Password</u></string>
+    <string name="btn_submit">SUBMIT</string>
+
+    // Guest Login Activity
+    <string name="guest_details">Login as Guest</string>
+
+    // Forgot password Activity
+    <string name="New_password">New Password</string>
+    <string name="ReEnter_new_password">Re Enter New Password</string>
+
+    // Main Activity
+    <string name="nav_hi">Hi,  </string>
+    <string name="Logged_userName">UserName</string>
+    <string name="email_phone_number">Email / phone number</string>
+    <string name="customer">CUSTOMER</string>
+    <string name="guest">GUEST</string>
+
+    //Menu Items
+    <string name="menu_catalogues">Catalogues</string>
+    <string name="menu_catalog">Catalog</string>
+    <string name="menu_project_campaign">Project Catalog</string>
+    <string name="menu_vendor_catalog">Vendor Catalog</string>
+    <string name="menu_augment">Augment</string>
+    <string name="menu_my_profile">My profile</string>
+    <string name="menu_gallery">My Gallery</string>
+    <string name="menu_my_account">My Account</string>
+    <string name="menu_my_notifications">My Notifications</string>
+    <string name="menu_my_favorites">My Favorites</string>
+    <string name="menu_my_budget_list">My Budget List</string>
+    <string name="menu_my_checklist">My Check List</string>
+    <string name="menu_sign_up">Sign Up</string>
+    <string name="menu_sign_out">Sign Out</string>
+    <string name="menu_vendor_campaign">Vendor Campaign</string>
+    <string name="menu_vendor_registration">Vendor Registration</string>
+    <string name="menu_help_and_support">Help &amp; Support</string>
+    <string name="menu_feedback">FeedBack</string>
+    <string name="menu_terms_conditions">Terms &amp; Conditions</string>
+    <string name="menu_about">About</string>
+    <string name="menu_faq">FAQ\'s</string>
+
+    // Fragment Product Images Activity
+    <string name="btn_share">Share</string>
+    <string name="btn_3d_view">360&#176; View</string>
+    <string name="btn_augment">Augment</string>
+    <string name="btn_budget_list">Budget List</string>
+    <string name="btn_check_list">Check List</string>
+    <string name="btn_favourite">Favourite</string>
+    <string name="btn_3dView_exp">Exp 3DView</string>
+    <string name="btn_Augment_exp">Exp Augment</string>
+
+    // Fragment Product Details Activity
+    <string name="article_title">TITLE</string>
+    <string name="article_title_text">Title Text</string>
+    <string name="article_desc">DESCRIPTION</string>
+    <string name="article_desc_text">Description Text</string>
+    <string name="article_original_price_title">ORIGINAL PRICE:</string>
+    <string name="article_original_price">1000</string>
+    <string name="article_discount_title">Discount :   </string>
+    <string name="article_discount_value">20</string>
+    <string name="article_percentage_symbol">%</string>
+    <string name="article_discount_off"> OFF</string>
+    <string name="article_discount_price_title"> PRICE:</string>
+    <string name="article_after_discount_price">800</string>
+    <string name="article_price_tag">/-</string>
+    <string name="article_price_tag_symbol">\u20B9</string>
+    // Rupee Symbol
+    <string name="article_rating">4.3 *</string>
+    <string name="article_rating_reviews">50 ratings &amp; 15 reviews</string>
+    <string name="article_dim_width">WIDTH :</string>
+    <string name="article_dim_width_value">30</string>
+    <string name="article_dim_length">LENGTH :</string>
+    <string name="article_dim_length_value">25</string>
+    <string name="article_dim_height">HEIGHT :</string>
+    <string name="article_dim_height_value">20</string>
+    <string name="article_dimension_symbol">in</string>
+    <string name="article_vendor_title">PROVIDED BY :</string>
+    <string name="article_pattern_title">ARTICLE PATTERN :</string>
+    <string name="project_pattern_title">PROJECT PATTERN :</string>
+    <string name="article_vendor_details">NAME &amp; ADDRESS :</string>
+    <string name="article_vendor_name">CMR</string>
+    <string name="article_vendor_address">Chandra Layout, Bangalore- 560072</string>
+
+    // Fragment Product Feedback Activity
+    <string name="article_feedback_title">FEEDBACK</string>
+    <string name="feedback_article_name">Feedback Article Name</string>
+    <string name="feedback_article_id">Feedback Article ID</string>
+    <string name="feedback_article_vendor_id">Feedback Article Vendor ID</string>
+    <string name="article_feedback_message">Feedback/Query related to this Article</string>
+    <string name="btn_submit_feedback">SUBMIT FEEDBACK</string>
+    <string name="article_rating_title">RATING</string>
+    <string name="btn_submit_rating">SUBMIT RATING</string>
+
+    // Vendor Catalog Activity
+    <string name="vendor_title">Vendor Name</string>
+
+    // FeedBack Activity
+    <string name="btn_submit_app_feedback">SUBMIT FEEDBACK</string>
+    <string name="FeedBack_Subject">My valuable FeedBack</string>
+
+    //Vendor Registration
+    <string name="new_vendor_name">Company Name</string>
+    <string name="new_vendor_address">Company Address</string>
+    <string name="new_vendor_email">Company Email</string>
+    <string name="new_vendor_ph_no">Mobile Number</string>
+    <string name="new_vendor_alt_ph_no">Alternative Mobile Number</string>
+    <string name="new_vendor_submit">SUBMIT / REGISTER</string>
+    <string name="new_vendor_contact_person">Person to be Contacted</string>
+    <string name="new_vendor_no_of_models_req">No of Models/Designs required (Approx)</string>
+    <string name="new_vendor_state">In which State?</string>
+    <string name="new_vendor_pincode">States PinCode?</string>
+    <string name="new_vendor_location">Which City?</string>
+
+    // Notifications Activity
+    <string name="notifications_title">Notifications</string>
+    <string name="notifications_subject">Hi welcome to the Immersion Software Labs and you can avail many offers from Immersion Software Labs.</string>
+
+    // User Profile Activity
+    <string name="btn_edit_profile">EDIT PROFILE</string>
+    <string name="btn_update_profile">UPDATE PROFILE</string>
+
+    <string name="btn_remove">REMOVE</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    // Project Details Activity
+    <string name="project_name_title">PROJECT NAME :</string>
+    <string name="project_name">Project Name</string>
+    <string name="project_desc_title">PROJECT DESCRIPTION :</string>
+    <string name="project_desc">Project Description</string>
+    <string name="project_sub_desc_title">PROJECT SUB DESCRIPTION :</string>
+    <string name="project_sub_desc">Project Sub Description</string>
+
+    // Project Part Details Activity
+    <string name="project_part_name_title">PROJECT PART NAME :</string>
+    <string name="project_part_name">Project Part Name</string>
+    <string name="project_part_desc_title">PROJECT PART DESCRIPTION :</string>
+    <string name="project_part_desc">Project Part Description</string>
+
+    // Budget List Activity
+    <string name="total_budget_value_title">Total \nBudget</string>
+    <string name="total_budget_value">100000</string>
+    <string name="current_budget_value_title">Current \nValue</string>
+    <string name="current_budget_value">78000</string>
+    <string name="remaining_budget_value_title">Remaining \nBudget</string>
+    <string name="remaining_budget_value">22000</string>
+    <string name="btn_update_budget">UPDATE BUDGET</string>
+    <string name="btn_alter_budget">ALTER BUDGET</string>
+    <string name="btn_clear_budget">CLEAR BUDGET</string>
+
+    // Check List Activity
+    <string name="total_check_value_title">Total Value :</string>
+    <string name="total_check_value">100000</string>
+    <string name="btn_place_enquiry">Place Enquiry</string>
+
+    // AboutUs Activity
+    <string name="what_is_l_catalog">What is L-CATALOG ?</string>
+    <string name="Catalogue">
+        The goal of this product is to provide the opportunity to all the furniture vendors
+        to deliver the customers the feel of having the furniture right in front of them
+        without bringing the furniture home. This could bring down the availability cost at
+        the store, manufacturing cost of the larger units drastically increases the
+        customer-vendor interaction in a much sophisticated way. Along with all these, think
+        about the situation where the user takes the furniture home and feels the article doesn’t
+        fit as he felt at the showroom and the customer thinks of returning the product,
+        L-Catalogue will eradicate this problem and the huge transportation cost that
+        is involved in this process."
+    </string>
+    <string name="product_objectives">Product Objectives ?</string>
+    <string name="objectives">
+        This product helps you in the advertisement portal as in when the product is sent for
+        advertising, the article will be advertised/displayed over the newspaper or on a local
+        magazine or on a digital media, the vendor/manufacturer has the freedom to provide the
+        pattern wherever possible, which helps users/customers to try the product the moment
+        they see the product on the advertisement portal.\n\n
+
+        This android app will have the capability of augmenting the furniture into the real world as in
+        when the user/customer places the pattern at the right place as per the instructions. This
+        product also lets the users/customers to reach out to the vendor/manufacturer instantly
+        using a feedback form for each article provided in the catalogue if he/she needs a customized
+        furniture. The vendor will be able to choose this option while product development depending
+        upon his/her selling forte is static designer products or customized.
+    </string>
+    <string name="definition_and_description">Definition and Description :</string>
+    <string name="Definition">
+        The L – Catalog is an Augmented reality (AR) catalogue which helps the furniture
+        manufacturers/vendors to deliver the user/customer the furniture portability in the form of a
+        pattern printed on a paper. Each manufacturer/vendor will be having an android application of
+        his own in the Google playstore, which lets the user/ customer when installed this app on
+        his/her android phone to scan the pattern provided by the manufacturer/vendor sticking it on
+        the walls as per the instructions provided behind the pattern.\n\n
+
+        For example, the instructions behind says 2ft above the surface/floor where you exactly
+        want the furniture (if it is 4ft tall) to place inside your house. This process lets the
+        user/customer to get the feel of the furniture in real world, without placing the furniture at the
+        required place physically.
+    </string>
+    <string name="product_overview">Product Overview :</string>
+    <string name="data">
+       L – Catalogue is an android application that constitute of \n
+            <br /> &#187; More than 100 3D furniture models which had multiple fabrics \n
+            <br /> &#187; Each 3D furniture model is bound with a unique pattern.\n
+            <br /> &#187; Each pattern will be provided with a set of instructions like at what height the pattern should be pasted on the wall from the surface.\n
+            <br /> &#187; A camera screen that can recognize these patterns and augment into the real world
+            <br /> &#187; This screen can recognize multiple patterns at a time i.e., it can augment all 3D models on to the real world .\n
+            <br /> &#187; These 3D objects are intractable as in \n
+        <!--<br /> &#8226; Single Click displays the accurate dimensions of the object.\n-->
+        <!--<br /> &#8226; Double click lets the user choose the fabrics, if exist.\n-->
+        <!--<br /> &#8226; Long press opens the feedback message opens right below the object. \n-->
+        <br /> &#187; The feedback screen lets the user to send a personal message to the vendor/ manufacturer if he/she needs a customization to the existing furniture object.\n
+            <br /> &#187; Once submitted, the message will be tagged with the object ID as well as the User contact
+        details, in case provided (One means is mandatory).\n
+            <br /> &#187;  Once the user scans the articles, the user will be able to take a screenshot of the screen which
+        lets the user to share the image between multiple apps which is a native feature. The
+        tricky part is to take a screen shot as if the furniture exists in the real. There
+        will be a Gallery Button in app  which shows the list of screenshots that were taken earlier using the L – Catalog app. \n
+    </string>
+    <string name="contact_us">Contact Us:</string>
+
+    // FAQ Activity
+    <string name="faq_text_1">The L – Catalog is an Augmented reality (AR) catalogue which helps the furniture manufacturers/vendors to deliver the user/customer the furniture portably in the form of a pattern printed on a paper.</string>
+    <string name="faq_text_2">The goal of this product is to provide the opportunity to all the furniture vendors to deliver the customers the feel of having the furniture right in front of him/her without bringing the actual furniture home.</string>
+    <string name="faq_text_3">This product will let the vendor/manufacturer to have his own android mobile application in the android app store, which will let him have more exposure to the rest of the country aswellas the world if possible and the greatest exposure to the market.</string>
+    <string name="faq_text_4">L - CATALOG is now available on Android, and tons of covetable wardrobes are waiting, so download it now!</string>
+    <string name="faq_text_5">Visit our website: www.immersionslabs.com</string>
+    <string name="faq_text_heading_2">How do I get Started on L - CATALOG?</string>
+    <string name="faq_text_6">The short checklist below will get you started:</string>
+    <string name="faq_text_heading_3">How do I create my account?</string>
+    <string name="faq_text_7">This product will let the vendor/manufacturer to have his own android mobile application in the android app store, which will let him have more exposure to the rest of the country aswellas the world if possible and the greatest exposure to the market. This android app will have the capability of augmenting the furniture into the real world physically.</string>
+    <string name="faq_text_heading_4">How do I upload?</string>
+    <string name="faq_text_8">Start uploading style inspirations or items that you will like to sell from your closet. It’s only going to take you 60 seconds from an iPhone or an Android phone! Snap a picture, add in your product details and pick a price. See how easy it is to make your first sale!</string>
+    <string name="faq_text_heading_5">How do I shop?</string>
+    <string name="faq_text_9">You can shop directly from your newsfeed, because all that you see are products as per your preference selection and also from other closets you like aka Admire. So get tapping! Create a personalized shopping experience by following all the closets you love.</string>
+    <string name="faq_text_heading_6">What is L catalog premium?</string>
+    <string name="faq_text_10">premium service where L Catalog personally handpicks the products in this closet – all the products are mostly new with tags and exclusive luxury items. We carry out extra verification of all the luxury handbags, shoes, clothes and accessories. L Catalog also lists the products on behalf of the sellers so that their identity is not disclosed. Plus, they are entitled to special white glove service!</string>
+    <string name="faq_text_11">This service is free for now, L Catalog does not charge extra for this premium service.</string>
+    <string name="faq_text_heading_7">Sounds great. How do I get the L - CATALOG app?</string>
+    <string name="faq_text_12">L - CATALOG is available on Google play store : Here are the links</string>
+    <string name="faq_text_13">You can also shop from the web! www.immersionslabs.com</string>
+    <string name="faq_text_heading_8">Can I change my Username if it suddenly sounds lame?</string>
+    <string name="faq_text_14">Currently, you cannot change your username, so make sure you select something that you love when you register.</string>
+    <string name="faq_text_heading_9">How do I trust the stuff I’m buying on L - CATALOG?</string>
+    <string name="faq_text_15">L - CATALOG personally handpicks its sellers and it assures that all the products are legit. If you are still not satisfied, L- CATALOG gives you 24 hours when you purchase something – from the time the product reaches you – and gives you the option to return it if you don’t love it. We keep your money in the escrow account for those 24 hours. After we verify your claim, we give you the option of earning L-CATALOG credits.</string>
+    <string name="faq_text_heading_10">What are L - CATALOG credits?</string>
+    <string name="faq_text_16">L Catalog creates Wallet for you where your L Catalog shopping money is stored.</string>
+    <string name="faq_text_heading_11">What are the Shipping rates on L CATALOG?</string>
+    <string name="faq_text_17">All users will be provided with free shipping on orders above Rs. 1800. Not bad, right?</string>
+    <string name="faq_text_heading_12">Help! I purchased an item, but did not receive a confirmation email. What do I do now?</string>
+    <string name="faq_text_18">We hear you! You can write to helpdesk@immersionslabs.com with your email address, order information and your L Catalog username. You can also call us on 080 4000 4540 and we’ll get back to you asap!</string>
+    <string name="faq_text_heading_13">Oops! I accidentally purchased an item, how do I cancel the order?</string>
+    <string name="faq_text_19">Sorry. Currently, we do not have an order cancellation option, but you can email us on helpdesk@immersionslabs.com or call us at 9036600966 and we’ll see if we can help. But make sure you notify to us within 24 hours.</string>
+    <string name="faq_text_heading_14">When can I expect to receive my L catalog order?</string>
+    <string name="faq_text_20">We allow our sellers to dispatch the order within 7 days. However, most of the orders are shipped within 3 business days. As soon as the order is placed, we work really hard to send the product to you at the earliest.</string>
+    <string name="faq_text_heading_15">What should I do when I receive my order?</string>
+    <string name="faq_text_21"><![CDATA[You will have 24 hours from the time you get your order. If you want to return an item, you can go on L Catalog app > Menu bar > My order > Return. You can select one of the 4 options provided to you and we will have a L catalog care agent reach out to you at the earliest.]]></string>
+    <string name="faq_text_22">L Catalog ensures all the products listed are authentic and in great condition, but we let you, the buyer, take the call.</string>
+    <string name="faq_text_heading_16">How do I sell on L - CATALOG ?</string>
+    <string name="faq_text_23">You can only sell from L Catalog app. To make a listing, click on the camera icon on the top right of the app, add clear pictures of your item from your phone library, and write a description. It takes only 60 seconds to make a listing!</string>
+    <string name="faq_text_heading_17">What is L Catalog’s Fashion Calculator?</string>
+    <string name="faq_text_24">Fashion calculator helps you decide the listing price. It will ask you 3 basic questions – age of the product, condition and brand. On the basis of these 3 parameters, it gives you a range of prices to pick from. It also shows you the listing price and your earnings.</string>
+    <string name="faq_text_heading_18">What is the fees for selling on L CATALOG?</string>
+    <string name="faq_text_25">L- CATALOG charges only a flat 25% commission, where we market your products and make sure you get the right buyer for your closet – someone who fits your style preference and size. We also fulfill your order, send you the packaging material and shipping is free!</string>
+    <string name="faq_text_heading_19">What are Storefronts?</string>
+    <string name="faq_text_26">L-CATALOG has partnered with A-list Interior designers and furniture vendors who sell their collections at discounted prices. Don’t forget to check them out – it’s a steal!</string>
+    <string name="faq_text_heading_20">I just found a buyer, how do I ship my order?</string>
+    <string name="faq_text_27">Congratulations on your first sale! You would have received an invoice on your email from us. Kindly, print that out, keep your item ready, make sure your item is dry cleaned, ironed and ready to be loved by your purchaser. You can also write a personal note to the buyer on the L Catalog Thank You card. We love spreading the love!</string>
+    <string name="faq_text_28">Shortly, a shipping person will come and collect the product from you.</string>
+    <string name="faq_text_heading_21">How do I get paid?</string>
+    <string name="faq_text_29">At the time of uploading the product, we ask you for your account details, and the moment the product is approved by the buyer, within 2 business days, your money will be transferred to the account registered with L Catalog.</string>
+    <string name="faq_text_heading_22">What if I want to change my Account Number?</string>
+    <string name="faq_text_30">You can go back to the My Account and change the details there. Currently, we do not have an option to change the account number on the dashboard.</string>
+    <string name="faq_text_31">L - CATALOG is working on introducing new, sassy features to make user experience better every time, so brace yourselves!</string>
+    <string name="faq_text_32">Happy Shopping!</string>
+
+    <string name="nice_html">
+<![CDATA[
+<p>Welcome to Immersion  Software Labs Pvt Ltd. </p> ]]>
+ <![CDATA[<b>Thank you will get back you soon</b>]]>
+    </string>
+
 </resources>

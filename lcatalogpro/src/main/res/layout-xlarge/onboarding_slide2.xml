@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/welcome_layout_2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="@dimen/margin_300"
+            android:layout_height="@dimen/margin_300"
+            android:layout_gravity="center"
+            android:contentDescription="@null"
+            android:padding="@dimen/margin_20"
+            android:src="@drawable/ic_augment_hd" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_20">
+
+        <TextView
+            android:id="@+id/txt_welcome_21"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/graduate"
+            android:text="@string/slide2_title"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_tab_max"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingEnd="@dimen/margin_20"
+        android:paddingStart="@dimen/margin_20"
+        android:paddingTop="@dimen/margin_20">
+
+        <TextView
+            android:id="@+id/txt_welcome_22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/cookie"
+            android:text="@string/slide2_desc"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_tab_xxlarge" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/margin_20"
+        android:paddingEnd="@dimen/margin_20"
+        android:paddingStart="@dimen/margin_20">
+
+        <TextView
+            android:id="@+id/txt_welcome_23"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:fontFamily="@font/cookie"
+            android:text="@string/slide2_link"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_tab_xxlarge" />
+
+    </LinearLayout>
+
+</LinearLayout>

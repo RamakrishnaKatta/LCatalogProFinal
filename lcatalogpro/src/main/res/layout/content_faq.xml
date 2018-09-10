@@ -1,0 +1,1087 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".FAQActivity"
+    tools:showIn="@layout/activity_faq">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_10"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/margin_3"
+                android:visibility="visible">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:fontFamily="@font/overlock_sc"
+                        android:padding="@dimen/margin_3"
+                        android:text="@string/what_is_l_catalog"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_1" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_2" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_4" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:autoLink="web"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_5"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/step1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="step1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/img1"
+                        android:fontFamily="@font/overlock_sc"
+                        android:padding="@dimen/margin_3"
+                        android:text="@string/faq_text_heading_2"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/img1"
+                        android:layout_width="@dimen/margin_30"
+                        android:layout_height="@dimen/margin_30"
+                        android:layout_alignParentEnd="true"
+                        android:padding="@dimen/margin_3"
+                        android:src="@mipmap/ic_faq_down" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/step1text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_6" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/step2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="step2"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/img2"
+                        android:fontFamily="@font/overlock_sc"
+                        android:padding="@dimen/margin_3"
+                        android:text="@string/faq_text_heading_3"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/img2"
+                        android:layout_width="@dimen/margin_30"
+                        android:layout_height="@dimen/margin_30"
+                        android:layout_alignParentEnd="true"
+                        android:padding="@dimen/margin_3"
+                        android:src="@mipmap/ic_faq_down" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/step2text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_7" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/step3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="step3"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/img3"
+                        android:fontFamily="@font/overlock_sc"
+                        android:padding="@dimen/margin_3"
+                        android:text="@string/faq_text_heading_4"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/img3"
+                        android:layout_width="@dimen/margin_30"
+                        android:layout_height="@dimen/margin_30"
+                        android:layout_alignParentEnd="true"
+                        android:padding="@dimen/margin_3"
+                        android:src="@mipmap/ic_faq_down" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/step3text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_8" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/step4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="step4"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/img4"
+                        android:fontFamily="@font/overlock_sc"
+                        android:padding="@dimen/margin_3"
+                        android:text="@string/faq_text_heading_5"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/img4"
+                        android:layout_width="@dimen/margin_30"
+                        android:layout_height="@dimen/margin_30"
+                        android:layout_alignParentEnd="true"
+                        android:padding="@dimen/margin_3"
+                        android:src="@mipmap/ic_faq_down" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/step4text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_9" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/step5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="step5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/img5"
+                        android:fontFamily="@font/overlock_sc"
+                        android:padding="@dimen/margin_3"
+                        android:text="@string/faq_text_heading_6"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/img5"
+                        android:layout_width="@dimen/margin_30"
+                        android:layout_height="@dimen/margin_30"
+                        android:layout_alignParentEnd="true"
+                        android:padding="@dimen/margin_3"
+                        android:src="@mipmap/ic_faq_down" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/step5text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_10" />
+
+                <TextView
+                    android:id="@+id/step5text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_11" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/step6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="step6"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/img6"
+                        android:fontFamily="@font/overlock_sc"
+                        android:padding="@dimen/margin_3"
+                        android:text="@string/faq_text_heading_7"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/img6"
+                        android:layout_width="@dimen/margin_30"
+                        android:layout_height="@dimen/margin_30"
+                        android:layout_alignParentEnd="true"
+                        android:padding="@dimen/margin_3"
+                        android:src="@mipmap/ic_faq_down" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/step6text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_12" />
+
+                <TextView
+                    android:id="@+id/step6text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:autoLink="web"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_13" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/step7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="step7"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/img7"
+                        android:fontFamily="@font/overlock_sc"
+                        android:padding="@dimen/margin_3"
+                        android:text="@string/faq_text_heading_8"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/img7"
+                        android:layout_width="@dimen/margin_30"
+                        android:layout_height="@dimen/margin_30"
+                        android:layout_alignParentEnd="true"
+                        android:padding="@dimen/margin_3"
+                        android:src="@mipmap/ic_faq_down" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/step7text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_14" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/step8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="step8"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/img8"
+                        android:fontFamily="@font/overlock_sc"
+                        android:padding="@dimen/margin_3"
+                        android:text="@string/faq_text_heading_9"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/img8"
+                        android:layout_width="@dimen/margin_30"
+                        android:layout_height="@dimen/margin_30"
+                        android:layout_alignParentEnd="true"
+                        android:padding="@dimen/margin_3"
+                        android:src="@mipmap/ic_faq_down" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/step8text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_15" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/step9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="step9"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/img9"
+                        android:fontFamily="@font/overlock_sc"
+                        android:padding="@dimen/margin_3"
+                        android:text="@string/faq_text_heading_10"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/img9"
+                        android:layout_width="@dimen/margin_30"
+                        android:layout_height="@dimen/margin_30"
+                        android:layout_alignParentEnd="true"
+                        android:padding="@dimen/margin_3"
+                        android:src="@mipmap/ic_faq_down" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/step9text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_16" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/step10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="step10"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/img10"
+                        android:fontFamily="@font/overlock_sc"
+                        android:padding="@dimen/margin_3"
+                        android:text="@string/faq_text_heading_11"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/img10"
+                        android:layout_width="@dimen/margin_30"
+                        android:layout_height="@dimen/margin_30"
+                        android:layout_alignParentEnd="true"
+                        android:padding="@dimen/margin_3"
+                        android:src="@mipmap/ic_faq_down" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/step10text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_17" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/step11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="step11"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/img11"
+                        android:fontFamily="@font/overlock_sc"
+                        android:padding="@dimen/margin_3"
+                        android:text="@string/faq_text_heading_12"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/img11"
+                        android:layout_width="@dimen/margin_30"
+                        android:layout_height="@dimen/margin_30"
+                        android:layout_alignParentEnd="true"
+                        android:padding="@dimen/margin_3"
+                        android:src="@mipmap/ic_faq_down" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/step11text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_18" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/step12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="step12"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/img12"
+                        android:fontFamily="@font/overlock_sc"
+                        android:padding="@dimen/margin_3"
+                        android:text="@string/faq_text_heading_13"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/img12"
+                        android:layout_width="@dimen/margin_30"
+                        android:layout_height="@dimen/margin_30"
+                        android:layout_alignParentEnd="true"
+                        android:padding="@dimen/margin_3"
+                        android:src="@mipmap/ic_faq_down" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/step12text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_19" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/step13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="step13"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/img13"
+                        android:fontFamily="@font/overlock_sc"
+                        android:padding="@dimen/margin_3"
+                        android:text="@string/faq_text_heading_14"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/img13"
+                        android:layout_width="@dimen/margin_30"
+                        android:layout_height="@dimen/margin_30"
+                        android:layout_alignParentEnd="true"
+                        android:padding="@dimen/margin_3"
+                        android:src="@mipmap/ic_faq_down" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/step13text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_20" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/step14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="step14"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/img14"
+                        android:fontFamily="@font/overlock_sc"
+                        android:padding="@dimen/margin_3"
+                        android:text="@string/faq_text_heading_15"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/img14"
+                        android:layout_width="@dimen/margin_30"
+                        android:layout_height="@dimen/margin_30"
+                        android:layout_alignParentEnd="true"
+                        android:padding="@dimen/margin_3"
+                        android:src="@mipmap/ic_faq_down" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/step14text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_21" />
+
+                <TextView
+                    android:id="@+id/step14text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_22" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/step15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="step15"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/img15"
+                        android:fontFamily="@font/overlock_sc"
+                        android:padding="@dimen/margin_3"
+                        android:text="@string/faq_text_heading_16"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/img15"
+                        android:layout_width="@dimen/margin_30"
+                        android:layout_height="@dimen/margin_30"
+                        android:layout_alignParentEnd="true"
+                        android:padding="@dimen/margin_3"
+                        android:src="@mipmap/ic_faq_down" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/step15text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_23" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/step16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="step16"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/img16"
+                        android:fontFamily="@font/overlock_sc"
+                        android:padding="@dimen/margin_3"
+                        android:text="@string/faq_text_heading_17"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/img16"
+                        android:layout_width="@dimen/margin_30"
+                        android:layout_height="@dimen/margin_30"
+                        android:layout_alignParentEnd="true"
+                        android:padding="@dimen/margin_3"
+                        android:src="@mipmap/ic_faq_down" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/step16text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_24" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/step17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="step17"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/img17"
+                        android:fontFamily="@font/overlock_sc"
+                        android:padding="@dimen/margin_3"
+                        android:text="@string/faq_text_heading_18"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/img17"
+                        android:layout_width="@dimen/margin_30"
+                        android:layout_height="@dimen/margin_30"
+                        android:layout_alignParentEnd="true"
+                        android:padding="@dimen/margin_3"
+                        android:src="@mipmap/ic_faq_down" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/step17text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_25" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/step18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="step18"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/img18"
+                        android:fontFamily="@font/overlock_sc"
+                        android:padding="@dimen/margin_3"
+                        android:text="@string/faq_text_heading_19"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/img18"
+                        android:layout_width="@dimen/margin_30"
+                        android:layout_height="@dimen/margin_30"
+                        android:layout_alignParentEnd="true"
+                        android:padding="@dimen/margin_3"
+                        android:src="@mipmap/ic_faq_down" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/step18text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_26" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/step19"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="step19"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/img19"
+                        android:fontFamily="@font/overlock_sc"
+                        android:padding="@dimen/margin_3"
+                        android:text="@string/faq_text_heading_20"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/img19"
+                        android:layout_width="@dimen/margin_30"
+                        android:layout_height="@dimen/margin_30"
+                        android:layout_alignParentEnd="true"
+                        android:padding="@dimen/margin_3"
+                        android:src="@mipmap/ic_faq_down" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/step19text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_27" />
+
+                <TextView
+                    android:id="@+id/step19text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_28" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/step20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="step20"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/img20"
+                        android:fontFamily="@font/overlock_sc"
+                        android:padding="@dimen/margin_3"
+                        android:text="@string/faq_text_heading_21"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/img20"
+                        android:layout_width="@dimen/margin_30"
+                        android:layout_height="@dimen/margin_30"
+                        android:layout_alignParentEnd="true"
+                        android:padding="@dimen/margin_3"
+                        android:src="@mipmap/ic_faq_down" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/step20text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_29" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_5"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/step21"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="step21"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_toStartOf="@+id/img21"
+                        android:fontFamily="@font/overlock_sc"
+                        android:padding="@dimen/margin_3"
+                        android:text="@string/faq_text_heading_22"
+                        android:textAllCaps="true"
+                        android:textSize="@dimen/text_size_large"
+                        android:textStyle="bold" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/img21"
+                        android:layout_width="@dimen/margin_30"
+                        android:layout_height="@dimen/margin_30"
+                        android:layout_alignParentEnd="true"
+                        android:padding="@dimen/margin_3"
+                        android:src="@mipmap/ic_faq_down" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/step21text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_30" />
+
+                <TextView
+                    android:id="@+id/step21text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_5"
+                    android:fontFamily="@font/assistant_semibold"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_31"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/overlock_sc"
+                    android:padding="@dimen/margin_3"
+                    android:text="@string/faq_text_32"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>
+
