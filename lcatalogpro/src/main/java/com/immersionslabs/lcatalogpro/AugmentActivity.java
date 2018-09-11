@@ -78,9 +78,9 @@ public class AugmentActivity extends AppCompatActivity {
     /**
      * Returns false and displays an error message if Sceneform can not run, true if Sceneform can run
      * on this device.
-     *
+     * <p>
      * <p>Sceneform requires Android N on the device as well as OpenGL 3.0 capabilities.
-     *
+     * <p>
      * <p>Finishes the activity if Sceneform can not run
      */
     public static boolean checkIsSupportedDeviceOrFinish(final Activity activity) {

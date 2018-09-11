@@ -60,7 +60,7 @@ public class GalleryActivity extends AppCompatActivity {
     private void InternetMessage() {
         final View view = this.getWindow().getDecorView().findViewById(android.R.id.content);
         final Snackbar snackbar = Snackbar.make(view, "Please Check Your Internet connection", Snackbar.LENGTH_INDEFINITE);
-        snackbar.setActionTextColor(ContextCompat.getColor(this,R.color.red));
+        snackbar.setActionTextColor(ContextCompat.getColor(this, R.color.red));
         snackbar.setAction("RETRY", v -> {
             snackbar.dismiss();
             if (NetworkConnectivity.checkInternetConnection(GalleryActivity.this)) {
