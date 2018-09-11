@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
@@ -130,7 +131,7 @@ public class BudgetListActivity extends AppCompatActivity {
                 Total_budget.requestFocus();
                 Total_budget.setSelection(Total_budget.getText().length());
                 Total_budget.getShowSoftInputOnFocus();
-                Total_budget.setTextColor(getResources().getColor(R.color.red));
+                Total_budget.setTextColor(ContextCompat.getColor(this, R.color.red));
                 enableEditText(Total_budget);
             } else {
                 InternetMessage();
@@ -221,7 +222,7 @@ public class BudgetListActivity extends AppCompatActivity {
     private void InternetMessage() {
         final View view = this.getWindow().getDecorView().findViewById(android.R.id.content);
         final Snackbar snackbar = Snackbar.make(view, "Please Check Your Internet connection", Snackbar.LENGTH_INDEFINITE);
-        snackbar.setActionTextColor(getResources().getColor(R.color.red));
+        snackbar.setActionTextColor(ContextCompat.getColor(this, R.color.red));
         snackbar.setAction("RETRY", v -> {
             snackbar.dismiss();
             if (NetworkConnectivity.checkInternetConnection(BudgetListActivity.this)) {
@@ -376,13 +377,13 @@ public class BudgetListActivity extends AppCompatActivity {
             Remaining_value.setText(str_remaining_value);
 
             if (sessionManager.BUDGET_RED_MARKER()) {
-                Total_budget.setTextColor(getResources().getColor(R.color.red));
-                Current_value.setTextColor(getResources().getColor(R.color.red));
-                Remaining_value.setTextColor(getResources().getColor(R.color.red));
+                Total_budget.setTextColor(ContextCompat.getColor(this, R.color.red));
+                Current_value.setTextColor(ContextCompat.getColor(this, R.color.red));
+                Remaining_value.setTextColor(ContextCompat.getColor(this, R.color.red));
             } else {
-                Total_budget.setTextColor(getResources().getColor(R.color.white));
-                Current_value.setTextColor(getResources().getColor(R.color.white));
-                Remaining_value.setTextColor(getResources().getColor(R.color.white));
+                Total_budget.setTextColor(ContextCompat.getColor(this, R.color.white));
+                Current_value.setTextColor(ContextCompat.getColor(this, R.color.white));
+                Remaining_value.setTextColor(ContextCompat.getColor(this, R.color.white));
             }
 
         } else {
@@ -395,13 +396,13 @@ public class BudgetListActivity extends AppCompatActivity {
             Remaining_value.setText(Guest_Remaining_budget);
 
             if (manager_budgetList.BUDGET_RED_MARKER()) {
-                Total_budget.setTextColor(getResources().getColor(R.color.red));
-                Current_value.setTextColor(getResources().getColor(R.color.red));
-                Remaining_value.setTextColor(getResources().getColor(R.color.red));
+                Total_budget.setTextColor(ContextCompat.getColor(this, R.color.red));
+                Current_value.setTextColor(ContextCompat.getColor(this, R.color.red));
+                Remaining_value.setTextColor(ContextCompat.getColor(this, R.color.red));
             } else {
-                Total_budget.setTextColor(getResources().getColor(R.color.white));
-                Current_value.setTextColor(getResources().getColor(R.color.white));
-                Remaining_value.setTextColor(getResources().getColor(R.color.white));
+                Total_budget.setTextColor(ContextCompat.getColor(this, R.color.white));
+                Current_value.setTextColor(ContextCompat.getColor(this, R.color.white));
+                Remaining_value.setTextColor(ContextCompat.getColor(this, R.color.white));
             }
         }
     }
