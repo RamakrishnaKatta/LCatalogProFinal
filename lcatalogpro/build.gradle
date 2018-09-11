@@ -1,9 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion = 28
+    buildToolsVersion = "28.0.2"
     defaultConfig {
-        applicationId "com.immersionslabs.lcatalogpro"
+        applicationId = "com.immersionslabs.lcatalogpro"
         minSdkVersion 24
         targetSdkVersion 28
         versionCode 1
@@ -15,9 +16,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    lintOptions {
+        abortOnError false
+    }
+
     compileOptions {
-        targetCompatibility 1.8
-        sourceCompatibility 1.8
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -37,8 +42,6 @@ dependencies {
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    //noinspection GradleCompatible
-    implementation 'com.android.support:appcompat-v7:27.1.1'
     //noinspection GradleCompatible
     implementation 'com.android.support:design:27.1.1'
     //noinspection GradleCompatible

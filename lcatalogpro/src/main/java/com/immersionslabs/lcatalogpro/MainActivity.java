@@ -78,19 +78,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Camera cam = Camera.open();
-        Camera.Parameters params = cam.getParameters();
-        List<Camera.Size> previewSizes = params.getSupportedPreviewSizes();
-        cam.release();
-        CharSequence[] entries = new CharSequence[previewSizes.size()];
-        CharSequence[] entryValues = new CharSequence[previewSizes.size()];
-        for (int i = 0; i < previewSizes.size(); i++) {
-            int w = previewSizes.get(i).width;
-            int h = previewSizes.get(i).height;
-            Log.e(TAG, "displaywidth" + w);
-            Log.e(TAG, "displayheight" + h);
-
-        }
         hash_vendor = new HashMap<>();
         vendor_ids = new ArrayList<>();
 
