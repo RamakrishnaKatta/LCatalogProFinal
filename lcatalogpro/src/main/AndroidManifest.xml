@@ -20,13 +20,7 @@
             android:name="com.google.ar.core"
             android:value="required" />
 
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".MainActivity"/>
         <activity android:name=".AugmentActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".AboutUsActivity" />
@@ -49,7 +43,15 @@
         <activity android:name=".VendorCatalogActivity" />
         <activity android:name=".UserTypeActivity" />
         <activity android:name=".UserAccountActivity" />
-        <activity android:name=".SplashScreenActivity" />
+        <activity
+            android:name=".SplashScreenActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".SignupActivity" />
         <activity android:name=".ProjectPartsActivity" />
         <activity android:name=".ProjectPageActivity" />
