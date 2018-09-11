@@ -2,47 +2,45 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.immersionslabs.lcatalogpro">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
+    <uses-feature android:name="android.hardware.camera.any" />
 
     <uses-feature
         android:name="android.hardware.camera.ar"
         android:required="true" />
 
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+
     <application
         android:name=".ARNativeApplication"
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.Dark">
         <meta-data
             android:name="com.google.ar.core"
             android:value="required" />
-
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".AugmentActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".AboutUsActivity" />
-        <activity android:name=".Article3dViewActivity" />
-        <activity android:name=".BlankActivity" />
-        <activity android:name=".BudgetListActivity" />
-        <activity android:name=".CheckListActivity" />
-        <activity android:name=".Experimental3DViewActivity" />
-        <activity android:name=".ExperimentalAugmentActivity" />
-        <activity android:name=".FAQActivity" />
-        <activity android:name=".FavoriteListActivity" />
-        <activity android:name=".FeedbackActivity" />
-        <activity android:name=".ForgotPasswordActivity" />
-        <activity android:name=".FullScreenImageViewActivity" />
-        <activity android:name=".GalleryActivity" />
-        <activity android:name=".GuestActivity" />
-        <activity android:name=".VendorRegistrationActivity" />
-        <activity android:name=".VendorProfileActivity" />
-        <activity android:name=".VendorListActivity" />
-        <activity android:name=".VendorCatalogActivity" />
-        <activity android:name=".UserTypeActivity" />
-        <activity android:name=".UserAccountActivity" />
         <activity
             android:name=".SplashScreenActivity"
             android:screenOrientation="portrait"
@@ -52,15 +50,160 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignupActivity" />
-        <activity android:name=".ProjectPartsActivity" />
-        <activity android:name=".ProjectPageActivity" />
-        <activity android:name=".ProjectCatalogActivity" />
-        <activity android:name=".ProductPageActivity" />
-        <activity android:name=".ProductCatalogActivity" />
-        <activity android:name=".OnBoarding" />
-        <activity android:name=".NotifyActivity" />
-        <activity android:name=".NetworkActivity" />
+
+
+        <activity
+            android:name=".OnBoarding"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".UserTypeActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_Login"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".SignupActivity"
+            android:label="@string/title_activity_SignUp"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".GuestActivity"
+            android:label="@string/title_activity_Guest"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".BlankActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".ProductCatalogActivity"
+            android:label="@string/title_activity_catalog"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".CheckListActivity"
+            android:label="@string/title_activity_CheckList"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".Article3dViewActivity"
+            android:label="@string/title_activity_Article3dView"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".ProductPageActivity"
+            android:label="@string/title_activity_ProductPage"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".ProjectCatalogActivity"
+            android:label="@string/title_activity_Campaign"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".ProjectPageActivity"
+            android:label="@string/title_activity_ProjectDetails"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".ProjectPartsActivity"
+            android:label="@string/title_activity_ProjectPartDetails"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".VendorRegistrationActivity"
+            android:label="@string/title_activity_VendorRegistration"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".UserAccountActivity"
+            android:label="@string/title_activity_UserAccount"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".FavoriteListActivity"
+            android:label="@string/title_activity_favourite_list"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".AboutUsActivity"
+            android:label="@string/title_activity_AboutUs"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".FeedbackActivity"
+            android:label="@string/title_activity_Feedback"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:label="@string/title_activity_ForgotPassword"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".GalleryActivity"
+            android:label="@string/title_activity_Gallery"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".NotifyActivity"
+            android:label="@string/title_activity_Notify"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".FAQActivity"
+            android:label="@string/title_activity_faq"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".VendorProfileActivity"
+            android:label="@string/title_activity_vendor_details"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".VendorCatalogActivity"
+            android:label="@string/title_activity_vendor_catalog"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".VendorListActivity"
+            android:label="@string/title_activity_vendor_list"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+
+        <activity
+            android:name=".AugmentActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name=".FullScreenImageViewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+
+        <activity
+            android:name=".BudgetListActivity"
+            android:label="@string/title_activity_budget_list"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".Experimental3DViewActivity"
+            android:label="@string/title_activity_experimental_3dview"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".ExperimentalAugmentActivity"
+            android:label="@string/title_activity_experimental_augment"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
 
         <receiver android:name=".MyScheduledReceiver" />
     </application>
