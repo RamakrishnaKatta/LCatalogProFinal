@@ -28,6 +28,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:28.0.0-rc02'
     androidTestImplementation 'com.android.support:support-annotations:28.0.0-rc02'
     implementation 'com.android.support:design:28.0.0-rc02'
@@ -68,7 +69,6 @@ dependencies {
 }
 
 apply plugin: 'com.google.ar.sceneform.plugin'
-
 
 sceneform.asset('models/floorlamp.obj',
         'default',

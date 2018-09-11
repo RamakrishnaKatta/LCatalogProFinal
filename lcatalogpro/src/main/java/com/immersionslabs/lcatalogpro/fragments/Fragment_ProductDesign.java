@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
@@ -677,9 +678,9 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
             }
 
             if (manager_budgetList.BUDGET_RED_MARKER()) {
-                Add_Text.setTextColor(getResources().getColor(R.color.red));
+                Add_Text.setTextColor(ContextCompat.getColor(this.getActivity(), R.color.red));
             } else {
-                Add_Text.setTextColor(getResources().getColor(R.color.white));
+                Add_Text.setTextColor(ContextCompat.getColor(this.getActivity(), R.color.white));
             }
         }
         if (EnvConstants.user_type.equals("CUSTOMER")) {
@@ -693,9 +694,9 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
             }
 
             if (sessionmanager.BUDGET_RED_MARKER()) {
-                Add_Text.setTextColor(getResources().getColor(R.color.red));
+                Add_Text.setTextColor(ContextCompat.getColor(this.getActivity(), R.color.red));
             } else {
-                Add_Text.setTextColor(getResources().getColor(R.color.white));
+                Add_Text.setTextColor(ContextCompat.getColor(this.getActivity(), R.color.white));
             }
         }
     }
