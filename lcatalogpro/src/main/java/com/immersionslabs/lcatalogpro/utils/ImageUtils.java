@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.Toast;
-
+import com.immersionslabs.lcatalogpro.R;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
