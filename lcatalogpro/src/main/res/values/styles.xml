@@ -18,7 +18,7 @@
         <item name="android:textColorHint">@color/white</item>
         <item name="colorButtonNormal">@color/primary_dark</item>
         <item name="android:colorBackground">@color/complete_transparent</item>
-        <item name="coordinatorLayoutStyle">@style/Widget.Design.CoordinatorLayout</item>
+        <item name="coordinatorLayoutStyle">@style/Widget.Support.CoordinatorLayout</item>
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 
