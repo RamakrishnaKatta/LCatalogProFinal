@@ -28,12 +28,10 @@ import android.widget.Toast;
 import com.android.volley.VolleyError;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
-import com.immersionslabs.lcatalogpro.adapters.ProductImageSliderAdapter;
 import com.immersionslabs.lcatalogpro.Article3dViewActivity;
 import com.immersionslabs.lcatalogpro.AugmentActivity;
-import com.immersionslabs.lcatalogpro.Experimental3DViewActivity;
-import com.immersionslabs.lcatalogpro.ExperimentalAugmentActivity;
 import com.immersionslabs.lcatalogpro.R;
+import com.immersionslabs.lcatalogpro.adapters.ProductImageSliderAdapter;
 import com.immersionslabs.lcatalogpro.network.ApiCommunication;
 import com.immersionslabs.lcatalogpro.network.ApiService;
 import com.immersionslabs.lcatalogpro.utils.EnvConstants;
@@ -67,7 +65,7 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
 
     AppCompatImageButton article_share, article_3d_view, article_augment, article_budgetlist, article_removelist, article_checklist;
     LinearLayout article_share_area, article_3d_view_area, article_augment_area,
-            article_budgetlist_area, article_checklist_area, Experimental_3d_View, Experimental_Augment_View;
+            article_budgetlist_area, article_checklist_area;
 
     String article_images, article_id;
     // article_images is split in to five parts and assigned to each string
@@ -120,9 +118,6 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
         article_augment_area = view.findViewById(R.id.article_augment_icon_area);
         article_budgetlist_area = view.findViewById(R.id.article_budget_icon_area);
         article_checklist_area = view.findViewById(R.id.article_checklist_icon_area);
-        Experimental_3d_View = view.findViewById(R.id.article_3dview_exp_area);
-        Experimental_Augment_View = view.findViewById(R.id.article_augment_exp_area);
-
         sessionmanager = new SessionManager(getContext());
         HashMap hashmap = new HashMap();
         manager_budgetList = new Manager_BudgetList();
@@ -483,22 +478,6 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
                         .attach(Fragment_ProductDesign.this)
                         .commit();
             }
-        });
-
-        Experimental_3d_View.setOnClickListener(v -> {
-            Bundle article_3ds_data = new Bundle();
-            article_3ds_data.putString("article_3ds_file", article_id);
-            article_3ds_data.putString("flag", "article");
-            Intent intent = new Intent(getActivity(), Experimental3DViewActivity.class).putExtras(article_3ds_data);
-            startActivity(intent);
-        });
-
-        Experimental_Augment_View.setOnClickListener(v -> {
-            Bundle article_augment_data = new Bundle();
-            article_augment_data.putString("article_augment_file", article_id);
-            article_augment_data.putString("flag", "article");
-            Intent intent = new Intent(getActivity(), ExperimentalAugmentActivity.class).putExtras(article_augment_data);
-            startActivity(intent);
         });
 
         final Handler handler = new Handler();

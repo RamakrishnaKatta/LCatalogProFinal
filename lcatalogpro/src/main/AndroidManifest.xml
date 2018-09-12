@@ -41,6 +41,7 @@
         <meta-data
             android:name="com.google.ar.core"
             android:value="required" />
+
         <activity
             android:name=".SplashScreenActivity"
             android:screenOrientation="portrait"
@@ -192,16 +193,6 @@
         <activity
             android:name=".BudgetListActivity"
             android:label="@string/title_activity_budget_list"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Dark" />
-        <activity
-            android:name=".Experimental3DViewActivity"
-            android:label="@string/title_activity_experimental_3dview"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Dark" />
-        <activity
-            android:name=".ExperimentalAugmentActivity"
-            android:label="@string/title_activity_experimental_augment"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Dark" />
 

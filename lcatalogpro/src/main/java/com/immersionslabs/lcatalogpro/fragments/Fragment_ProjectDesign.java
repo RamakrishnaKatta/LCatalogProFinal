@@ -17,12 +17,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.immersionslabs.lcatalogpro.adapters.ProjectImageSliderAdapter;
 import com.immersionslabs.lcatalogpro.Article3dViewActivity;
 import com.immersionslabs.lcatalogpro.AugmentActivity;
-import com.immersionslabs.lcatalogpro.Experimental3DViewActivity;
-import com.immersionslabs.lcatalogpro.ExperimentalAugmentActivity;
 import com.immersionslabs.lcatalogpro.R;
+import com.immersionslabs.lcatalogpro.adapters.ProjectImageSliderAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -130,22 +128,6 @@ public class Fragment_ProjectDesign extends Fragment {
             b4.putString("project_3ds_file_name", project_3ds);
             Intent _3d_intent = new Intent(getContext(), Article3dViewActivity.class).putExtras(b4);
             startActivity(_3d_intent);
-        });
-
-        project_exp_aug_area.setOnClickListener(v -> {
-            Bundle project_augment_data = new Bundle();
-            project_augment_data.putString("project_augment_file", project_id);
-            project_augment_data.putString("flag", "project");
-            Intent intent = new Intent(getContext(), ExperimentalAugmentActivity.class).putExtras(project_augment_data);
-            startActivity(intent);
-        });
-
-        project_exp_3d_area.setOnClickListener(v -> {
-            Bundle project_3d_data = new Bundle();
-            project_3d_data.putString("project_3ds_file", project_id);
-            project_3d_data.putString("flag", "project");
-            Intent intent = new Intent(getContext(), Experimental3DViewActivity.class).putExtras(project_3d_data);
-            startActivity(intent);
         });
 
         return view;

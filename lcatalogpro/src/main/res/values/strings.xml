@@ -25,8 +25,6 @@
     <string name="title_activity_budget_bar">Budget Bar</string>
     <string name="title_activity_Article3dView">3D Article View</string>
     <string name="title_activity_faq">F A Q</string>
-    <string name="title_activity_experimental_3dview">Experimental Web 3DView</string>
-    <string name="title_activity_experimental_augment">Experimental Web Augment</string>
 
     //App default Resources
     <string name="app_name">L CATALOG PRO</string>
