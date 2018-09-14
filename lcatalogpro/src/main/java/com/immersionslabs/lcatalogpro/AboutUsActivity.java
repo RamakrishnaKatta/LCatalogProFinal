@@ -99,13 +99,13 @@ public class AboutUsActivity extends AppCompatActivity implements ConnectionRece
 
     @Override
     public void onResume() {
-        ARNativeApplication.getInstance().setConnectionListener(this);
+        LCatalogApplication.getInstance().setConnectionListener(this);
         super.onResume();
     }
 
     public void onStart() {
         super.onStart();
-        ARNativeApplication.getInstance().setConnectionListener(this);
+        LCatalogApplication.getInstance().setConnectionListener(this);
     }
 
     @Override
@@ -118,7 +118,7 @@ public class AboutUsActivity extends AppCompatActivity implements ConnectionRece
     @Override
     public void onPause() {
         super.onPause();
-        ARNativeApplication.getInstance().setConnectionListener(this);
+        LCatalogApplication.getInstance().setConnectionListener(this);
     }
 
     @Override

@@ -323,11 +323,6 @@
                 android:layout_height="@dimen/margin_2"
                 android:background="@color/zobra" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/margin_2"
-                android:background="@color/zobra" />
-
         </LinearLayout>
 
     </LinearLayout>

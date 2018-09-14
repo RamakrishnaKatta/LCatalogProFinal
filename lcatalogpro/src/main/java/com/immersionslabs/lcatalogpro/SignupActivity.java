@@ -1,6 +1,5 @@
 package com.immersionslabs.lcatalogpro;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -31,7 +30,7 @@ import java.util.Objects;
 
 public class SignupActivity extends AppCompatActivity implements ApiCommunication {
 
-    private static final String TAG = "SignupActivity";
+    private static final String TAG = SignupActivity.class.getSimpleName();
 
     private static final int REQUEST_SIGNUP = 0;
     private static final String REGISTER_URL = EnvConstants.APP_BASE_URL + "/users";
@@ -82,10 +81,6 @@ public class SignupActivity extends AppCompatActivity implements ApiCommunicatio
                 InternetMessage();
             }
         });
-//        if (NetworkConnectivity.checkInternetConnection(SignupActivity.this)) {
-//        } else {
-//            InternetMessage();
-//        }
     }
 
     private void InternetMessage() {
@@ -266,21 +261,12 @@ public class SignupActivity extends AppCompatActivity implements ApiCommunicatio
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
         builder.setTitle("Alert");
         builder.setMessage("Are you sure you don't want to SignUp ");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-                Intent intent = new Intent(SignupActivity.this, UserTypeActivity.class);
-                startActivity(intent);
-                // SignupActivity.super.onDestroy();
-            }
+        builder.setPositiveButton("Yes", (dialog, which) -> {
+            Intent intent = new Intent(SignupActivity.this, UserTypeActivity.class);
+            startActivity(intent);
         });
-        builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                CustomMessage.getInstance().CustomMessage(SignupActivity.this, "Thanks for thinking again.");
-            }
-        });
+        builder.setNegativeButton("CANCEL", (dialog, which) ->
+                CustomMessage.getInstance().CustomMessage(SignupActivity.this, "Thanks for thinking again."));
         builder.show();
     }
 

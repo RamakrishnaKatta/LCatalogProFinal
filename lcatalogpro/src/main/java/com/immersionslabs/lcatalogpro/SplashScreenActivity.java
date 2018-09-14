@@ -20,7 +20,7 @@ import static com.immersionslabs.lcatalogpro.utils.ConnectionReceiver.isConnecte
 
 public class SplashScreenActivity extends AppCompatActivity implements Animation.AnimationListener {
 
-    public static final String TAG = "SplashScreenActivity";
+    public static final String TAG = SplashScreenActivity.class.getSimpleName();
 
     Animation animFadeIn;
     LinearLayout linearLayout;
@@ -34,9 +34,7 @@ public class SplashScreenActivity extends AppCompatActivity implements Animation
         app_name = findViewById(R.id.application_name);
         powered = findViewById(R.id.immersionslabs);
 
-
         if (NetworkConnectivity.checkInternetConnection(SplashScreenActivity.this)) {
-
             animate();
         } else {
             InternetMessage();
@@ -74,7 +72,6 @@ public class SplashScreenActivity extends AppCompatActivity implements Animation
     }
 
     private void animate() {
-
         final AppCompatImageView imageView = findViewById(R.id.splash_icon);
         final Animation animation_1 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.rotate);
         final Animation animation_2 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.anti_rotate);
@@ -132,5 +129,15 @@ public class SplashScreenActivity extends AppCompatActivity implements Animation
 
     @Override
     public void onAnimationRepeat(Animation animation) {
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 }

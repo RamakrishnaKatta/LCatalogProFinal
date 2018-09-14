@@ -78,7 +78,6 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
      */
     private float[] mTemporaryMatrix = new float[16];
 
-    private String article_name, article_3ds_file_name;
     private String DOWNLOAD_URL;
 
     public MyGLRenderer(final Context activityContext, String DOWNLOAD_URL) {

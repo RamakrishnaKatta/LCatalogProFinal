@@ -30,7 +30,7 @@ import java.util.ArrayList;
 
 public class VendorCatalogAdapter extends RecyclerView.Adapter<VendorCatalogAdapter.ViewHolder> {
 
-    private static final String TAG = "VendorCatalogAdapter";
+    private static final String TAG = VendorCatalogAdapter.class.getSimpleName();
 
     private Activity activity;
 

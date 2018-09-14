@@ -27,9 +27,8 @@
         android:smallScreens="true"
         android:xlargeScreens="true" />
 
-
     <application
-        android:name=".ARNativeApplication"
+        android:name=".LCatalogApplication"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
@@ -38,6 +37,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Dark">
+
         <meta-data
             android:name="com.google.ar.core"
             android:value="required" />
@@ -51,7 +51,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
 
         <activity
             android:name=".OnBoarding"

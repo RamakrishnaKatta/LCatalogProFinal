@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
-import com.immersionslabs.lcatalogpro.adapters.MainListViewAdapter;
 import com.immersionslabs.lcatalogpro.R;
+import com.immersionslabs.lcatalogpro.adapters.MainListViewAdapter;
 import com.immersionslabs.lcatalogpro.network.ApiCommunication;
 import com.immersionslabs.lcatalogpro.network.ApiService;
 import com.immersionslabs.lcatalogpro.utils.EnvConstants;
@@ -27,7 +27,7 @@ import java.util.Objects;
 
 public class Fragment_Overview extends Fragment implements ApiCommunication {
 
-    private static final String TAG = "Fragment_Overview";
+    private static final String TAG = Fragment_Overview.class.getSimpleName();
 
     private static final String REGISTER_URL = EnvConstants.APP_BASE_URL + "/vendorArticles";
 

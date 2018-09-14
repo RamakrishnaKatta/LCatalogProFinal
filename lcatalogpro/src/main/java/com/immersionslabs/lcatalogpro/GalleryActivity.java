@@ -18,11 +18,9 @@ import java.util.ArrayList;
 
 public class GalleryActivity extends AppCompatActivity {
 
-    private static final String TAG = "GalleryActivity";
-
     RecyclerView recycler;
     GridLayoutManager manager;
-    private ImageUtils imageUtils;
+    ImageUtils imageUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

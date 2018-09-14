@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatImageView;
 import android.text.Html;
@@ -31,7 +32,7 @@ import org.json.JSONObject;
 
 public class Fragment_ProductDetails extends Fragment implements View.OnClickListener, ApiCommunication {
 
-    private static final String TAG = "Fragment_ProductDetails";
+    private static final String TAG = Fragment_ProductDetails.class.getSimpleName();
 
     private static final String REGISTER_URL = EnvConstants.APP_BASE_URL + "/vendors/specific/";
     private static String VENDOR_URL = null;
@@ -49,7 +50,7 @@ public class Fragment_ProductDetails extends Fragment implements View.OnClickLis
     LinearLayout vendor_details;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_product_details, container, false);
@@ -72,6 +73,7 @@ public class Fragment_ProductDetails extends Fragment implements View.OnClickLis
         vendor_details = view.findViewById(R.id.vendor_details);
         vendor_details.setOnClickListener(this);
 
+        assert getArguments() != null;
         a_title = getArguments().getString("article_title");
         Log.e(TAG, "--" + a_title);
         article_title.setText(a_title);
@@ -117,17 +119,12 @@ public class Fragment_ProductDetails extends Fragment implements View.OnClickLis
         VENDOR_URL = REGISTER_URL + a_vendor_id;
         Log.e(TAG, "VENDOR_URL--" + VENDOR_URL);
 
-        try {
-            getVendorData();
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        getVendorData();
 
         return view;
     }
 
-    private void getVendorData() throws JSONException {
+    private void getVendorData() {
 
         ApiService.getInstance(getContext()).getData(this, false, "PRODUCT DETAILS FRAGMENT", VENDOR_URL, "VENDOR_DATA");
     }

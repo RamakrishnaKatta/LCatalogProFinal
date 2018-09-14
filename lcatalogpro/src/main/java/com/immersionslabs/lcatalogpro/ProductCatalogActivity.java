@@ -34,7 +34,7 @@ import java.util.ArrayList;
 
 public class ProductCatalogActivity extends AppCompatActivity implements ApiCommunication {
 
-    private static final String TAG = "CatalogActivity";
+    private static final String TAG = ProductCatalogActivity.class.getSimpleName();
 
     private static final String REGISTER_URL = EnvConstants.APP_BASE_URL + "/vendorArticles";
 

@@ -17,7 +17,7 @@ import org.json.JSONObject;
 
 public class ProductPageActivity extends AppCompatActivity {
 
-    private static final String TAG = "ProductPageActivity";
+    private static final String TAG = ProductPageActivity.class.getSimpleName();
 
     String images;
 

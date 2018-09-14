@@ -13,8 +13,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.immersionslabs.lcatalogpro.fragments.Fragment_Overview;
 import com.immersionslabs.lcatalogpro.R;
+import com.immersionslabs.lcatalogpro.fragments.Fragment_Overview;
 import com.immersionslabs.lcatalogpro.utils.EnvConstants;
 
 import org.json.JSONArray;
@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 public class MainListViewAdapter extends RecyclerView.Adapter<MainListViewAdapter.ViewHolder> {
 
-    private static final String TAG = "MainListViewAdapter";
+    private static final String TAG = MainListViewAdapter.class.getSimpleName();
 
     private Fragment_Overview activity;
 

@@ -12,8 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.android.volley.VolleyError;
-import com.immersionslabs.lcatalogpro.adapters.ProjectPartsAdapter;
 import com.immersionslabs.lcatalogpro.R;
+import com.immersionslabs.lcatalogpro.adapters.ProjectPartsAdapter;
 import com.immersionslabs.lcatalogpro.network.ApiCommunication;
 import com.immersionslabs.lcatalogpro.network.ApiService;
 import com.immersionslabs.lcatalogpro.utils.EnvConstants;
@@ -26,7 +26,7 @@ import java.util.ArrayList;
 
 public class Fragment_ProjectParts extends Fragment implements ApiCommunication {
 
-    private static final String TAG = "Fragment_ProjectParts";
+    private static final String TAG = Fragment_ProjectParts.class.getSimpleName();
 
     private static final String REGISTER_URL = EnvConstants.APP_BASE_URL + "/getProjectDetails/";
 
@@ -153,5 +153,15 @@ public class Fragment_ProjectParts extends Fragment implements ApiCommunication 
 
     @Override
     public void onErrorCallback(VolleyError error, String flag) {
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 }

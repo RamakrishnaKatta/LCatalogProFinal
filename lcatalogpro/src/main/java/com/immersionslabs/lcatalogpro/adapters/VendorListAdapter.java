@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class VendorListAdapter extends RecyclerView.Adapter<VendorListAdapter.ViewHolder> {
 
-    private static final String TAG = "VendorListAdapter";
+    private static final String TAG = VendorListAdapter.class.getSimpleName();
 
     private Activity activity;
 

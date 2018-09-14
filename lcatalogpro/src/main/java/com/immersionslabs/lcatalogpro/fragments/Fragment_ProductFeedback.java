@@ -29,10 +29,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Fragment_ProductFeedback extends Fragment implements View.OnClickListener, ApiCommunication {
 
-    private static final String TAG = "ProductFeedback";
+    private static final String TAG = Fragment_ProductFeedback.class.getSimpleName();
 
     public static final String RATING_URL = EnvConstants.APP_BASE_URL + "/articleRating";
     public static final String ARTICLE_FEEDBACK_URL = EnvConstants.APP_BASE_URL + "/articleFeedback";
@@ -75,7 +76,7 @@ public class Fragment_ProductFeedback extends Fragment implements View.OnClickLi
         ratings_submit = view.findViewById(R.id.ratings_submit);
         ratings_imageview = view.findViewById(R.id.ratings_imageview);
 
-        sessionManager = new SessionManager(getContext());
+        sessionManager = new SessionManager(Objects.requireNonNull(getContext()));
 
         feedback_article_id_area.setVisibility(View.GONE);
         feedback_vendor_id_area.setVisibility(View.GONE);
@@ -90,6 +91,7 @@ public class Fragment_ProductFeedback extends Fragment implements View.OnClickLi
 
         feedback_submit.setOnClickListener(this);
 
+        assert getArguments() != null;
         f_article_id = getArguments().getString("article_id");
         Log.e(TAG, "--" + f_article_id);
         feedback_article_id.setText(f_article_id);
@@ -208,10 +210,10 @@ public class Fragment_ProductFeedback extends Fragment implements View.OnClickLi
         if (v.getId() == R.id.feedback_submit) {
             try {
                 post_feedback_apicall();
+                Toast.makeText(getActivity(), "Your submit form is accepted", Toast.LENGTH_LONG).show();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-//            Toast.makeText(getActivity(), "Your submit form is accepted", Toast.LENGTH_LONG).show();
         }
     }
 

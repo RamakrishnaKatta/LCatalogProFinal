@@ -13,16 +13,14 @@
         <android.support.v7.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:fontFamily="@font/assistant_semibold"
             android:layout_gravity="bottom"
-            android:text="Please Connect to Internet otherwise  Die Because No Internet No world"
+            android:fontFamily="@font/assistant_semibold"
+            android:text="Please Connect to Internet"
+            android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@color/primary_dark"
             android:textSize="@dimen/text_size_large"
             android:textStyle="bold" />
-
-
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

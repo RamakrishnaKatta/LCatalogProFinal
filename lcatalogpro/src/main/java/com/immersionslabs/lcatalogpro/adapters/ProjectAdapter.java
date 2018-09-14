@@ -28,7 +28,7 @@ import java.util.ArrayList;
 
 public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHolder> {
 
-    private static final String TAG = "ProjectAdapter";
+    private static final String TAG = ProjectAdapter.class.getSimpleName();
 
     private Activity activity;
 

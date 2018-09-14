@@ -35,7 +35,7 @@ import static com.immersionslabs.lcatalogpro.utils.EnvConstants.APP_BASE_URL;
 
 public class UserAccountActivity extends AppCompatActivity implements ApiCommunication {
 
-    private static final String TAG = "UserAccountActivity";
+    private static final String TAG = UserAccountActivity.class.getSimpleName();
 
     private String LOGIN_URL = APP_BASE_URL + "/users";
     private static final int REQUEST_UPDATE = 0;
@@ -109,7 +109,6 @@ public class UserAccountActivity extends AppCompatActivity implements ApiCommuni
         });
 
         if (NetworkConnectivity.checkInternetConnection(UserAccountActivity.this)) {
-
         } else {
             InternetMessage();
         }
@@ -181,7 +180,6 @@ public class UserAccountActivity extends AppCompatActivity implements ApiCommuni
     public void onResponseCallback(JSONObject response, String flag) {
         if (flag.equals("USER_UPDATE")) {
             Log.e(TAG, "response--" + response);
-
             try {
                 resp = response.getString("success");
                 code = response.getString("status_code");

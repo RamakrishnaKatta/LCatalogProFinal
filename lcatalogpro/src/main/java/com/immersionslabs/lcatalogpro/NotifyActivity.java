@@ -29,7 +29,7 @@ import java.util.ArrayList;
 
 public class NotifyActivity extends AppCompatActivity implements ApiCommunication {
 
-    private static final String TAG = "NotifyActivity";
+    private static final String TAG = NotifyActivity.class.getSimpleName();
 
     private static final String REGISTER_URL = EnvConstants.APP_BASE_URL + "/notification";
 

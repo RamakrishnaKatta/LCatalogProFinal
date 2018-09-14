@@ -32,7 +32,8 @@ import org.json.JSONException;
 import java.util.ArrayList;
 
 public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHolder> {
-    private static final String TAG = "GridViewAdapter";
+
+    private static final String TAG = GridViewAdapter.class.getSimpleName();
 
     private Activity activity;
 

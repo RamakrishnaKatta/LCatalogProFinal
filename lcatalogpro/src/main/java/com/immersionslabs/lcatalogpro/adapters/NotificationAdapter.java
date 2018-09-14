@@ -21,7 +21,8 @@ import com.immersionslabs.lcatalogpro.utils.EnvConstants;
 import java.util.ArrayList;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.ViewHolder> {
-    private static final String TAG = "NotificationAdapter";
+
+    private static final String TAG = NotificationAdapter.class.getSimpleName();
 
     private Activity activity;
 
@@ -65,15 +66,12 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         final Context[] context = new Context[1];
 
         String get_image = notification_images.get(position);
-//        String new_image = get_image.replace("\\", File.separator);
 
         Glide.with(activity)
                 .load(EnvConstants.APP_BASE_URL + "/upload/notifications/" + get_image)
                 .placeholder(R.drawable.dummy_icon)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(viewHolder.imageView);
-
-//        new DownloadImageTask(viewHolder.imageView).execute(new_image);
 
         viewHolder.title.setText(notification_titles.get(position));
         viewHolder.message.setText(notification_messages.get(position));

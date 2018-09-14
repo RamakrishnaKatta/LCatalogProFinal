@@ -29,7 +29,7 @@ import java.util.ArrayList;
 
 public class MyFavoriteAdapter extends RecyclerView.Adapter<MyFavoriteAdapter.ViewHolder> {
 
-    private static final String TAG = "MyFavoriteAdapter";
+    private static final String TAG = MyFavoriteAdapter.class.getSimpleName();
 
     private Activity activity;
 

@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 public class ProjectCatalogActivity extends AppCompatActivity implements ApiCommunication {
 
-    private static final String TAG = "ProjectCatalogActivity";
+    private static final String TAG = ProductCatalogActivity.class.getSimpleName();
 
     private static final String REGISTER_URL = EnvConstants.APP_BASE_URL + "/getprojects";
 
@@ -110,7 +110,8 @@ public class ProjectCatalogActivity extends AppCompatActivity implements ApiComm
 
         Project_Manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(Project_Manager);
-        ProjectAdapter adapter = new ProjectAdapter(this, project_ids, project_name, project_description, project_subDescription, project_images, project_3ds, project_pattern, project_vendor);
+        ProjectAdapter adapter = new ProjectAdapter(this, project_ids, project_name, project_description,
+                project_subDescription, project_images, project_3ds, project_pattern, project_vendor);
         recyclerView.setAdapter(adapter);
     }
 

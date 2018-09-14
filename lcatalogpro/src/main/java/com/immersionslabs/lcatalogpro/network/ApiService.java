@@ -8,8 +8,6 @@ import android.widget.Toast;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -100,20 +98,17 @@ public class ApiService {
     public void postData(final ApiCommunication listener, final String url, JSONObject params, final String SCREEN_NAME, final String flag) {
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.POST, url, params, response -> listener.onResponseCallback(response, flag), new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        if (error.networkResponse != null) {
-                            try {
-                                Log.e(SCREEN_NAME + "-" + flag, error.networkResponse.data.toString() + "");
-                                Toast.makeText(mCtx, "internal error", Toast.LENGTH_SHORT).show();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
+                (Request.Method.POST, url, params, response -> listener.onResponseCallback(response, flag), error -> {
+                    if (error.networkResponse != null) {
+                        try {
+                            Log.e(SCREEN_NAME + "-" + flag, error.networkResponse.data.toString() + "");
+                            Toast.makeText(mCtx, "internal error", Toast.LENGTH_SHORT).show();
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
-                        listener.onErrorCallback(error, flag);
-                        getRequestQueue().getCache().remove(url);
                     }
+                    listener.onErrorCallback(error, flag);
+                    getRequestQueue().getCache().remove(url);
                 });
         jsObjRequest.setRetryPolicy(new DefaultRetryPolicy(
                 4000,

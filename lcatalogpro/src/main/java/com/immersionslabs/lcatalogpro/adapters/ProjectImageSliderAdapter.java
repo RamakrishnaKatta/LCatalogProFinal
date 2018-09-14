@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class ProjectImageSliderAdapter extends PagerAdapter {
 
-    private static final String TAG = "ProjectImageSliderAdapter";
+    private static final String TAG = ProjectImageSliderAdapter.class.getSimpleName();
 
     private ArrayList<String> Images;
     private LayoutInflater inflater;

@@ -75,12 +75,6 @@ public class VendorRegistrationActivity extends AppCompatActivity implements Api
                 InternetMessage();
             }
         });
-
-//        if (NetworkConnectivity.checkInternetConnection(VendorRegistrationActivity.this)) {
-//
-//        } else {
-//            InternetMessage();
-//        }
     }
 
     private void InternetMessage() {

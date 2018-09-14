@@ -27,7 +27,8 @@ import java.util.ArrayList;
 
 public class ProjectPartDetailsAdapter extends RecyclerView.Adapter<ProjectPartDetailsAdapter.ViewHolder> {
 
-    private static final String TAG = "ProjectPartDetailsAdapter";
+    private static final String TAG = ProjectPartDetailsAdapter.class.getSimpleName();
+
     private Activity activity;
 
     private ArrayList<String> part_articles_id;
@@ -117,7 +118,6 @@ public class ProjectPartDetailsAdapter extends RecyclerView.Adapter<ProjectPartD
             article_name = itemView.findViewById(R.id.part_article_name);
             article_image = itemView.findViewById(R.id.part_article_image);
             part_article_container = itemView.findViewById(R.id.part_article_container);
-
         }
     }
 }

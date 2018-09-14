@@ -47,7 +47,6 @@ public class FullScreenImageViewActivity extends Activity {
         snackbar.setAction("RETRY", v -> {
             snackbar.dismiss();
             if (NetworkConnectivity.checkInternetConnection(FullScreenImageViewActivity.this)) {
-
             } else {
                 InternetMessage();
             }

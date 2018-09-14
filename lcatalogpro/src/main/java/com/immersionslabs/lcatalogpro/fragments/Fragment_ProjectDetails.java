@@ -18,10 +18,11 @@ import com.immersionslabs.lcatalogpro.utils.EnvConstants;
 import com.immersionslabs.lcatalogpro.utils.SessionManager;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Fragment_ProjectDetails extends Fragment {
 
-    private static final String TAG = "fragment_projectdetails";
+    private static final String TAG = Fragment_ProjectDetails.class.getSimpleName();
 
     TextView project_name, project_description, project_sub_description, project_vendor_name, project_vendor_address;
 
@@ -49,7 +50,7 @@ public class Fragment_ProjectDetails extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_project_details, container, false);
         Bundle bundle = getArguments();
 
-        sessionManager = new SessionManager(getContext());
+        sessionManager = new SessionManager(Objects.requireNonNull(getContext()));
 
         assert bundle != null;
         name = bundle.getString("projectName");
@@ -107,5 +108,15 @@ public class Fragment_ProjectDetails extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 }

@@ -43,7 +43,7 @@ import static com.immersionslabs.lcatalogpro.utils.UserCheckUtil.isExternalStora
 
 public class UserTypeActivity extends AppCompatActivity {
 
-    private static final String TAG = "UserTypeActivity";
+    private static final String TAG = UserTypeActivity.class.getSimpleName();
 
     private static final int MY_PERMISSIONS_REQUEST = 10;
     private static final int REQUEST_USERTYPE = 0;
@@ -93,8 +93,8 @@ public class UserTypeActivity extends AppCompatActivity {
 
                 Log.e(TAG, "" + Arrays.toString(children_data));
 
-                for (int i = 0; i < children_data.length; i++) {
-                    delete_data = new File(dir_data, children_data[i]).delete();
+                for (String aChildren_data : children_data) {
+                    delete_data = new File(dir_data, aChildren_data).delete();
                 }
                 Log.e(TAG, "Files inside Data Folder deleted : " + delete_data);
             }

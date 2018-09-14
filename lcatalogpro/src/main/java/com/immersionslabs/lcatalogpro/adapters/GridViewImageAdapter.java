@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class GridViewImageAdapter extends RecyclerView.Adapter<GridViewImageAdapter.ViewHolder> {
 
-    public static final String TAG = "GridViewImageAdapter";
+    public static final String TAG = GridViewImageAdapter.class.getSimpleName();
 
     private Activity _activity;
     private ArrayList<String> _filePaths = new ArrayList<>();

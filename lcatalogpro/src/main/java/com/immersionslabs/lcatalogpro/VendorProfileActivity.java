@@ -28,11 +28,12 @@ import org.json.JSONObject;
 
 public class VendorProfileActivity extends AppCompatActivity implements ApiCommunication {
 
-    private static final String TAG = "VendorProfileActivity";
+    private static final String TAG = VendorProfileActivity.class.getSimpleName();
 
     private static final String REGISTER_URL = EnvConstants.APP_BASE_URL + "/vendors/specific/";
     private static final int REQUEST_UPDATE = 0;
     private static String VENDOR_URL = null;
+
     String vendor_id, vendor_name, vendor_address, vendor_image, vendor_no_of_articles;
     TextView profile_vendor_name, profile_vendor_location;
     AppCompatImageView profile_vendor_logo;
@@ -61,7 +62,7 @@ public class VendorProfileActivity extends AppCompatActivity implements ApiCommu
             Bundle vendor_data = new Bundle();
             vendor_data.putString("vendor_id", vendor_id);
 
-            Intent intent = new Intent(VendorProfileActivity.this, VendorCatalogActivity.class).putExtras(vendor_data);
+            Intent intent = new Intent(this, VendorCatalogActivity.class).putExtras(vendor_data);
             startActivity(intent);
         });
 

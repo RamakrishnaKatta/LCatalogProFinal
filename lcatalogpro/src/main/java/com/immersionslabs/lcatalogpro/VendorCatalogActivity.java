@@ -25,7 +25,7 @@ import java.util.Objects;
 
 public class VendorCatalogActivity extends AppCompatActivity implements ApiCommunication {
 
-    private static final String TAG = "VendorCatalogActivity";
+    private static final String TAG = VendorCatalogActivity.class.getSimpleName();
 
     private static final String REGISTER_URL = EnvConstants.APP_BASE_URL + "/userArticles/";
     private static String VENDOR_URL = null;
@@ -131,7 +131,8 @@ public class VendorCatalogActivity extends AppCompatActivity implements ApiCommu
 
         VendorCatalogManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
         vendor_recycler.setLayoutManager(VendorCatalogManager);
-        VendorCatalogAdapter adapter = new VendorCatalogAdapter(this, item_ids, item_names, item_descriptions, item_prices, item_discounts, item_dimensions, item_images, item_3ds, item_vendors);
+        VendorCatalogAdapter adapter = new VendorCatalogAdapter(this, item_ids, item_names,
+                item_descriptions, item_prices, item_discounts, item_dimensions, item_images, item_3ds, item_vendors);
         vendor_recycler.setAdapter(adapter);
     }
 

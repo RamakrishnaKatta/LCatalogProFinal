@@ -12,7 +12,7 @@ import com.immersionslabs.lcatalogpro.fragments.Fragment_ProjectParts;
 
 public class ProjectFragmentAdapter extends FragmentStatePagerAdapter {
 
-    private static final String TAG = "ProjectFragmentAdapter";
+    private static final String TAG = ProjectFragmentAdapter.class.getSimpleName();
 
     private String p_name, p_id, p_desc, p_sub_desc, p_images, p_3ds, p_pattern, p_vendor_id;
 

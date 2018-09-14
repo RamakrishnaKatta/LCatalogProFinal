@@ -2,7 +2,6 @@ package com.immersionslabs.lcatalogpro;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -44,15 +43,13 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Objects;
 
 import static com.immersionslabs.lcatalogpro.utils.EnvConstants.user_Favourite_list;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ApiCommunication {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     private static final String VENDOR_URL = EnvConstants.APP_BASE_URL + "/vendors";
     private static final String VENDOR_SPECIFIC_URL = EnvConstants.APP_BASE_URL + "/vendors/specific/";
@@ -78,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         hash_vendor = new HashMap<>();
         vendor_ids = new ArrayList<>();
 
@@ -176,31 +174,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         CustomMenu();
-
-//        checkInternetConnection();
-    }
-
-    private boolean checkInternetConnection() {
-        // get Connectivity Manager object to check connection
-        ConnectivityManager connec =
-                (ConnectivityManager) getSystemService(getBaseContext().CONNECTIVITY_SERVICE);
-
-        // Check for network connections
-        assert connec != null;
-        if (connec.getActiveNetworkInfo().getState() == android.net.NetworkInfo.State.CONNECTED ||
-                connec.getActiveNetworkInfo().getState() == android.net.NetworkInfo.State.CONNECTING) {
-
-            // if connected with internet
-            return true;
-
-        } else if (
-                connec.getActiveNetworkInfo().getState() == android.net.NetworkInfo.State.DISCONNECTED ||
-                        connec.getActiveNetworkInfo().getState() == android.net.NetworkInfo.State.DISCONNECTED) {
-
-            Toast.makeText(this, " Internet Not Available  ", Toast.LENGTH_LONG).show();
-            return false;
-        }
-        return false;
     }
 
     /*showcaseview for the MainActivity(Notifications and Welcome screen*/
@@ -324,7 +297,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_notifications) {
             startActivity(new Intent(MainActivity.this, NotifyActivity.class));
             return true;
@@ -362,7 +334,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if (NetworkConnectivity.checkInternetConnection(MainActivity.this)) {
                 Intent intent = new Intent(this, ProductCatalogActivity.class);
                 startActivity(intent);
-
             } else {
                 InternetMessage();
             }
@@ -383,7 +354,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
 
         } else if (id == R.id.nav_user_account) {
-
             if (Objects.equals(user_log_type, "CUSTOMER")) {
 
                 Toast.makeText(this, "This is Your Profile !!", Toast.LENGTH_SHORT).show();
@@ -404,20 +374,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
 
         } else if (id == R.id.nav_ven_reg) {
-
             Toast.makeText(this, "We will not disappoint you, Lets get in Touch !!", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, VendorRegistrationActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_user_favourites) {
-
             if (Objects.equals(user_log_type, "CUSTOMER")) {
 
                 Intent intent = new Intent(this, FavoriteListActivity.class);
                 // intent.putExtra("userlogtype", "CUSTOMER");
                 startActivity(intent);
                 Toast.makeText(this, "You can see all your favourites here !!", Toast.LENGTH_SHORT).show();
-
             } else {
                 if (!user_Favourite_list.isEmpty()) {
                     Intent intent = new Intent(this, FavoriteListActivity.class);
@@ -428,7 +395,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
 
         } else if (id == R.id.nav_user_budget_bar) {
-
             Toast.makeText(this, "Here is your Budget Bar, Check out !!", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, BudgetListActivity.class);
             startActivity(intent);
@@ -439,19 +405,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
 
         } else if (id == R.id.nav_user_notify) {
-
             Toast.makeText(this, "Here are all your notifications, Check out !!", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, NotifyActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_sign_up) {
-
             Toast.makeText(this, "Thanks for your thought on Creating an Account, Appreciated !!", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, SignupActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_logout) {
-
             AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
             builder.setTitle("Sign Out");
             builder.setMessage("Your BudgetList and CheckList will be Erased. \n Are you sure want to SignOut ?");
@@ -470,7 +433,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             builder.show();
 
         } else if (id == R.id.nav_about) {
-
             Intent intent = new Intent(this, AboutUsActivity.class);
             startActivity(intent);
 
@@ -543,9 +505,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void vendorSpecificApicall() {
         Log.e(TAG, "Im in vspispecific" + vendor_ids);
-        Iterator iterator = vendor_ids.iterator();
-        while (iterator.hasNext()) {
-            String unique_vendor_specific_url = VENDOR_SPECIFIC_URL + iterator.next();
+        for (Object vendor_id : vendor_ids) {
+            String unique_vendor_specific_url = VENDOR_SPECIFIC_URL + vendor_id;
 
             ApiService.getInstance(this).getData(this, false, "VENDOR_SPECIFIC", unique_vendor_specific_url, "UNIQUE");
         }
@@ -591,13 +552,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             String other_details = jsonObject.getString("other_details");
             String vendor_id = jsonObject.getString("vendor_id");
 
-            Log.e(TAG, "vendorespecific id:  " + id);
-            Log.e(TAG, "vendorespecific name:  " + name);
-            Log.e(TAG, "vendorespecific type:  " + type);
-            Log.e(TAG, "vendorespecific email:  " + email);
-            Log.e(TAG, "vendorespecific mobile_no:  " + mobile_no);
-            Log.e(TAG, "vendorespecific other_details:  " + other_details);
-            Log.e(TAG, "vendorespecific vendor_id:  " + vendor_id);
+            Log.e(TAG, "vendorSpecific id:  " + id);
+            Log.e(TAG, "vendorSpecific name:  " + name);
+            Log.e(TAG, "vendorSpecific type:  " + type);
+            Log.e(TAG, "vendorSpecific email:  " + email);
+            Log.e(TAG, "vendorSpecific mobile_no:  " + mobile_no);
+            Log.e(TAG, "vendorSpecific other_details:  " + other_details);
+            Log.e(TAG, "vendorSpecific vendor_id:  " + vendor_id);
 
             hash_vendor.put(id, id);
             hash_vendor.put(id + SessionManager.KEY_VENDOR_NAME, name);

@@ -30,7 +30,8 @@ import java.util.ArrayList;
 
 public class ProjectPartsAdapter extends RecyclerView.Adapter<ProjectPartsAdapter.ViewHolder> {
 
-    private static final String TAG = "ProjectPartsAdapter";
+    private static final String TAG = ProjectPartsAdapter.class.getSimpleName();
+
     private Activity activity;
 
     private ArrayList<String> project_part;

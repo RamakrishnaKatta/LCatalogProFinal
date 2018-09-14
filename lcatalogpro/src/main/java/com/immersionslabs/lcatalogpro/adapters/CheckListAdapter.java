@@ -35,7 +35,7 @@ import java.util.HashMap;
 
 public class CheckListAdapter extends RecyclerView.Adapter<CheckListAdapter.ViewHolder> {
 
-    private static final String TAG = "CheckListAdapter";
+    private static final String TAG = CheckListAdapter.class.getSimpleName();
 
     private Activity activity;
     private SessionManager sessionManager;

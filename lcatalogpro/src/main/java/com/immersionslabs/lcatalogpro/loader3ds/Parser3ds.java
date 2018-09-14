@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 public class Parser3ds {
+
     private final Context mActivityContext;
     private final int mPositionDataSize = 3;
     /**

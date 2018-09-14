@@ -12,7 +12,7 @@ import com.immersionslabs.lcatalogpro.fragments.Fragment_ProductFeedback;
 
 public class ProductFragmentAdapter extends FragmentStatePagerAdapter {
 
-    private static final String TAG = "ProductFragmentAdapter";
+    private static final String TAG = ProductFragmentAdapter.class.getSimpleName();
 
     private String a_name, a_description, a_old_price, a_discount, a_newPrice, a_dimensions,
             a_width, a_height, a_length, a_position, a_id, a_images, a_vendor_id, a_3ds, a_pattern, a_3ds_file;

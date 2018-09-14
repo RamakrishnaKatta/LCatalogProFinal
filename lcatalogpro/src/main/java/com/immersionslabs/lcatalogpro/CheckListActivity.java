@@ -58,7 +58,7 @@ import javax.mail.internet.MimeMultipart;
 
 public class CheckListActivity extends AppCompatActivity {
 
-    private static final String TAG = "CheckListActivity";
+    private static final String TAG = CheckListActivity.class.getSimpleName();
 
     private String CHECKLIST_URL = EnvConstants.APP_BASE_URL + "/vendorArticles/";
 

@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 public class VendorListActivity extends AppCompatActivity implements ApiCommunication {
 
-    private static final String TAG = "VendorListActivity";
+    private static final String TAG = VendorListActivity.class.getSimpleName();
 
     private static final String REGISTER_URL = EnvConstants.APP_BASE_URL + "/vendors";
 

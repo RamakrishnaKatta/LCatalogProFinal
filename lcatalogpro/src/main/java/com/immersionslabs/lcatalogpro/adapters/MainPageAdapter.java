@@ -8,6 +8,7 @@ import com.immersionslabs.lcatalogpro.fragments.Fragment_Illustration;
 import com.immersionslabs.lcatalogpro.fragments.Fragment_Overview;
 
 public class MainPageAdapter extends FragmentStatePagerAdapter {
+
     private int mNumOfTabs;
 
     public MainPageAdapter(FragmentManager fm, int NumOfTabs) {

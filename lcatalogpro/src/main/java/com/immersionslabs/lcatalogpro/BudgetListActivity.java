@@ -41,7 +41,7 @@ import java.util.Set;
 
 public class BudgetListActivity extends AppCompatActivity {
 
-    private static final String TAG = "BudgetListActivity";
+    private static final String TAG = BudgetListActivity.class.getSimpleName();
 
     private static String BUDGETLIST_URL = EnvConstants.APP_BASE_URL + "/vendorArticles/";
 

@@ -57,7 +57,7 @@ import static com.immersionslabs.lcatalogpro.utils.EnvConstants.user_Favourite_l
 
 public class Fragment_ProductDesign extends Fragment implements OnAnimationEndListener, OnLikeListener, ApiCommunication {
 
-    private static final String TAG = "Fragment_ProductDesign";
+    private static final String TAG = Fragment_ProductDesign.class.getSimpleName();
 
     private static String LIKE_URL = EnvConstants.APP_BASE_URL + "/users/favouriteArticles";
 
@@ -128,6 +128,7 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
 
         Log.e(TAG, "User Log Type:  " + user_log_type);
 
+        assert getArguments() != null;
         article_images = getArguments().getString("article_images");
         article_name = getArguments().getString("article_name");
         article_3ds = getArguments().getString("article_3ds");
@@ -308,6 +309,7 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
                                 Toast.makeText(getContext(), "Enter a value first", Toast.LENGTH_LONG).show();
                             } else {
                                 sessionmanager.BUDGET_SET_TOTAL_VALUE(Long.parseLong(budget_value));
+                                assert getFragmentManager() != null;
                                 getFragmentManager()
                                         .beginTransaction()
                                         .detach(Fragment_ProductDesign.this)
@@ -388,6 +390,7 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
                                 Toast.makeText(getContext(), "Enter a value first", Toast.LENGTH_LONG).show();
                             } else {
                                 manager_budgetList.BUDGET_SET_TOTAL(Long.parseLong(budget_value));
+                                assert getFragmentManager() != null;
                                 getFragmentManager()
                                         .beginTransaction()
                                         .detach(Fragment_ProductDesign.this)
@@ -458,6 +461,7 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
                 Toast.makeText(getContext(), "Artcle Removed Successfully", Toast.LENGTH_LONG).show();
                 article_budgetlist.setVisibility(View.VISIBLE);
                 article_removelist.setVisibility(View.GONE);
+                assert getFragmentManager() != null;
                 getFragmentManager()
                         .beginTransaction()
                         .detach(Fragment_ProductDesign.this)
@@ -657,9 +661,9 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
             }
 
             if (manager_budgetList.BUDGET_RED_MARKER()) {
-                Add_Text.setTextColor(ContextCompat.getColor(this.getActivity(), R.color.red));
+                Add_Text.setTextColor(ContextCompat.getColor(Objects.requireNonNull(this.getActivity()), R.color.red));
             } else {
-                Add_Text.setTextColor(ContextCompat.getColor(this.getActivity(), R.color.white));
+                Add_Text.setTextColor(ContextCompat.getColor(Objects.requireNonNull(this.getActivity()), R.color.white));
             }
         }
         if (EnvConstants.user_type.equals("CUSTOMER")) {

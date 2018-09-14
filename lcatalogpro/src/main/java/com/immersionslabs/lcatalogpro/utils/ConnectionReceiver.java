@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.immersionslabs.lcatalogpro.ARNativeApplication;
+import com.immersionslabs.lcatalogpro.LCatalogApplication;
 
 public class ConnectionReceiver extends BroadcastReceiver {
 
@@ -30,7 +30,7 @@ public class ConnectionReceiver extends BroadcastReceiver {
     }
 
     public static boolean isConnected() {
-        ConnectivityManager cm = (ConnectivityManager) ARNativeApplication.getInstance().getApplicationContext()
+        ConnectivityManager cm = (ConnectivityManager) LCatalogApplication.getInstance().getApplicationContext()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         assert cm != null;
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();

@@ -37,7 +37,7 @@ import java.util.HashMap;
 
 public class BudgetListAdapter extends RecyclerView.Adapter<BudgetListAdapter.ViewHolder> {
 
-    private static final String TAG = "BudgetListAdapter";
+    private static final String TAG = BudgetListAdapter.class.getSimpleName();
 
     private Activity activity;
     private SessionManager sessionManager;
@@ -158,9 +158,9 @@ public class BudgetListAdapter extends RecyclerView.Adapter<BudgetListAdapter.Vi
 
                 intent.putExtras(b);
                 context[0].startActivity(intent);
+
             } else {
                 CustomMessage.getInstance().CustomMessage(activity, "Internet Not Available");
-
             }
         });
 

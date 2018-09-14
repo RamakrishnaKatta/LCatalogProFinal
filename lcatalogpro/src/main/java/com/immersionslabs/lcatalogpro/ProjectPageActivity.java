@@ -13,7 +13,7 @@ import com.immersionslabs.lcatalogpro.adapters.ProjectFragmentAdapter;
 
 public class ProjectPageActivity extends AppCompatActivity {
 
-    private static final String TAG = "ProjectPageActivity";
+    private static final String TAG = ProductPageActivity.class.getSimpleName();
 
     String project_images;
     String project_position, project_name, project_id, project_description, project_sub_desc, project_vendor_id;
@@ -100,5 +100,15 @@ public class ProjectPageActivity extends AppCompatActivity {
         setResult(RESULT_CANCELED);
         super.onBackPressed();
         finish();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 }

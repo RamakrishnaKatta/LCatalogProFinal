@@ -27,7 +27,7 @@ import java.util.Iterator;
 
 public class FavoriteListActivity extends AppCompatActivity implements ApiCommunication {
 
-    private static final String TAG = "FavoriteListActivity";
+    private static final String TAG = FavoriteListActivity.class.getSimpleName();
 
     private static final String REGISTER_URL = EnvConstants.APP_BASE_URL + "/users/favouriteArticles/";
     private static String FAVOURITE_URL = null;
@@ -87,17 +87,15 @@ public class FavoriteListActivity extends AppCompatActivity implements ApiCommun
         item_3ds = new ArrayList<>();
     }
 
-    private void CommongetData() {
+    private void CommonGetData() {
 
         Log.e(TAG, "CommonGetData: " + REGISTER_URL);
-        final JSONObject object = new JSONObject();
         if (USER_LOG_TYPE.equals("CUSTOMER")) {
             ApiService.getInstance(this).getData(this, false, "FAVORITE ACTIVITY", FAVOURITE_URL, "FAVORITE_LIST");
         } else if (USER_LOG_TYPE.equals("GUEST")) {
             Iterator iterator = EnvConstants.user_Favourite_list.iterator();
             while (iterator.hasNext()) {
                 String TEMP_GUEST_FAVOURITE_URL = GUEST_FAVOURITE_URL + "/" + iterator.next().toString();
-
                 ApiService.getInstance(this).getData(this, false, "FAVORITE ACTIVITY", TEMP_GUEST_FAVOURITE_URL, "GUEST");
             }
         }
@@ -107,11 +105,9 @@ public class FavoriteListActivity extends AppCompatActivity implements ApiCommun
     public void onResponseCallback(JSONObject response, String flag) {
         if (flag.equals("FAVORITE_LIST")) {
             Log.e(TAG, " response" + response);
-
             try {
                 JSONArray resp = response.getJSONArray("data");
                 GetArrayData(resp);
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -120,7 +116,6 @@ public class FavoriteListActivity extends AppCompatActivity implements ApiCommun
             try {
                 JSONObject RESP = response.getJSONObject("data");
                 GetObjectData(RESP);
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -133,10 +128,8 @@ public class FavoriteListActivity extends AppCompatActivity implements ApiCommun
     }
 
     private void GetArrayData(JSONArray resp) {
-
         for (int i = 0; i < resp.length(); i++) {
             JSONObject obj = null;
-
             try {
                 obj = resp.getJSONObject(i);
 
@@ -167,12 +160,12 @@ public class FavoriteListActivity extends AppCompatActivity implements ApiCommun
 
         favoritemanager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
         recycler.setLayoutManager(favoritemanager);
-        MyFavoriteAdapter adapter = new MyFavoriteAdapter(this, item_ids, item_names, item_descriptions, item_prices, item_discounts, item_dimensions, item_images, item_3ds, item_vendors);
+        MyFavoriteAdapter adapter = new MyFavoriteAdapter(this, item_ids, item_names, item_descriptions,
+                item_prices, item_discounts, item_dimensions, item_images, item_3ds, item_vendors);
         recycler.setAdapter(adapter);
     }
 
     private void GetObjectData(JSONObject obj) {
-
         try {
             item_ids.add(obj.getString("_id"));
             item_names.add(obj.getString("name"));
@@ -200,7 +193,8 @@ public class FavoriteListActivity extends AppCompatActivity implements ApiCommun
 
         favoritemanager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
         recycler.setLayoutManager(favoritemanager);
-        MyFavoriteAdapter adapter = new MyFavoriteAdapter(this, item_ids, item_names, item_descriptions, item_prices, item_discounts, item_dimensions, item_images, item_3ds, item_vendors);
+        MyFavoriteAdapter adapter = new MyFavoriteAdapter(this, item_ids, item_names, item_descriptions,
+                item_prices, item_discounts, item_dimensions, item_images, item_3ds, item_vendors);
         recycler.setAdapter(adapter);
     }
 
@@ -226,7 +220,7 @@ public class FavoriteListActivity extends AppCompatActivity implements ApiCommun
         item_dimensions.clear();
         item_3ds.clear();
 
-        CommongetData();
+        CommonGetData();
     }
 
     @Override

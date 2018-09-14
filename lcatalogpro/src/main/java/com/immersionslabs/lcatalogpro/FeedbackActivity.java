@@ -24,7 +24,7 @@ import java.util.Objects;
 
 public class FeedbackActivity extends AppCompatActivity implements ApiCommunication {
 
-    public static final String TAG = "FeedbackActivity";
+    public static final String TAG = FeedbackActivity.class.getSimpleName();
 
     EditText feed_name_text, feed_subject_text, feed_number_text;
     Button feed_Submit;

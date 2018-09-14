@@ -35,7 +35,8 @@ import java.util.Objects;
 
 public class GuestActivity extends AppCompatActivity {
 
-    private static final String TAG = "GuestActivity";
+    private static final String TAG = GuestActivity.class.getSimpleName();
+
     private static final int REQUEST_GUEST_LOGIN = 0;
     AlarmManager alarmManager;
     PendingIntent pendingIntent;
@@ -177,13 +178,10 @@ public class GuestActivity extends AppCompatActivity {
 
         // Implement your own authentication logic here.
 
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        onLoginSuccess();
-                        progressDialog.dismiss();
-                    }
-                }, 3000);
+        new android.os.Handler().postDelayed(() -> {
+            onLoginSuccess();
+            progressDialog.dismiss();
+        }, 3000);
     }
 
     public void scheduleAlarm() {

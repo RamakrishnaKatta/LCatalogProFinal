@@ -32,7 +32,7 @@ import java.util.Objects;
 
 public class ForgotPasswordActivity extends AppCompatActivity implements ApiCommunication {
 
-    private static final String TAG = "ForgotPassword";
+    private static final String TAG = ForgotPasswordActivity.class.getSimpleName();
     private static final int REQUEST_FORGOT = 0;
 
     private static final String PASSWORD_UPDATE_URL = EnvConstants.APP_BASE_URL + "/users/changePassword";

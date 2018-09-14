@@ -1,5 +1,6 @@
 package com.immersionslabs.lcatalogpro.adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -32,9 +33,10 @@ import java.util.ArrayList;
 
 public class ListViewVerticalAdapter extends RecyclerView.Adapter<ListViewVerticalAdapter.ViewHolder> {
 
-    private static final String TAG = "ListViewVerticalAdapter";
+    private static final String TAG = ListViewVerticalAdapter.class.getSimpleName();
 
     private Activity activity;
+
     private ArrayList<String> item_ids;
     private ArrayList<String> item_names;
     private ArrayList<String> item_descriptions;
@@ -92,7 +94,7 @@ public class ListViewVerticalAdapter extends RecyclerView.Adapter<ListViewVertic
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ListViewVerticalAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull ListViewVerticalAdapter.ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         final Context[] context = new Context[1];
 
         String im1 = null;
@@ -127,39 +129,35 @@ public class ListViewVerticalAdapter extends RecyclerView.Adapter<ListViewVertic
         holder.item_discount.setText(item_discounts.get(position));
         holder.item_price_new.setText(itemNewPrice);
 
-        holder.v_container.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        holder.v_container.setOnClickListener(v -> {
+            if (NetworkConnectivity.checkInternetConnection(activity)) {
+                try {
+                    context[0] = v.getContext();
 
-                if (NetworkConnectivity.checkInternetConnection(activity)) {
-                    try {
-                        context[0] = v.getContext();
+                    Intent intent = new Intent(context[0], ProductPageActivity.class);
+                    Bundle b = new Bundle();
 
-                        Intent intent = new Intent(context[0], ProductPageActivity.class);
-                        Bundle b = new Bundle();
+                    b.putString("article_id", item_ids.get(position));
+                    b.putString("article_title", item_names.get(position));
+                    b.putString("article_description", item_descriptions.get(position));
+                    b.putString("article_price", item_prices.get(position));
+                    b.putString("article_discount", item_discounts.get(position));
+                    b.putString("article_vendor", item_vendors.get(position));
+                    b.putString("article_images", item_images.get(position));
+                    b.putString("article_dimensions", item_dimensions.get(position));
+                    b.putString("article_3ds", item_3ds.get(position));
+                    b.putString("article_pattern", item_patterns.get(position));
 
-                        b.putString("article_id", item_ids.get(position));
-                        b.putString("article_title", item_names.get(position));
-                        b.putString("article_description", item_descriptions.get(position));
-                        b.putString("article_price", item_prices.get(position));
-                        b.putString("article_discount", item_discounts.get(position));
-                        b.putString("article_vendor", item_vendors.get(position));
-                        b.putString("article_images", item_images.get(position));
-                        b.putString("article_dimensions", item_dimensions.get(position));
-                        b.putString("article_3ds", item_3ds.get(position));
-                        b.putString("article_pattern", item_patterns.get(position));
+                    b.putString("article_position", String.valueOf(position));
 
-                        b.putString("article_position", String.valueOf(position));
-
-                        intent.putExtras(b);
-                        context[0].startActivity(intent);
-                    } catch (IndexOutOfBoundsException e) {
-                        Toast.makeText(activity, "Something went wrong,Please Try again", Toast.LENGTH_SHORT).show();
-                        e.printStackTrace();
-                    }
-                } else {
-                    CustomMessage.getInstance().CustomMessage(activity, "Internet is not available!");
+                    intent.putExtras(b);
+                    context[0].startActivity(intent);
+                } catch (IndexOutOfBoundsException e) {
+                    Toast.makeText(activity, "Something went wrong,Please Try again", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
                 }
+            } else {
+                CustomMessage.getInstance().CustomMessage(activity, "Internet is not available!");
             }
         });
     }

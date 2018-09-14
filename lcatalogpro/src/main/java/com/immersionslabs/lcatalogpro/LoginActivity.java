@@ -51,7 +51,7 @@ import static com.immersionslabs.lcatalogpro.utils.EnvConstants.user_Favourite_l
 
 public class LoginActivity extends AppCompatActivity implements ApiCommunication {
 
-    private static final String TAG = "LoginActivity";
+    private static final String TAG = LoginActivity.class.getSimpleName();
 
     private static final int REQUEST_LOGIN = 0;
     private static final int REQUEST_FORGOT_PASSWORD = 0;

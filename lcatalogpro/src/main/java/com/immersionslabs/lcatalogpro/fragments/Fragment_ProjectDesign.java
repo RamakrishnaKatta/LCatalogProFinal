@@ -27,9 +27,11 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 
 public class Fragment_ProjectDesign extends Fragment {
-    private static final String TAG = "Fragment_ProjectDesign";
+
+    private static final String TAG = Fragment_ProjectDesign.class.getSimpleName();
 
     LinearLayout project_exp_3d_area, project_exp_aug_area;
     AppCompatImageButton project_augment, project_3dview;
@@ -39,9 +41,7 @@ public class Fragment_ProjectDesign extends Fragment {
     ArrayList<String> slider_images = new ArrayList<>();
     TextView[] dots;
     String image1, image2, image3, image4, image5;
-    String project_id, project_images;
-
-    String project_3ds;
+    String project_id, project_images, project_3ds;
 
     public Fragment_ProjectDesign() {
         // Required empty public constructor
@@ -111,7 +111,7 @@ public class Fragment_ProjectDesign extends Fragment {
         });
 
         project_augment.setOnClickListener(v -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.AppCompatAlertDialogStyle);
+            AlertDialog.Builder builder = new AlertDialog.Builder(Objects.requireNonNull(getContext()), R.style.AppCompatAlertDialogStyle);
             builder.setTitle("You are about to enter Augment Enabled Camera");
             builder.setMessage("This requires 2min of your patience, Do you wish to enter ?");
             builder.setPositiveButton("OK", (dialog, which) -> {
@@ -157,5 +157,15 @@ public class Fragment_ProjectDesign extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 }

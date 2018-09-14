@@ -5,22 +5,22 @@ import android.app.Application;
 
 import com.immersionslabs.lcatalogpro.utils.ConnectionReceiver;
 
-public class ARNativeApplication extends Application {
+public class LCatalogApplication extends Application {
 
     @SuppressLint("StaticFieldLeak")
     private static Application sInstance;
 
     // Anywhere in the application where an instance is required, this method
     // can be used to retrieve it.
-    public static ARNativeApplication getInstance() {
-        return (ARNativeApplication) sInstance;
+    public static LCatalogApplication getInstance() {
+        return (LCatalogApplication) sInstance;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
         sInstance = this;
-//        ((ARNativeApplication) sInstance).initializeInstance();
+//        ((LCatalogApplication) sInstance).initializeInstance();
     }
 
     public void setConnectionListener(ConnectionReceiver.ConnectionReceiverListener listener) {

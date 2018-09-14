@@ -39,12 +39,12 @@ import java.util.Iterator;
 
 public class ProjectPartsActivity extends AppCompatActivity implements ApiCommunication {
 
-    private static final String TAG = "ProjectPartsActivity";
+    private static final String TAG = ProjectPartsActivity.class.getSimpleName();
 
     private static final String REGISTER_URL = EnvConstants.APP_BASE_URL + "/getProjectDetails/";
     private static String PROJECT_PART_ARTICLE_URL = null;
     private static final String ARTICLE_SPECIFIC_URL = EnvConstants.APP_BASE_URL + "/vendorArticles/";
-    private static String UNIQUE_ARTICLE_URL;
+    private static String UNIQUE_ARTICLE_URL = null;
 
     TextView part_name, part_Desc;
     AppCompatImageView part_image;
