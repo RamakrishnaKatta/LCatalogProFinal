@@ -9,6 +9,10 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
+
+        ndk {
+            abiFilters "armeabi-v7a", "x86"
+        }
     }
     buildTypes {
         release {
@@ -58,7 +62,7 @@ dependencies {
     implementation 'com.github.jd-alexander:LikeButton:0.2.3'
 
     /*AWS Dependencies*/
-    implementation 'com.amazonaws:aws-android-sdk-core:2.6.30'
+    implementation 'com.amazonaws:aws-android-sdk-core:2.6.31'
     implementation 'com.amazonaws:aws-android-sdk-ddb:2.6.20'
     implementation 'com.amazonaws:aws-android-sdk-cognitoauth:2.6.20@aar'
     implementation 'com.amazonaws:aws-android-sdk-ses:2.6.21'

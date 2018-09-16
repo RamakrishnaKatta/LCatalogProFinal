@@ -33,7 +33,6 @@ public class Fragment_ProjectDesign extends Fragment {
 
     private static final String TAG = Fragment_ProjectDesign.class.getSimpleName();
 
-    LinearLayout project_exp_3d_area, project_exp_aug_area;
     AppCompatImageButton project_augment, project_3dview;
     private ViewPager viewpager;
     private LinearLayout slider_dots;
@@ -59,8 +58,6 @@ public class Fragment_ProjectDesign extends Fragment {
 
         project_3dview = view.findViewById(R.id.project_3dview_icon);
         project_augment = view.findViewById(R.id.project_augment_icon);
-        project_exp_3d_area = view.findViewById(R.id.project_3dview_exp_area);
-        project_exp_aug_area = view.findViewById(R.id.project_augment_exp_area);
 
         assert getArguments() != null;
         project_id = getArguments().getString("_id");
