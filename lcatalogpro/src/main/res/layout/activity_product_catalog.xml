@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    android:fitsSystemWindows="true"
-    tools:context=".CatalogActivity">
+    tools:context=".ProductCatalogActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
