@@ -1,0 +1,621 @@
+{
+   bound_relative_root: {
+      x: 0.5,
+      y: 0,
+      z: 0.5,
+   },
+   materials: [
+      {
+         name: "AirBackOutput",
+         parameters: [
+            {
+               baseColor: null,
+            },
+            {
+               baseColorTint: [
+                  0.218251,
+                  0.21186199999999999,
+                  0.22475000000000001,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "AudiLogoChrome",
+         parameters: [
+            {
+               baseColor: null,
+            },
+            {
+               baseColorTint: [
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "Axe",
+         parameters: [
+            {
+               baseColor: "disk",
+            },
+            {
+               baseColorTint: [
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "BlackGlossy",
+         parameters: [
+            {
+               baseColor: null,
+            },
+            {
+               baseColorTint: [
+                  0.0072049999999999996,
+                  0.0072049999999999996,
+                  0.0072049999999999996,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "BodyMaterials(00297F)",
+         parameters: [
+            {
+               baseColor: null,
+            },
+            {
+               baseColorTint: [
+                  0.0062170000000000003,
+                  0.037848,
+                  0.64000000000000001,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "BrakeDisc",
+         parameters: [
+            {
+               baseColor: "disk",
+            },
+            {
+               baseColorTint: [
+                  0.258797,
+                  0.51689399999999996,
+                  0.64000000000000001,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "CarbonFibre",
+         parameters: [
+            {
+               baseColor: null,
+            },
+            {
+               baseColorTint: [
+                  0.046217000000000001,
+                  0.046217000000000001,
+                  0.046217000000000001,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "GlassBackHighlight",
+         parameters: [
+            {
+               baseColor: null,
+            },
+            {
+               baseColorTint: [
+                  0.64000000000000001,
+                  0.077578999999999995,
+                  0.120936,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "GlassFrontHighlight",
+         parameters: [
+            {
+               baseColor: "headlight",
+            },
+            {
+               baseColorTint: [
+                  0.46603800000000001,
+                  0.64000000000000001,
+                  0.56666399999999995,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "InteriorFrontHighlight",
+         parameters: [
+            {
+               baseColor: null,
+            },
+            {
+               baseColorTint: [
+                  0.64000000000000001,
+                  0.052110999999999998,
+                  0.030032,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "LightBackHighlight",
+         parameters: [
+            {
+               baseColor: null,
+            },
+            {
+               baseColorTint: [
+                  0.80000000000000004,
+                  0.80000000000000004,
+                  0.80000000000000004,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "LightFrontHighlight",
+         parameters: [
+            {
+               baseColor: null,
+            },
+            {
+               baseColorTint: [
+                  0.78791999999999995,
+                  0.80000000000000004,
+                  0.77594799999999997,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "None",
+         parameters: [
+            {
+               baseColor: "expl",
+            },
+            {
+               baseColorTint: [
+                  0.80000000000000004,
+                  0.80000000000000004,
+                  0.80000000000000004,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 1,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "NumberPlateLight",
+         parameters: [
+            {
+               baseColor: null,
+            },
+            {
+               baseColorTint: [
+                  0.64000000000000001,
+                  0.63319499999999995,
+                  0.61303300000000005,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "NumbrePlateAudiR8",
+         parameters: [
+            {
+               baseColor: "Numpl",
+            },
+            {
+               baseColorTint: [
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "RoofCanvas",
+         parameters: [
+            {
+               baseColor: null,
+            },
+            {
+               baseColorTint: [
+                  0.029907,
+                  0.029907,
+                  0.029907,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "Tyre",
+         parameters: [
+            {
+               baseColor: "tyre",
+            },
+            {
+               baseColorTint: [
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "WheelsChrome",
+         parameters: [
+            {
+               baseColor: null,
+            },
+            {
+               baseColorTint: [
+                  0.114907,
+                  0.233649,
+                  0.38151800000000002,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "WindscreenGlassBlack",
+         parameters: [
+            {
+               baseColor: null,
+            },
+            {
+               baseColorTint: [
+                  0.0089619999999999995,
+                  0.0068089999999999999,
+                  0.0097619999999999998,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "WindscreenGlassGrey",
+         parameters: [
+            {
+               baseColor: null,
+            },
+            {
+               baseColorTint: [
+                  0.100471,
+                  0.110025,
+                  0.10703600000000001,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: 0.623529,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "mesh",
+         parameters: [
+            {
+               baseColor: "expl",
+            },
+            {
+               baseColorTint: [
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "undercarriage",
+         parameters: [
+            {
+               baseColor: null,
+            },
+            {
+               baseColorTint: [
+                  0.018709,
+                  0.029356,
+                  0.64000000000000001,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+   ],
+   model: {
+      attributes: [
+         "Position",
+         "TexCoord",
+         "Orientation",
+      ],
+      collision: {},
+      file: "models/Audi_R8.obj",
+      name: "Audi_R8",
+      recenter: "root",
+      scale: 0.009809,
+   },
+   samplers: [
+      {
+         file: "models\\expl.jpg",
+         name: "expl",
+         pipeline_name: "expl.jpg",
+      },
+      {
+         file: "models\\disk.jpg",
+         name: "disk",
+         pipeline_name: "disk.jpg",
+      },
+      {
+         file: "models\\headlight.jpg",
+         name: "headlight",
+         pipeline_name: "headlight.jpg",
+      },
+      {
+         file: "models\\Numpl.jpg",
+         name: "Numpl",
+         pipeline_name: "Numpl.jpg",
+      },
+      {
+         file: "models\\tyre.jpg",
+         name: "tyre",
+         pipeline_name: "tyre.jpg",
+      },
+   ],
+   version: "0.52:1",
+}

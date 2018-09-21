@@ -94,7 +94,7 @@
       file: "models/floorlamp.obj",
       name: "floorlamp",
       recenter: "root",
-      scale: 0.051042999999999998,
+      scale: 0.0051042999999999998,
    },
    samplers: [
       {

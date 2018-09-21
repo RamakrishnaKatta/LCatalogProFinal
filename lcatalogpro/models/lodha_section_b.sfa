@@ -1,0 +1,474 @@
+{
+   bound_relative_root: {
+      x: 0.5,
+      y: 0,
+      z: 0.5,
+   },
+   materials: [
+      {
+         name: "Foregrou",
+         parameters: [
+            {
+               baseColor: null,
+            },
+            {
+               baseColorTint: [
+                  1,
+                  1,
+                  1,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "Material.000",
+         parameters: [
+            {
+               baseColor: "barrel",
+            },
+            {
+               baseColorTint: [
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14424899999999999,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "Material.003_NONE",
+         parameters: [
+            {
+               baseColor: "barrelc",
+            },
+            {
+               baseColorTint: [
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.088914000000000007,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "Material.005",
+         parameters: [
+            {
+               baseColor: "ag",
+            },
+            {
+               baseColorTint: [
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "Material.006",
+         parameters: [
+            {
+               baseColor: "ij",
+            },
+            {
+               baseColorTint: [
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "Material.007",
+         parameters: [
+            {
+               baseColor: "yewpl",
+            },
+            {
+               baseColorTint: [
+                  0.69510799999999995,
+                  0.67417199999999999,
+                  0.112692,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "Material.012",
+         parameters: [
+            {
+               baseColor: "wx",
+            },
+            {
+               baseColorTint: [
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "Material.014",
+         parameters: [
+            {
+               baseColor: "yz",
+            },
+            {
+               baseColorTint: [
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "Material.019",
+         parameters: [
+            {
+               baseColor: "ac",
+            },
+            {
+               baseColorTint: [
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "Material.022",
+         parameters: [
+            {
+               baseColor: "barrela",
+            },
+            {
+               baseColorTint: [
+                  0.25482700000000003,
+                  0.25482700000000003,
+                  0.25482700000000003,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14424899999999999,
+            },
+            {
+               opacity: 0.5,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "_1",
+         parameters: [
+            {
+               baseColor: null,
+            },
+            {
+               baseColorTint: [
+                  0.21019599999999999,
+                  0.109804,
+                  0.031372999999999998,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "floor",
+         parameters: [
+            {
+               baseColor: "ofcfl",
+            },
+            {
+               baseColorTint: [
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "glass",
+         parameters: [
+            {
+               baseColor: null,
+            },
+            {
+               baseColorTint: [
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: 0.556701,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "wall",
+         parameters: [
+            {
+               baseColor: "walblu",
+            },
+            {
+               baseColorTint: [
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  0.64000000000000001,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+      {
+         name: "window",
+         parameters: [
+            {
+               baseColor: "ap",
+            },
+            {
+               baseColorTint: [
+                  0.23655300000000001,
+                  0.109358,
+                  0.031539999999999999,
+                  1,
+               ],
+            },
+            {
+               metallic: 1,
+            },
+            {
+               roughness: 0.14280000000000001,
+            },
+            {
+               opacity: null,
+            },
+         ],
+         source: "build/sceneform_sdk/default_materials/obj_material.sfm",
+      },
+   ],
+   model: {
+      attributes: [
+         "Position",
+         "TexCoord",
+         "Orientation",
+      ],
+      collision: {},
+      file: "models/lodha_section_b.obj",
+      name: "lodha_section_b",
+      recenter: "root",
+      scale: 0.34574500000000002,
+   },
+   samplers: [
+      {
+         file: "models\\barrel.jpg",
+         name: "barrel",
+         pipeline_name: "barrel.jpg",
+      },
+      {
+         file: "models\\ag.jpg",
+         name: "ag",
+         pipeline_name: "ag.jpg",
+      },
+      {
+         file: "models\\barrelc.jpg",
+         name: "barrelc",
+         pipeline_name: "barrelc.jpg",
+      },
+      {
+         file: "models\\wx.jpg",
+         name: "wx",
+         pipeline_name: "wx.jpg",
+      },
+      {
+         file: "models\\yz.jpg",
+         name: "yz",
+         pipeline_name: "yz.jpg",
+      },
+      {
+         file: "models\\ij.jpg",
+         name: "ij",
+         pipeline_name: "ij.jpg",
+      },
+      {
+         file: "models\\barrela.jpg",
+         name: "barrela",
+         pipeline_name: "barrela.jpg",
+      },
+      {
+         file: "models\\yewpl.jpg",
+         name: "yewpl",
+         pipeline_name: "yewpl.jpg",
+      },
+      {
+         file: "models\\ac.jpg",
+         name: "ac",
+         pipeline_name: "ac.jpg",
+      },
+      {
+         file: "models\\ofcfl.jpg",
+         name: "ofcfl",
+         pipeline_name: "ofcfl.jpg",
+      },
+      {
+         file: "models\\walblu.jpg",
+         name: "walblu",
+         pipeline_name: "walblu.jpg",
+      },
+      {
+         file: "models\\ap.jpg",
+         name: "ap",
+         pipeline_name: "ap.jpg",
+      },
+   ],
+   version: "0.52:1",
+}
