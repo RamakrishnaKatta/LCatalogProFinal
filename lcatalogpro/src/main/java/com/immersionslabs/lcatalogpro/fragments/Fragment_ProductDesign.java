@@ -30,6 +30,7 @@ import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.immersionslabs.lcatalogpro.Article3dViewActivity;
 import com.immersionslabs.lcatalogpro.AugmentActivity;
+import com.immersionslabs.lcatalogpro.OnBoarding;
 import com.immersionslabs.lcatalogpro.R;
 import com.immersionslabs.lcatalogpro.adapters.ProductImageSliderAdapter;
 import com.immersionslabs.lcatalogpro.network.ApiCommunication;
@@ -272,15 +273,21 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
         });
 
         article_augment_area.setOnClickListener(v -> {
+
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.AppCompatAlertDialogStyle);
-            builder.setTitle("You are about to enter Augment Enabled Camera");
-            builder.setMessage("This requires 2min of your patience, Do you wish to enter ?");
-            builder.setPositiveButton("OK", (dialog, which) -> {
+            builder.setTitle("Do you have marker with you");
+            builder.setMessage("Please Place the marker at the smooth Surfing Place");
+            builder.setPositiveButton("YES", (dialog, which) -> {
 
                 Intent intent = new Intent(getContext(), AugmentActivity.class);
                 startActivity(intent);
             });
-            builder.setNegativeButton("CANCEL", null);
+            builder.setNegativeButton("NO", (dialog, which) ->{
+                Intent intent = new Intent(getContext(),AugmentActivity.class);
+                startActivity(intent);
+//                        startActivity(new Intent(getContext(), AugmentActivity.class));
+                    });
+
             builder.show();
         });
 
