@@ -94,7 +94,7 @@
       file: "models/4seated_dinning_table.obj",
       name: "4seated_dinning_table",
       recenter: "root",
-      scale: 0.0028917999999999999,
+      scale: 0.028917999999999999,
    },
    samplers: [
       {
