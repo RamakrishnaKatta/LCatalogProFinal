@@ -132,14 +132,13 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
         assert getArguments() != null;
         article_images = getArguments().getString("article_images");
         article_name = getArguments().getString("article_name");
-        article_3ds = getArguments().getString("article_3ds");
-        article_3ds_file_name = getArguments().getString("article_3ds_file");
+//        article_3ds = getArguments().getString("article_3ds");
+//        article_3ds_file_name = getArguments().getString("article_3ds_file");
         article_id = getArguments().getString("article_id");
         article_price = getArguments().getString("article_new_price");
         article_vendor_id = getArguments().getString("article_vendor_id");
-
+        Log.e(TAG, "onCreateView: articleid" + article_id);
         Log.e(TAG, "onCreateView: vendor id" + article_vendor_id);
-
         Log.d(TAG, "onCreateView:3ds" + article_3ds);
         Log.d(TAG, "onCreateView:3dsfile" + article_3ds_file_name);
         Log.d(TAG, "onCreateView:name" + article_name);
@@ -257,11 +256,11 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
         });
 
         article_3d_view_area.setOnClickListener(v -> {
-            Bundle b3 = new Bundle();
-            b3.putString("article_name", article_name);
-            b3.putString("article_3ds_file_name", article_3ds);
-            Intent _3d_intent = new Intent(getContext(), Article3dViewActivity.class).putExtras(b3);
-            startActivity(_3d_intent);
+//            Bundle b3 = new Bundle();
+//            b3.putString("article_name", article_name);
+//            b3.putString("article_3ds_file_name", article_3ds);
+//            Intent _3d_intent = new Intent(getContext(), Article3dViewActivity.class).putExtras(b3);
+//            startActivity(_3d_intent);
         });
 
         article_share_area.setOnClickListener(v -> {
@@ -280,13 +279,15 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
             builder.setPositiveButton("YES", (dialog, which) -> {
 
                 Intent intent = new Intent(getContext(), AugmentActivity.class);
+                intent.putExtra("objname",article_id);
                 startActivity(intent);
             });
             builder.setNegativeButton("NO", (dialog, which) ->{
                 Intent intent = new Intent(getContext(),AugmentActivity.class);
+                intent.putExtra("objname",article_id);
                 startActivity(intent);
 //                        startActivity(new Intent(getContext(), AugmentActivity.class));
-                    });
+            });
 
             builder.show();
         });

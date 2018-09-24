@@ -3,6 +3,8 @@ package com.immersionslabs.lcatalogpro;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +21,12 @@ import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import java.util.concurrent.Callable;
+
 public class AugmentActivity extends AppCompatActivity {
 
     private static final String TAG = AugmentActivity.class.getSimpleName();
@@ -26,37 +34,45 @@ public class AugmentActivity extends AppCompatActivity {
 
     private ArFragment arFragment;
     private ModelRenderable renderable;
-
+    private String objectname;
     @Override
     @SuppressWarnings({"AndroidApiChecker", "FutureReturnValueIgnored"})
     // CompletableFuture requires api level 24
     // FutureReturnValueIgnored is not valid
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        objectname=getIntent().getStringExtra("objname");
+        int resId = getResources().getIdentifier("r"+objectname, "raw", this.getPackageName());
+        Log.e(TAG, "resid"+String.valueOf(resId));
+        int layout=getResources().getIdentifier("layout/activity_augment", null, this.getPackageName());
         if (!checkIsSupportedDeviceOrFinish(this)) {
             return;
         }
 
-        setContentView(R.layout.activity_augment);
+        setContentView(layout);
         arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
 
         // When you build a Renderable, Sceneform loads its resources in the background while returning
         // a CompletableFuture. Call thenAccept(), handle(), or check isDone() before calling get().
-        ModelRenderable.builder()
-                .setSource(this, R.raw.floorlamp)
-                .build()
-                .thenAccept(renderable -> this.renderable = renderable)
-                .exceptionally(
-                        throwable -> {
-                            Toast toast =
-                                    Toast.makeText(this, "Unable to load andy " +
-                                            "renderable", Toast.LENGTH_LONG);
-                            toast.setGravity(Gravity.CENTER, 0, 0);
-                            toast.show();
-                            return null;
-                        });
-
+        try {
+            ModelRenderable.builder()
+                    .setSource(this,  resId)
+                    .build()
+                    .thenAccept(renderable -> this.renderable = renderable)
+                    .exceptionally(
+                            throwable -> {
+                                Toast toast =
+                                        Toast.makeText(this, "Unable to load andy " +
+                                                "renderable", Toast.LENGTH_LONG);
+                                toast.setGravity(Gravity.CENTER, 0, 0);
+                                toast.show();
+                                return null;
+                            });
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
         arFragment.setOnTapArPlaneListener(
                 (HitResult hitResult, Plane plane, MotionEvent motionEvent) -> {
                     if (renderable == null) {
