@@ -35,16 +35,17 @@ public class AugmentActivity extends AppCompatActivity {
     private ArFragment arFragment;
     private ModelRenderable renderable;
     private String objectname;
+
     @Override
     @SuppressWarnings({"AndroidApiChecker", "FutureReturnValueIgnored"})
     // CompletableFuture requires api level 24
     // FutureReturnValueIgnored is not valid
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        objectname=getIntent().getStringExtra("objname");
-        int resId = getResources().getIdentifier("r"+objectname, "raw", this.getPackageName());
-        Log.e(TAG, "resid"+String.valueOf(resId));
-        int layout=getResources().getIdentifier("layout/activity_augment", null, this.getPackageName());
+        objectname = getIntent().getStringExtra("objname");
+        int resId = getResources().getIdentifier("r" + objectname, "raw", this.getPackageName());
+        Log.e(TAG, "resid" + String.valueOf(resId));
+        int layout = getResources().getIdentifier("layout/activity_augment", null, this.getPackageName());
         if (!checkIsSupportedDeviceOrFinish(this)) {
             return;
         }
@@ -56,7 +57,7 @@ public class AugmentActivity extends AppCompatActivity {
         // a CompletableFuture. Call thenAccept(), handle(), or check isDone() before calling get().
         try {
             ModelRenderable.builder()
-                    .setSource(this,  resId)
+                    .setSource(this, resId)
                     .build()
                     .thenAccept(renderable -> this.renderable = renderable)
                     .exceptionally(
@@ -68,9 +69,7 @@ public class AugmentActivity extends AppCompatActivity {
                                 toast.show();
                                 return null;
                             });
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         arFragment.setOnTapArPlaneListener(

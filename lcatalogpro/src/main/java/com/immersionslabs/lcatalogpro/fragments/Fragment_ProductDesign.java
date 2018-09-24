@@ -279,12 +279,12 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
             builder.setPositiveButton("YES", (dialog, which) -> {
 
                 Intent intent = new Intent(getContext(), AugmentActivity.class);
-                intent.putExtra("objname",article_id);
+                intent.putExtra("objname", article_id);
                 startActivity(intent);
             });
-            builder.setNegativeButton("NO", (dialog, which) ->{
-                Intent intent = new Intent(getContext(),AugmentActivity.class);
-                intent.putExtra("objname",article_id);
+            builder.setNegativeButton("NO", (dialog, which) -> {
+                Intent intent = new Intent(getContext(), AugmentActivity.class);
+                intent.putExtra("objname", article_id);
                 startActivity(intent);
 //                        startActivity(new Intent(getContext(), AugmentActivity.class));
             });
