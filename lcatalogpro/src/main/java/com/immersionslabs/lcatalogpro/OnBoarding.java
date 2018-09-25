@@ -140,7 +140,7 @@ public class OnBoarding extends AppCompatActivity {
         dotsLayout.removeAllViews();
         for (int i = 0; i < dots.length; i++) {
             dots[i] = new TextView(this);
-            String dotscolor = getString(R.string.dotcolor);
+            String dotscolor = getString(R.string.dotscolor);
             dots[i].setText(Html.fromHtml(dotscolor, Html.FROM_HTML_MODE_LEGACY));
             dots[i].setTextSize(35);
             dots[i].setTextColor(Color.WHITE);
