@@ -343,6 +343,7 @@
     <string name="faq_text_30">You can go back to the My Account and change the details there. Currently, we do not have an option to change the account number on the dashboard.</string>
     <string name="faq_text_31">L - CATALOG is working on introducing new, sassy features to make user experience better every time, so brace yourselves!</string>
     <string name="faq_text_32">Happy Shopping!</string>
+    <string name="dotscolor">&#8226;</string>
 
     <string name="nice_html">
 <![CDATA[

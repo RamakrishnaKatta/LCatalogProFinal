@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion = 28
-    buildToolsVersion = "28.0.2"
+    buildToolsVersion = "28.0.3"
     defaultConfig {
         applicationId = "com.immersionslabs.lcatalogpro"
         minSdkVersion 24
@@ -33,12 +33,12 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //noinspection GradleCompatible
-    implementation 'com.android.support:appcompat-v7:28.0.0-alpha1'
-    androidTestImplementation 'com.android.support:support-annotations:28.0.0-rc02'
-    implementation 'com.android.support:design:28.0.0-alpha1'
-    implementation 'com.android.support:support-v4:28.0.0-alpha1'
-    implementation 'com.android.support:recyclerview-v7:28.0.0-alpha1'
-    implementation 'com.android.support:cardview-v7:28.0.0-alpha1'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    androidTestImplementation 'com.android.support:support-annotations:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 
     /*ARCore - Augment */
@@ -46,7 +46,7 @@ dependencies {
     implementation "com.google.ar.sceneform.ux:sceneform-ux:1.4.0"
 
     /*Firebase */
-    implementation 'com.google.firebase:firebase-messaging:17.3.1'
+    implementation 'com.google.firebase:firebase-messaging:17.3.2'
     implementation 'com.google.firebase:firebase-core:16.0.3'
     implementation 'com.google.firebase:firebase-crash:16.2.0'
     implementation 'com.google.firebase:firebase-auth:16.0.3'
@@ -74,198 +74,3 @@ dependencies {
 
 apply plugin: 'com.google.ar.sceneform.plugin'
 
-sceneform.asset('models/floorlamp.obj',
-        'default',
-        'models/floorlamp.sfa',
-        'src/main/assets/floorlamp')
-
-
-sceneform.asset('models/4seated_dinning_table.obj',
-        'default',
-        'models/4seated_dinning_table.sfa',
-        'src/main/assets/4seated_dinning_table')
-
-sceneform.asset('models/alba_sheeshamcofee_table.obj',
-        'default',
-        'models/alba_sheeshamcofee_table.sfa',
-        'src/main/assets/alba_sheeshamcofee_table')
-
-sceneform.asset('models/andy.obj',
-        'default',
-        'models/andy.sfa',
-        'src/main/assets/andy')
-
-sceneform.asset('models/audi.obj',
-        'default',
-        'models/audi.sfa',
-        'src/main/assets/audi')
-
-sceneform.asset('models/Audi_R8.obj',
-        'default',
-        'models/Audi_R8.sfa',
-        'src/main/assets/Audi_R8')
-
-sceneform.asset('models/audiinterior.obj',
-        'default',
-        'models/audiinterior.sfa',
-        'src/main/assets/audiinterior')
-
-sceneform.asset('models/barrelset.obj',
-        'default',
-        'models/barrelset.sfa',
-        'src/main/assets/barrelset')
-
-sceneform.asset('models/bedsofa.obj',
-        'default',
-        'models/bedsofa.sfa',
-        'src/main/assets/bedsofa')
-
-sceneform.asset('models/chelsea.obj',
-        'default',
-        'models/chelsea.sfa',
-        'src/main/assets/chelsea')
-
-sceneform.asset('models/dressing_table.obj',
-        'default',
-        'models/dressing_table.sfa',
-        'src/main/assets/dressing_table')
-
-sceneform.asset('models/empod.obj',
-        'default',
-        'models/empod.sfa',
-        'src/main/assets/empod')
-
-sceneform.asset('models/empoda.obj',
-        'default',
-        'models/empoda.sfa',
-        'src/main/assets/empoda')
-
-sceneform.asset('models/empodb.obj',
-        'default',
-        'models/empodb.sfa',
-        'src/main/assets/empodb')
-
-sceneform.asset('models/entsfa.obj',
-        'default',
-        'models/entsfa.sfa',
-        'src/main/assets/entsfa')
-
-sceneform.asset('models/execuofc.obj',
-        'default',
-        'models/execuofc.sfa',
-        'src/main/assets/execuofc')
-
-sceneform.asset('models/exewait.obj',
-        'default',
-        'models/exewait.sfa',
-        'src/main/assets/exewait')
-
-sceneform.asset('models/expall.obj',
-        'default',
-        'models/expall.sfa',
-        'src/main/assets/expall')
-
-sceneform.asset('models/Ferrari_Modena_Spider.obj',
-        'default',
-        'models/Ferrari_Modena_Spider.sfa',
-        'src/main/assets/Ferrari_Modena_Spider')
-
-sceneform.asset('models/florence_compact.obj',
-        'default',
-        'models/florence_compact.sfa',
-        'src/main/assets/florence_compact')
-
-sceneform.asset('models/kitchenunit.obj',
-        'default',
-        'models/kitchenunit.sfa',
-        'src/main/assets/kitchenunit')
-
-sceneform.asset('models/loadha_building.obj',
-        'default',
-        'models/loadha_building.sfa',
-        'src/main/assets/loadha_building')
-
-sceneform.asset('models/lodha_section_a.obj',
-        'default',
-        'models/lodha_section_a.sfa',
-        'src/main/assets/lodha_section_a')
-
-sceneform.asset('models/lodha_section_b.obj',
-        'default',
-        'models/lodha_section_b.sfa',
-        'src/main/assets/lodha_section_b')
-
-sceneform.asset('models/meetingtable.obj',
-        'default',
-        'models/meetingtable.sfa',
-        'src/main/assets/meetingtable')
-
-sceneform.asset('models/Multiple_Frames_Buddha_Art_Wall_Painting.obj',
-        'default',
-        'models/Multiple_Frames_Buddha_Art_Wall_Painting.sfa',
-        'src/main/assets/Multiple_Frames_Buddha_Art_Wall_Painting')
-
-sceneform.asset('models/norland.obj',
-        'default',
-        'models/norland.sfa',
-        'src/main/assets/norland')
-
-sceneform.asset('models/officprrta.obj',
-        'default',
-        'models/officprrta.sfa',
-        'src/main/assets/officprrta')
-
-sceneform.asset('models/officprrtb.obj',
-        'default',
-        'models/officprrtb.sfa',
-        'src/main/assets/officprrtb')
-
-sceneform.asset('models/ottomanchair.obj',
-        'default',
-        'models/ottomanchair.sfa',
-        'src/main/assets/ottomanchair')
-
-sceneform.asset('models/outdoorsofa.obj',
-        'default',
-        'models/outdoorsofa.sfa',
-        'src/main/assets/outdoorsofa')
-
-sceneform.asset('models/parasona.obj',
-        'default',
-        'models/parasona.sfa',
-        'src/main/assets/parasona')
-
-sceneform.asset('models/Porsche_911_GT3.obj',
-        'default',
-        'models/Porsche_911_GT3.sfa',
-        'src/main/assets/Porsche_911_GT3')
-
-sceneform.asset('models/royaloka_tvset.obj',
-        'default',
-        'models/royaloka_tvset.sfa',
-        'src/main/assets/royaloka_tvset')
-
-sceneform.asset('models/teakbed.obj',
-        'default',
-        'models/teakbed.sfa',
-        'src/main/assets/teakbed')
-
-sceneform.asset('models/wallpaint.obj',
-        'default',
-        'models/wallpaint.sfa',
-        'src/main/assets/wallpaint')
-
-sceneform.asset('models/wallpartition.obj',
-        'default',
-        'models/wallpartition.sfa',
-        'src/main/assets/wallpartition')
-
-sceneform.asset('models/wardrobe.obj',
-        'default',
-        'models/wardrobe.sfa',
-        'src/main/assets/wardrobe')
-
-sceneform.asset('models/window.obj',
-        'default',
-        'models/window.sfa',
-        'src/main/assets/window')
