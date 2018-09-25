@@ -585,7 +585,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void GetData(JSONArray resp) {
         for (int i = 0; i < resp.length(); i++) {
-            JSONObject object = null;
+            JSONObject object;
             try {
                 object = resp.getJSONObject(i);
 

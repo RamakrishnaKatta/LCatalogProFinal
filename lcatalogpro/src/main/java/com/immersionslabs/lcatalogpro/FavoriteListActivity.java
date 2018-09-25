@@ -55,7 +55,7 @@ public class FavoriteListActivity extends AppCompatActivity implements ApiCommun
         USER_LOG_TYPE = EnvConstants.user_type;
 
         sessionmanager = new SessionManager(getApplicationContext());
-        HashMap hashmap = new HashMap();
+        HashMap hashmap;
 
         hashmap = sessionmanager.getUserDetails();
         user_id = (String) hashmap.get(SessionManager.KEY_USER_ID);
@@ -129,7 +129,7 @@ public class FavoriteListActivity extends AppCompatActivity implements ApiCommun
 
     private void GetArrayData(JSONArray resp) {
         for (int i = 0; i < resp.length(); i++) {
-            JSONObject obj = null;
+            JSONObject obj;
             try {
                 obj = resp.getJSONObject(i);
 

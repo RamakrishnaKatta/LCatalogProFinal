@@ -46,6 +46,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import java.util.Properties;
 import java.util.Set;
 
@@ -160,7 +161,7 @@ public class CheckListActivity extends AppCompatActivity {
             if (EnvConstants.user_type.equals("CUSTOMER")) {
                 if (set_checklist_vendorids != null && !set_checklist_vendorids.isEmpty()) {
                     HashMap userDetails = sessionManager.getUserDetails();
-                    _user_email = userDetails.get(SessionManager.KEY_EMAIL).toString();
+                    _user_email = Objects.requireNonNull(userDetails.get(SessionManager.KEY_EMAIL)).toString();
                     Log.e(TAG, "User Email" + _user_email);
                     try {
                         is_email_valid_boolean = is_email_valid(_user_email);
@@ -175,7 +176,8 @@ public class CheckListActivity extends AppCompatActivity {
                                 vendor_id = String.valueOf(integer_vendor_id);
                                 Log.e(TAG, "VendorId from sent email" + vendor_id);
                                 HashMap hashMap = map_vendordetails.get(vendor_id);
-                                String vendor_email = hashMap.get(vendor_id + SessionManager.KEY_VENDOR_EMAIL).toString();
+                                assert hashMap != null;
+                                String vendor_email = Objects.requireNonNull(hashMap.get(vendor_id + SessionManager.KEY_VENDOR_EMAIL)).toString();
                                 Set articleids = map_vendorarticleids.get(vendor_id_clone);
                                 if (articleids != null) {
                                     sendEmail(articleids, vendor_email, _user_email);
@@ -185,12 +187,7 @@ public class CheckListActivity extends AppCompatActivity {
                             AlertDialog.Builder builder = new AlertDialog.Builder(CheckListActivity.this, R.style.AppCompatAlertDialogStyle);
                             builder.setTitle("Verification");
                             builder.setMessage("Your email is not a verified email, do you want to proceed with the verification?");
-                            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    VerifyEmail(_user_email);
-                                }
-                            });
+                            builder.setPositiveButton("OK", (dialog, which) -> VerifyEmail(_user_email));
                             builder.setNegativeButton("CANCEL", null);
                             builder.show();
                         }
@@ -383,17 +380,15 @@ public class CheckListActivity extends AppCompatActivity {
 
     private void sendEmail(Set articleids, String vendor_email_text, String useremail) {
         Log.e(TAG, "article ids of vendor" + articleids);
-        String article_id, article_name = null, article_desc, article_price;
-        String vendor_email = vendor_email_text;
-        String user_email = useremail;
+        String article_id, article_name, article_desc, article_price;
         int Index;
-        RECIPIENT = vendor_email;
-        RECIPIENT_CC = user_email;
+        RECIPIENT = vendor_email_text;
+        RECIPIENT_CC = useremail;
         Session session = Session.getDefaultInstance(new Properties());
         final MimeMessage mimeMessage = new MimeMessage(session);
 
         HashMap userDetails = sessionManager.getUserDetails();
-        String username = userDetails.get(SessionManager.KEY_NAME).toString().toUpperCase();
+        String username = Objects.requireNonNull(userDetails.get(SessionManager.KEY_NAME)).toString().toUpperCase();
         stringBuffer = new StringBuffer();
         stringBuffer.append("<!DOCTYPE html>\n" +
                 "<html>\n" +
@@ -444,11 +439,9 @@ public class CheckListActivity extends AppCompatActivity {
 
         Iterator iterator = articleids.iterator();
         String Article_size = Integer.toString(articleids.size());
-        int count = 0;
 
         while (iterator.hasNext()) {
             try {
-                count++;
                 article_id = iterator.next().toString();
                 Index = item_ids.indexOf(article_id);
                 Log.e(TAG, "ITEM_IDS" + item_ids);

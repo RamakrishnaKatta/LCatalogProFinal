@@ -96,7 +96,6 @@ public class LoginActivity extends AppCompatActivity implements ApiCommunication
         sessionmanager = new SessionManager(getApplicationContext());
         rijndeal_obj = new CryptionRijndeal();
 
-        SharedPreferences settings = this.getSharedPreferences("LoginSession", Context.MODE_PRIVATE);
         String customer_text_file_location = Environment.getExternalStorageDirectory() + "/L_CATALOG/customer.txt";
         file_customer = new File(customer_text_file_location);
 

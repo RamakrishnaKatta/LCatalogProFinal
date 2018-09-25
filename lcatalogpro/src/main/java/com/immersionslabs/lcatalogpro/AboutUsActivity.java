@@ -84,15 +84,12 @@ public class AboutUsActivity extends AppCompatActivity implements ConnectionRece
         final View view = this.getWindow().getDecorView().findViewById(android.R.id.content);
         final Snackbar snackbar = Snackbar.make(view, "Please Check Your Internet connection", Snackbar.LENGTH_INDEFINITE);
         snackbar.setActionTextColor(ContextCompat.getColor(this, R.color.red));
-        snackbar.setAction("RETRY", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                snackbar.dismiss();
+        snackbar.setAction("RETRY", v -> {
+            snackbar.dismiss();
 //                if (NetworkConnectivity.checkInternetConnection(AboutUsActivity.this)) {
 //                } else {
 //                    InternetMessage();
 //                }
-            }
         });
         snackbar.show();
     }
@@ -138,7 +135,7 @@ public class AboutUsActivity extends AppCompatActivity implements ConnectionRece
             startActivity(intent);
         } else {
             Toast.makeText(this, "There is a change in the network connection", Toast.LENGTH_LONG).show();
-            Log.e(TAG, "onNetworkConnectionChanged " + isConnected);
+            Log.e(TAG, "onNetworkConnectionChanged " + true);
         }
     }
 

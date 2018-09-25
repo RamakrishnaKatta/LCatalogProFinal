@@ -69,7 +69,7 @@ public class Article3dViewActivity extends AppCompatActivity {
             DOWNLOAD_URL = EnvConstants.APP_BASE_URL + "/upload/partview_3d/" + part_3ds_file_name;
 
         FloatingActionButton fab = findViewById(R.id.fab_3dView);
-        fab.setOnClickListener((View.OnClickListener) view -> {
+        fab.setOnClickListener(view -> {
             if (scaleBar.getVisibility() == View.INVISIBLE) {
                 scaleBar.setVisibility(View.VISIBLE);
             } else if (scaleBar.getVisibility() == View.VISIBLE) {

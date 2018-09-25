@@ -76,7 +76,7 @@ public class OnBoarding extends AppCompatActivity {
         btnNext.setOnClickListener(v -> {
             // checking for last page
             // if last page home screen will be launched
-            int current = getItem(+1);
+            int current = getItem();
             if (current < layouts.length) {
                 // move to next screen
                 viewPager.setCurrentItem(current);
@@ -140,7 +140,8 @@ public class OnBoarding extends AppCompatActivity {
         dotsLayout.removeAllViews();
         for (int i = 0; i < dots.length; i++) {
             dots[i] = new TextView(this);
-            dots[i].setText(Html.fromHtml("&#8226;"));
+            String dotscolor = getString(R.string.dotcolor);
+            dots[i].setText(Html.fromHtml(dotscolor, Html.FROM_HTML_MODE_LEGACY));
             dots[i].setTextSize(35);
             dots[i].setTextColor(Color.WHITE);
             dotsLayout.addView(dots[i]);
@@ -150,8 +151,8 @@ public class OnBoarding extends AppCompatActivity {
             dots[currentPage].setTextColor(Color.parseColor("#004D40"));
     }
 
-    private int getItem(int i) {
-        return viewPager.getCurrentItem() + i;
+    private int getItem() {
+        return viewPager.getCurrentItem() + 1;
     }
 
     private void launchHomeScreen() {
