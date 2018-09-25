@@ -121,7 +121,7 @@ public class Fragment_ProjectParts extends Fragment implements ApiCommunication 
 
     private void getdata(JSONArray parts) {
         for (int i = 0; i < parts.length(); i++) {
-            JSONObject object = null;
+            JSONObject object;
 
             try {
                 object = parts.getJSONObject(i);

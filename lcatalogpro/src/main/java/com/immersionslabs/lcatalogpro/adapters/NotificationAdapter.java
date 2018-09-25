@@ -89,12 +89,10 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     static class ViewHolder extends RecyclerView.ViewHolder {
         private AppCompatImageView imageView;
         private TextView title, message;
-        private RelativeLayout container;
 
         ViewHolder(View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.notify_image);
-            container = itemView.findViewById(R.id.notification_container);
             title = itemView.findViewById(R.id.notification_title);
             message = itemView.findViewById(R.id.notification_data);
         }

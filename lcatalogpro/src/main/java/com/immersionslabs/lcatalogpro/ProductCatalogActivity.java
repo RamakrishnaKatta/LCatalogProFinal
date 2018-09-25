@@ -159,31 +159,7 @@ public class ProductCatalogActivity extends AppCompatActivity implements ApiComm
 
     private void commonGetdata() {
         Log.e(TAG, "commonGetdata: " + REGISTER_URL);
-        final JSONObject baseclass = new JSONObject();
         ApiService.getInstance(this).getData(this, false, "CATALOGUE ACTIVITY", REGISTER_URL, "GETDATA");
-    }
-
-    /*Internet message for Network connectivity*/
-    private boolean checkInternetConnection() {
-        // get Connectivity Manager object to check connection
-        ConnectivityManager connec =
-                (ConnectivityManager) getSystemService(getBaseContext().CONNECTIVITY_SERVICE);
-
-        // Check for network connections
-        if (connec.getActiveNetworkInfo().getState() == android.net.NetworkInfo.State.CONNECTED ||
-                connec.getActiveNetworkInfo().getState() == android.net.NetworkInfo.State.CONNECTING) {
-
-            // if connected with internet
-            return true;
-
-        } else if (
-                connec.getActiveNetworkInfo().getState() == android.net.NetworkInfo.State.DISCONNECTED ||
-                        connec.getActiveNetworkInfo().getState() == android.net.NetworkInfo.State.DISCONNECTED) {
-
-            Toast.makeText(this, " Internet Not Available  ", Toast.LENGTH_LONG).show();
-            return false;
-        }
-        return false;
     }
 
     private void InternetMessage() {
@@ -204,7 +180,7 @@ public class ProductCatalogActivity extends AppCompatActivity implements ApiComm
     public void CatalogView(JSONArray g_jsonArray) {
 
         for (int i = 0; i < g_jsonArray.length(); i++) {
-            JSONObject obj = null;
+            JSONObject obj;
             try {
                 obj = g_jsonArray.getJSONObject(i);
 
@@ -299,7 +275,7 @@ public class ProductCatalogActivity extends AppCompatActivity implements ApiComm
                     CatalogView(resp);
                 } else {
                     for (int i = 0; i < resp.length(); i++) {
-                        JSONObject obj = null;
+                        JSONObject obj;
                         try {
                             obj = resp.getJSONObject(i);
 

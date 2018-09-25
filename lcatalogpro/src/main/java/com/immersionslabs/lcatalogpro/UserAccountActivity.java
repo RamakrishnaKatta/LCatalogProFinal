@@ -46,7 +46,7 @@ public class UserAccountActivity extends AppCompatActivity implements ApiCommuni
     private EditText name, email, address, mobile;
     private KeyListener listener;
     private Button edit_user, update_user;
-    private String user_name, user_address, user_phone, user_email, user_id, user_password, user_global_id;
+    private String user_name, user_address, user_phone, user_email, user_password, user_global_id;
     String resp, message, code;
 
     @Override
@@ -64,7 +64,7 @@ public class UserAccountActivity extends AppCompatActivity implements ApiCommuni
         }
 
         sessionmanager = new SessionManager(getApplicationContext());
-        HashMap hashmap = new HashMap();
+        HashMap hashmap;
 
         hashmap = sessionmanager.getUserDetails();
 
@@ -72,7 +72,6 @@ public class UserAccountActivity extends AppCompatActivity implements ApiCommuni
         user_address = (String) hashmap.get(SessionManager.KEY_ADDRESS);
         user_email = (String) hashmap.get(SessionManager.KEY_EMAIL);
         user_phone = (String) hashmap.get(SessionManager.KEY_MOBILE_NO);
-        user_id = (String) hashmap.get(SessionManager.KEY_USER_ID);
         user_password = (String) hashmap.get(SessionManager.KEY_PASSWORD);
         user_global_id = (String) hashmap.get(SessionManager.KEY_GLOBAL_USER_ID);
 

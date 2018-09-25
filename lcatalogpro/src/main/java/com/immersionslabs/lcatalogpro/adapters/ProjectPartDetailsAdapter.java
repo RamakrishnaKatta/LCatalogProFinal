@@ -34,18 +34,16 @@ public class ProjectPartDetailsAdapter extends RecyclerView.Adapter<ProjectPartD
     private ArrayList<String> part_articles_id;
     private ArrayList<String> part_article_name;
     private ArrayList<String> part_article_images;
-    private Context mcontext;
 
     public ProjectPartDetailsAdapter(ProjectPartsActivity activity,
                                      ArrayList<String> part_articles_id,
                                      ArrayList<String> part_article_name,
-                                     ArrayList<String> part_article_images, Context context) {
+                                     ArrayList<String> part_article_images) {
 
         this.part_articles_id = part_articles_id;
         this.part_article_name = part_article_name;
         this.part_article_images = part_article_images;
         this.activity = activity;
-        this.mcontext = context;
     }
 
     @NonNull

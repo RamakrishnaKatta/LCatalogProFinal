@@ -126,7 +126,8 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
 
         viewHolder.item_name.setText(item_names.get(position));
         viewHolder.item_description.setText(item_descriptions.get(position));
-        viewHolder.item_price.setText((Html.fromHtml("<strike>" + item_prices.get(position) + "</strike>")));
+        String pricestrike = "<strike>" + item_prices.get(position) + "</strike>";
+        viewHolder.item_price.setText((Html.fromHtml(pricestrike, Html.FROM_HTML_MODE_LEGACY)));
         viewHolder.item_price.setPaintFlags(viewHolder.item_price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         viewHolder.item_discount.setText(item_discounts.get(position));
         viewHolder.item_price_new.setText(itemNewPrice);

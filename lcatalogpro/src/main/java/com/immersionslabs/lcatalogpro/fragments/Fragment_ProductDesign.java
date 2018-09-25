@@ -119,8 +119,8 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
         article_augment_area = view.findViewById(R.id.article_augment_icon_area);
         article_budgetlist_area = view.findViewById(R.id.article_budget_icon_area);
         article_checklist_area = view.findViewById(R.id.article_checklist_icon_area);
-        sessionmanager = new SessionManager(getContext());
-        HashMap hashmap = new HashMap();
+        sessionmanager = new SessionManager(Objects.requireNonNull(getContext()));
+        HashMap hashmap;
         manager_budgetList = new Manager_BudgetList();
         manager_checkList = new Manager_CheckList();
         hashmap = sessionmanager.getUserDetails();
@@ -132,8 +132,8 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
         assert getArguments() != null;
         article_images = getArguments().getString("article_images");
         article_name = getArguments().getString("article_name");
-//        article_3ds = getArguments().getString("article_3ds");
-//        article_3ds_file_name = getArguments().getString("article_3ds_file");
+        article_3ds = getArguments().getString("article_3ds");
+        article_3ds_file_name = getArguments().getString("article_3ds_file");
         article_id = getArguments().getString("article_id");
         article_price = getArguments().getString("article_new_price");
         article_vendor_id = getArguments().getString("article_vendor_id");
@@ -218,7 +218,8 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
 
                 for (int i = 0; i < dots.length; i++) {
                     dots[i] = new TextView(view.getContext());
-                    dots[i].setText(Html.fromHtml("&#8226;"));
+                    String dotscolor = getString(R.string.dotscolor);
+                    dots[i].setText(Html.fromHtml(dotscolor, Html.FROM_HTML_MODE_LEGACY));
                     dots[i].setTextSize(35);
                     dots[i].setTextColor(Color.WHITE);
                     Slider_dots.addView(dots[i]);
@@ -256,11 +257,11 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
         });
 
         article_3d_view_area.setOnClickListener(v -> {
-//            Bundle b3 = new Bundle();
-//            b3.putString("article_name", article_name);
-//            b3.putString("article_3ds_file_name", article_3ds);
-//            Intent _3d_intent = new Intent(getContext(), Article3dViewActivity.class).putExtras(b3);
-//            startActivity(_3d_intent);
+            Bundle b3 = new Bundle();
+            b3.putString("article_name", article_name);
+            b3.putString("article_3ds_file_name", article_3ds);
+            Intent _3d_intent = new Intent(getContext(), Article3dViewActivity.class).putExtras(b3);
+            startActivity(_3d_intent);
         });
 
         article_share_area.setOnClickListener(v -> {
@@ -644,10 +645,6 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        Activity activity;
-        if (context instanceof Activity) {
-            activity = (Activity) context;
-        }
     }
 
     @Override

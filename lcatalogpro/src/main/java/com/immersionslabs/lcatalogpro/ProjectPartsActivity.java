@@ -53,7 +53,6 @@ public class ProjectPartsActivity extends AppCompatActivity implements ApiCommun
     RecyclerView recyclerView;
     ProjectPartDetailsAdapter adapter;
     GridLayoutManager layoutManager;
-    Context mcontext;
 
     String p_id, p_name, p_3ds, p_images, p_desc;
     String p_image1, p_image2, p_image3, p_image4, p_image5;
@@ -103,7 +102,6 @@ public class ProjectPartsActivity extends AppCompatActivity implements ApiCommun
         part_article_images = new ArrayList<>();
         project_ids = new ArrayList<>();
 
-        mcontext = getApplicationContext();
 
         final Bundle b = getIntent().getExtras();
         assert b != null;
@@ -200,7 +198,8 @@ public class ProjectPartsActivity extends AppCompatActivity implements ApiCommun
 
         for (int i = 0; i < dots.length; i++) {
             dots[i] = new TextView(this);
-            dots[i].setText(Html.fromHtml("&#8226;"));
+            String dotscolor = getString(R.string.dotscolor);
+            dots[i].setText(Html.fromHtml(dotscolor, Html.FROM_HTML_MODE_LEGACY));
             dots[i].setTextSize(35);
             dots[i].setTextColor(Color.WHITE);
             slider_dots.addView(dots[i]);
@@ -299,7 +298,7 @@ public class ProjectPartsActivity extends AppCompatActivity implements ApiCommun
         getarticledata();
         layoutManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new ProjectPartDetailsAdapter(this, part_articles_id, part_article_name, part_article_images, mcontext);
+        adapter = new ProjectPartDetailsAdapter(this, part_articles_id, part_article_name, part_article_images);
         recyclerView.setAdapter(adapter);
     }
 

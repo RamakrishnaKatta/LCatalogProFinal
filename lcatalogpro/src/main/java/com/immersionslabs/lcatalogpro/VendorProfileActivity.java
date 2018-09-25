@@ -84,7 +84,6 @@ public class VendorProfileActivity extends AppCompatActivity implements ApiCommu
 
     private void getVendorData() {
 
-        final JSONObject baseclass = new JSONObject();
         ApiService.getInstance(this).getData(this, false, "VENDOR PROFILE ACTIVITY", VENDOR_URL, "VENDOR_PROFILE");
     }
 

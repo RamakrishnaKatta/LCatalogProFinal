@@ -99,7 +99,6 @@ public class BudgetListAdapter extends RecyclerView.Adapter<BudgetListAdapter.Vi
         View view = inflater.inflate(R.layout.item_budgetlist, parent, false);
 
         sessionManager = new SessionManager(activity);
-        HashMap hashmap = new HashMap();
         manager_budgetlist = new Manager_BudgetList();
         return new ViewHolder(view);
     }
@@ -107,7 +106,7 @@ public class BudgetListAdapter extends RecyclerView.Adapter<BudgetListAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull final BudgetListAdapter.ViewHolder viewHolder, final int position) {
         final Context[] context = new Context[1];
-        String im1 = null;
+        String im1;
         String get_image = item_images.get(position);
 
         try {
@@ -133,7 +132,8 @@ public class BudgetListAdapter extends RecyclerView.Adapter<BudgetListAdapter.Vi
 
         viewHolder.item_name.setText(item_names.get(position));
         viewHolder.item_description.setText(item_descriptions.get(position));
-        viewHolder.item_price.setText((Html.fromHtml("<strike>" + item_prices.get(position) + "</strike>")));
+        String pricestrike = "<strike>" + item_prices.get(position) + "</strike>";
+        viewHolder.item_price.setText((Html.fromHtml(pricestrike, Html.FROM_HTML_MODE_LEGACY)));
         viewHolder.item_price.setPaintFlags(viewHolder.item_price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         viewHolder.item_discount.setText(item_discounts.get(position));
         viewHolder.item_price_new.setText(itemNewPrice);

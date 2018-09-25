@@ -59,7 +59,9 @@ public class Fragment_Overview extends Fragment implements ApiCommunication {
 
         if (flag.equals("GETDATA")) {
             Log.e(TAG, "response--" + response);
+
             JSONArray resp = null;
+
             try {
                 resp = response.getJSONArray("data");
             } catch (JSONException e) {

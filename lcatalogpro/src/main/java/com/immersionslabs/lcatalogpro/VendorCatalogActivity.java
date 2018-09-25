@@ -91,7 +91,6 @@ public class VendorCatalogActivity extends AppCompatActivity implements ApiCommu
     private void CommonGetData() {
 
         Log.e(TAG, "CommonGetData: " + REGISTER_URL);
-        final JSONObject object = new JSONObject();
 
         ApiService.getInstance(this).getData(this, false, "VENDOR_CATALOG", VENDOR_URL, "VENDOR_CATALOG");
     }
@@ -99,7 +98,7 @@ public class VendorCatalogActivity extends AppCompatActivity implements ApiCommu
     private void GetData(JSONArray resp) {
 
         for (int i = 0; i < resp.length(); i++) {
-            JSONObject obj = null;
+            JSONObject obj;
 
             try {
                 obj = resp.getJSONObject(i);

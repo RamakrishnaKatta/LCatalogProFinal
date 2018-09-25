@@ -84,7 +84,8 @@ public class Fragment_ProductDetails extends Fragment implements View.OnClickLis
 
         a_old_price = getArguments().getString("article_old_price");
         Log.e(TAG, "--" + a_old_price);
-        article_old_price.setText(Html.fromHtml("<strike>" + (a_old_price) + "</strike>"));
+        String pricestrike = "<strike>" + (a_old_price) + "</strike>";
+        article_old_price.setText((Html.fromHtml(pricestrike, Html.FROM_HTML_MODE_LEGACY)));
         article_old_price.setPaintFlags(article_old_price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
         a_discount = getArguments().getString("article_discount");

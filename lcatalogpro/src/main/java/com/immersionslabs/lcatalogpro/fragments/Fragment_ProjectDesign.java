@@ -137,7 +137,8 @@ public class Fragment_ProjectDesign extends Fragment {
 
         for (int i = 0; i < dots.length; i++) {
             dots[i] = new TextView(getContext());
-            dots[i].setText(Html.fromHtml("&#8226;"));
+            String dotscolor = getString(R.string.dotscolor);
+            dots[i].setText(Html.fromHtml(dotscolor, Html.FROM_HTML_MODE_LEGACY));
             dots[i].setTextSize(35);
             dots[i].setTextColor(Color.WHITE);
             slider_dots.addView(dots[i]);
