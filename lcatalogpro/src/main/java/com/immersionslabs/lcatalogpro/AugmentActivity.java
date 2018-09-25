@@ -31,7 +31,7 @@ public class AugmentActivity extends AppCompatActivity {
 
     private static final String TAG = AugmentActivity.class.getSimpleName();
     private static final double MIN_OPENGL_VERSION = 3.0;
-
+    private String url = "https://d19x0atvvvutip.cloudfront.net/sfbfiles/";
     private ArFragment arFragment;
     private ModelRenderable renderable;
     private String objectname;
@@ -43,8 +43,9 @@ public class AugmentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         objectname = getIntent().getStringExtra("objname");
-        int resId = getResources().getIdentifier("r" + objectname, "raw", this.getPackageName());
-        Log.e(TAG, "resid" + String.valueOf(resId));
+        url += objectname + ".sfb";
+        Uri uri = Uri.parse(url);
+        Log.e(TAG, "uri" + uri);
         int layout = getResources().getIdentifier("layout/activity_augment", null, this.getPackageName());
         if (!checkIsSupportedDeviceOrFinish(this)) {
             return;
@@ -57,7 +58,7 @@ public class AugmentActivity extends AppCompatActivity {
         // a CompletableFuture. Call thenAccept(), handle(), or check isDone() before calling get().
         try {
             ModelRenderable.builder()
-                    .setSource(this, resId)
+                    .setSource(this, uri)
                     .build()
                     .thenAccept(renderable -> this.renderable = renderable)
                     .exceptionally(
@@ -90,14 +91,7 @@ public class AugmentActivity extends AppCompatActivity {
                 });
     }
 
-    /**
-     * Returns false and displays an error message if Sceneform can not run, true if Sceneform can run
-     * on this device.
-     * <p>
-     * <p>Sceneform requires Android N on the device as well as OpenGL 3.0 capabilities.
-     * <p>
-     * <p>Finishes the activity if Sceneform can not run
-     */
+
     public static boolean checkIsSupportedDeviceOrFinish(final Activity activity) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
             Log.e(TAG, "Sceneform requires Android N or later");
