@@ -1,0 +1,94 @@
+{
+  "project_info": {
+    "project_number": "273525625562",
+    "firebase_url": "https://l-catalog-prod.firebaseio.com",
+    "project_id": "l-catalog-prod",
+    "storage_bucket": "l-catalog-prod.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:273525625562:android:2f43636e3b6b8672",
+        "android_client_info": {
+          "package_name": "com.immersionslabs.lcatalog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "273525625562-im6i9iq31svvvqngvjbgm1cu8b3ms2r2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.immersionslabs.lcatalog",
+            "certificate_hash": "b86f0b00ef6aba9e4cd9f0dd932d5d1591af598f"
+          }
+        },
+        {
+          "client_id": "273525625562-846mnpp2n43hcnf0ht5e91bfi4akfiun.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.immersionslabs.lcatalog",
+            "certificate_hash": "6fac7341647563fe09c9a80b580f37489403a91c"
+          }
+        },
+        {
+          "client_id": "273525625562-eat13n2vindp1uit8umhq2fcfbvvc8gd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnumtqXIRTUWVOhjJLvhXVAa3zkCHvODU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "273525625562-eat13n2vindp1uit8umhq2fcfbvvc8gd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:273525625562:android:b0ddb5348734b7a0",
+        "android_client_info": {
+          "package_name": "com.immersionslabs.lcatalogpro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "273525625562-eat13n2vindp1uit8umhq2fcfbvvc8gd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnumtqXIRTUWVOhjJLvhXVAa3zkCHvODU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
