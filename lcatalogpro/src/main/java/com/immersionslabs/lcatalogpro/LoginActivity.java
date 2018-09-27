@@ -1,7 +1,8 @@
 package com.immersionslabs.lcatalogpro;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
@@ -19,6 +20,8 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -46,6 +49,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import static com.immersionslabs.lcatalogpro.utils.EnvConstants.user_Favourite_list;
 
@@ -58,6 +62,7 @@ public class LoginActivity extends AppCompatActivity implements ApiCommunication
 
     private static final String LOGIN_URL = EnvConstants.APP_BASE_URL + "/customerLogin";
     private static final String Local_url = "http://192.168.0.10:4000/customerLogin";
+    private static final Pattern EMAIL_PATTERN = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$", Pattern.CASE_INSENSITIVE);
 
     SessionManager sessionmanager;
     SharedPreferences preferences;
@@ -65,7 +70,8 @@ public class LoginActivity extends AppCompatActivity implements ApiCommunication
     private PrefManager prefManager5;
 
     TextView _forgot_password;
-    EditText _emailText, _passwordText;
+    EditText  _passwordText;
+    AutoCompleteTextView _emailText;
     Button _loginButton;
     AppCompatImageButton get_details;
     CoordinatorLayout LoginLayout;
@@ -85,6 +91,17 @@ public class LoginActivity extends AppCompatActivity implements ApiCommunication
         userType = "CUSTOMER";
 
         sessionmanager = new SessionManager(getApplicationContext());
+        _emailText = findViewById(R.id.input_email);
+        Account[] accounts = AccountManager.get(this).getAccounts();
+
+        Set<String> emailSet = new HashSet<String>();
+
+        for (Account account:accounts){
+            if (EMAIL_PATTERN.matcher(account.name).matches()){
+                emailSet.add(account.name);
+            }
+        }
+        _emailText.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, new ArrayList<String>(emailSet)));
 
         _loginButton = findViewById(R.id.btn_login);
         _forgot_password = findViewById(R.id.link_forgot_password);

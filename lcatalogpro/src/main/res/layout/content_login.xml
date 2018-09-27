@@ -59,10 +59,11 @@
                 android:layout_margin="@dimen/margin_3"
                 android:visibility="visible">
 
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/input_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:autoLink="email"
                     android:hint="@string/email"
                     android:inputType="textEmailAddress" />
             </android.support.design.widget.TextInputLayout>
@@ -108,8 +109,8 @@
                     android:id="@+id/btn_get_data"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
                     android:adjustViewBounds="true"
+                    android:background="@android:color/transparent"
                     android:contentDescription="@null"
                     app:srcCompat="@mipmap/ic_get_details" />
 
