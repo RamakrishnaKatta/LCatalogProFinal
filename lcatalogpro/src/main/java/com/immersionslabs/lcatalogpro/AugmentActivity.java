@@ -3,7 +3,6 @@ package com.immersionslabs.lcatalogpro;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,15 +16,11 @@ import com.google.ar.core.Anchor;
 import com.google.ar.core.HitResult;
 import com.google.ar.core.Plane;
 import com.google.ar.sceneform.AnchorNode;
+import com.google.ar.sceneform.math.Quaternion;
+import com.google.ar.sceneform.math.Vector3;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import java.util.concurrent.Callable;
 
 public class AugmentActivity extends AppCompatActivity {
 
@@ -87,6 +82,7 @@ public class AugmentActivity extends AppCompatActivity {
                     TransformableNode andy = new TransformableNode(arFragment.getTransformationSystem());
                     andy.setParent(anchorNode);
                     andy.setRenderable(renderable);
+                    andy.setLocalRotation(Quaternion.axisAngle(new Vector3(0.0f, 0.0f, 1.0f), 10f));
                     andy.select();
                 });
     }

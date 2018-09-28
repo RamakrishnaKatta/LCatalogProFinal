@@ -13,7 +13,7 @@
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
     <uses-feature android:name="android.hardware.camera.any" />
 
@@ -184,6 +184,9 @@
 
         <activity
             android:name=".AugmentActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
+        <activity
+            android:name=".AugmentedImageActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
             android:name=".FullScreenImageViewActivity"

@@ -30,6 +30,7 @@ import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.immersionslabs.lcatalogpro.Article3dViewActivity;
 import com.immersionslabs.lcatalogpro.AugmentActivity;
+import com.immersionslabs.lcatalogpro.AugmentedImageActivity;
 import com.immersionslabs.lcatalogpro.OnBoarding;
 import com.immersionslabs.lcatalogpro.R;
 import com.immersionslabs.lcatalogpro.adapters.ProductImageSliderAdapter;
@@ -279,7 +280,7 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
             builder.setMessage("Please Place the marker at the smooth Surfing Place");
             builder.setPositiveButton("YES", (dialog, which) -> {
 
-                Intent intent = new Intent(getContext(), AugmentActivity.class);
+                Intent intent = new Intent(getContext(), AugmentedImageActivity.class);
                 intent.putExtra("objname", article_id);
                 startActivity(intent);
             });
