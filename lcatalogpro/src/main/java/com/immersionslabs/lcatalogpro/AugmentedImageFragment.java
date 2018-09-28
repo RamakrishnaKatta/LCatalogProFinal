@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,16 +18,18 @@ import com.google.ar.core.AugmentedImageDatabase;
 import com.google.ar.core.Config;
 import com.google.ar.core.Session;
 import com.google.ar.sceneform.ux.ArFragment;
+import com.immersionslabs.lcatalogpro.utils.EnvConstants;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 
 /**
  * Extend the ArFragment to customize the ARCore session configuration to include Augmented Images.
  */
 public class AugmentedImageFragment extends ArFragment {
     private static final String TAG = "AugmentedImageFragment";
-
+    String a_pattern=null;
     // This is the name of the image in the sample database.  A copy of the image is in the assets
     // directory.  Opening this image on your computer is a good quick way to test the augmented image
     // matching.
@@ -37,7 +40,7 @@ public class AugmentedImageFragment extends ArFragment {
 
     // Augmented image configuration and rendering.
     // Load a single image (true) or a pre-generated image database (false).
-    private static final boolean USE_SINGLE_IMAGE = false;
+    private static final boolean USE_SINGLE_IMAGE = true;
 
     // Do a runtime check for the OpenGL level available at runtime to avoid Sceneform crashing the
     // application.
@@ -63,7 +66,7 @@ public class AugmentedImageFragment extends ArFragment {
     public View onCreateView(
             LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-
+         a_pattern = getArguments().getString("patternname");
         // Turn off the plane discovery since we're only looking for images
         getPlaneDiscoveryController().hide();
         getPlaneDiscoveryController().setInstructionView(null);
@@ -95,7 +98,8 @@ public class AugmentedImageFragment extends ArFragment {
         // * shorter setup time
         // * doesn't require images to be packaged in apk.
         if (USE_SINGLE_IMAGE) {
-            Bitmap augmentedImageBitmap = loadAugmentedImageBitmap(assetManager);
+            String url=EnvConstants.APP_BASE_URL + "/upload/pattern/" + a_pattern;
+            Bitmap augmentedImageBitmap = loadAugmentedImageBitmap(url);
             if (augmentedImageBitmap == null) {
                 return false;
             }
@@ -128,5 +132,20 @@ public class AugmentedImageFragment extends ArFragment {
             Log.e(TAG, "IO exception loading augmented image bitmap.", e);
         }
         return null;
+    }
+    private Bitmap loadAugmentedImageBitmap(String uri) {
+        try {
+            java.net.URL url = new java.net.URL(uri);
+            HttpURLConnection connection = (HttpURLConnection) url
+                    .openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap myBitmap = BitmapFactory.decodeStream(input);
+            return myBitmap;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

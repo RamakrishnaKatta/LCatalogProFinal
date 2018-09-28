@@ -31,6 +31,7 @@ import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.immersionslabs.lcatalogpro.Article3dViewActivity;
 import com.immersionslabs.lcatalogpro.AugmentActivity;
 import com.immersionslabs.lcatalogpro.AugmentedImageActivity;
+import com.immersionslabs.lcatalogpro.AugmentedImageFragment;
 import com.immersionslabs.lcatalogpro.OnBoarding;
 import com.immersionslabs.lcatalogpro.R;
 import com.immersionslabs.lcatalogpro.adapters.ProductImageSliderAdapter;
@@ -73,7 +74,7 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
     // article_images is split in to five parts and assigned to each string
     String image1, image2, image3, image4, image5;
 
-    String article_name, article_3ds, article_price, article_vendor_id;
+    String article_name, article_3ds, article_price, article_vendor_id, article_pattern;
 
     String resp, code, message;
 
@@ -138,11 +139,14 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
         article_id = getArguments().getString("article_id");
         article_price = getArguments().getString("article_new_price");
         article_vendor_id = getArguments().getString("article_vendor_id");
+        article_pattern = getArguments().getString("article_pattern_file");
+
         Log.e(TAG, "onCreateView: articleid" + article_id);
         Log.e(TAG, "onCreateView: vendor id" + article_vendor_id);
         Log.d(TAG, "onCreateView:3ds" + article_3ds);
         Log.d(TAG, "onCreateView:3dsfile" + article_3ds_file_name);
         Log.d(TAG, "onCreateView:name" + article_name);
+        Log.d(TAG, "onCreateView:Pattern" + article_pattern);
 
         if (!Objects.equals(user_log_type, "CUSTOMER")) {
 
@@ -279,10 +283,13 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
             builder.setTitle("Do you have marker with you");
             builder.setMessage("Please Place the marker at the smooth Surfing Place");
             builder.setPositiveButton("YES", (dialog, which) -> {
-
+                Bundle bundle = new Bundle();
+                bundle.putString("patternname", article_pattern);
+                AugmentedImageFragment fragobj = new AugmentedImageFragment();
+                fragobj.setArguments(bundle);
                 Intent intent = new Intent(getContext(), AugmentedImageActivity.class);
                 intent.putExtra("objname", article_id);
-                startActivity(intent);
+                 startActivity(intent);
             });
             builder.setNegativeButton("NO", (dialog, which) -> {
                 Intent intent = new Intent(getContext(), AugmentActivity.class);

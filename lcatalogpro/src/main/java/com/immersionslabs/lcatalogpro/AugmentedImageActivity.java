@@ -40,10 +40,7 @@ public class AugmentedImageActivity extends AppCompatActivity {
         url += objectname + ".sfb";
         Uri uri = Uri.parse(url);
         Log.e(TAG, "uri" + uri);
-//        int layout = getResources().getIdentifier("layout/activity_augmentimage", null, this.getPackageName());
-
         setContentView(R.layout.activity_augmentimage);
-//        setContentView(layout);
 
         arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
         fitToScanView = findViewById(R.id.image_view_fit_to_scan);
