@@ -1,21 +1,4 @@
-/*
- * Copyright 2018 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.immersionslabs.lcatalogpro;
-
 
 import android.content.Context;
 import android.net.Uri;
@@ -43,9 +26,6 @@ public class AugmentedImageNode extends AnchorNode {
   // the error handling and asynchronous loading.  The loading is started with the
   // first construction of an instance, and then used when the image is set.
   private static CompletableFuture<ModelRenderable> ulCorner;
-  private static CompletableFuture<ModelRenderable> urCorner;
-  private static CompletableFuture<ModelRenderable> lrCorner;
-  private static CompletableFuture<ModelRenderable> llCorner;
 
   public AugmentedImageNode(Context context) {
     // Upon construction, start loading the models for the corners of the frame.
@@ -54,18 +34,7 @@ public class AugmentedImageNode extends AnchorNode {
           ModelRenderable.builder()
               .setSource(context, Uri.parse("https://d19x0atvvvutip.cloudfront.net/sfbfiles/5b1e8e5b4b1d7010cb022c91.sfb"))
               .build();
-//      urCorner =
-//          ModelRenderable.builder()
-//              .setSource(context, Uri.parse("models/frame_upper_right.sfb"))
-//              .build();
-//      llCorner =
-//          ModelRenderable.builder()
-//              .setSource(context, Uri.parse("models/frame_lower_left.sfb"))
-//              .build();
-//      lrCorner =
-//          ModelRenderable.builder()
-//              .setSource(context, Uri.parse("models/frame_lower_right.sfb"))
-//              .build();
+
     }
   }
 
@@ -105,27 +74,7 @@ public class AugmentedImageNode extends AnchorNode {
     cornerNode.setParent(this);
     cornerNode.setLocalPosition(localPosition);
     cornerNode.setRenderable(ulCorner.getNow(null));
-//
-//    // Upper right corner.
-//    localPosition.set(0.5f * image.getExtentX(), 0.0f, -0.5f * image.getExtentZ());
-//    cornerNode = new Node();
-//    cornerNode.setParent(this);
-//    cornerNode.setLocalPosition(localPosition);
-//    cornerNode.setRenderable(urCorner.getNow(null));
-//
-//    // Lower right corner.
-//    localPosition.set(0.5f * image.getExtentX(), 0.0f, 0.5f * image.getExtentZ());
-//    cornerNode = new Node();
-//    cornerNode.setParent(this);
-//    cornerNode.setLocalPosition(localPosition);
-//    cornerNode.setRenderable(lrCorner.getNow(null));
-//
-//    // Lower left corner.
-//    localPosition.set(-0.5f * image.getExtentX(), 0.0f, 0.5f * image.getExtentZ());
-//    cornerNode = new Node();
-//    cornerNode.setParent(this);
-//    cornerNode.setLocalPosition(localPosition);
-//    cornerNode.setRenderable(llCorner.getNow(null));
+
   }
 
   public AugmentedImage getImage() {

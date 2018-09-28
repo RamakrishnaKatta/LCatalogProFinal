@@ -1,4 +1,3 @@
-
 package com.immersionslabs.lcatalogpro;
 
 import android.net.Uri;
@@ -7,13 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.ar.core.AugmentedImage;
 import com.google.ar.core.Frame;
 import com.google.ar.core.TrackingState;
 import com.google.ar.sceneform.FrameTime;
 import com.google.ar.sceneform.ux.ArFragment;
+import com.immersionslabs.lcatalogpro.utils.CustomMessage;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -81,7 +80,7 @@ public class AugmentedImageActivity extends AppCompatActivity {
                     // When an image is in PAUSED state, but the camera is not PAUSED, it has been detected,
                     // but not yet tracked.
                     String text = "Detected Image " + augmentedImage.getIndex();
-                    Toast.makeText(this, "some shit", Toast.LENGTH_SHORT).show();
+                    CustomMessage.getInstance().CustomMessage(this, text);
                     break;
 
                 case TRACKING:
