@@ -297,6 +297,7 @@ public class UserTypeActivity extends AppCompatActivity {
         int PermissionCamera = ContextCompat.checkSelfPermission(UserTypeActivity.this, android.Manifest.permission.CAMERA);
         int PermissionReadStorage = ContextCompat.checkSelfPermission(UserTypeActivity.this, android.Manifest.permission.READ_EXTERNAL_STORAGE);
         int PermissionWriteStorage = ContextCompat.checkSelfPermission(UserTypeActivity.this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int PermissionContacts = ContextCompat.checkSelfPermission(UserTypeActivity.this, android.Manifest.permission.READ_CONTACTS);
 
         List<String> listPermissionsNeeded = new ArrayList<>();
 
@@ -308,6 +309,9 @@ public class UserTypeActivity extends AppCompatActivity {
         }
         if (PermissionWriteStorage != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+        if (PermissionContacts != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(android.Manifest.permission.READ_CONTACTS);
         }
         if (!listPermissionsNeeded.isEmpty()) {
             ActivityCompat.requestPermissions(this, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]), MY_PERMISSIONS_REQUEST);
@@ -325,6 +329,8 @@ public class UserTypeActivity extends AppCompatActivity {
                 perms.put(android.Manifest.permission.CAMERA, PackageManager.PERMISSION_GRANTED);
                 perms.put(android.Manifest.permission.READ_EXTERNAL_STORAGE, PackageManager.PERMISSION_GRANTED);
                 perms.put(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, PackageManager.PERMISSION_GRANTED);
+                perms.put(android.Manifest.permission.READ_CONTACTS, PackageManager.PERMISSION_GRANTED);
+
                 // Fill with actual results from user
                 if (grantResults.length > 0) {
                     for (int i = 0; i < permissions.length; i++)
@@ -332,7 +338,8 @@ public class UserTypeActivity extends AppCompatActivity {
                     // Check all three permissions
                     if (perms.get(android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
                             && perms.get(android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
-                            && perms.get(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                            && perms.get(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+                            && perms.get(android.Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
                         Log.e(TAG, "Camera and Storage(Read and Write) permission granted");
                         // Process the normal flow
                         // Else any one or both the permissions are not granted
@@ -345,7 +352,8 @@ public class UserTypeActivity extends AppCompatActivity {
 
                         if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.CAMERA) ||
                                 ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) ||
-                                ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                                ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) ||
+                                ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.READ_CONTACTS)) {
 
                             showDialogOK((dialog, which) -> {
                                 switch (which) {

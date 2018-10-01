@@ -29,7 +29,7 @@ import java.net.HttpURLConnection;
  */
 public class AugmentedImageFragment extends ArFragment {
     private static final String TAG = "AugmentedImageFragment";
-    String a_pattern=null;
+    String a_pattern = null;
     // This is the name of the image in the sample database.  A copy of the image is in the assets
     // directory.  Opening this image on your computer is a good quick way to test the augmented image
     // matching.
@@ -66,9 +66,8 @@ public class AugmentedImageFragment extends ArFragment {
     public View onCreateView(
             LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-//         a_pattern = getArguments().getString("patternname");
-        a_pattern=EnvConstants.article_pattern;
-         Log.e(TAG,"a_patterjn"+a_pattern);
+        a_pattern = EnvConstants.article_pattern;
+        Log.e(TAG, "a_pattern" + a_pattern);
         // Turn off the plane discovery since we're only looking for images
         getPlaneDiscoveryController().hide();
         getPlaneDiscoveryController().setInstructionView(null);
@@ -100,7 +99,7 @@ public class AugmentedImageFragment extends ArFragment {
         // * shorter setup time
         // * doesn't require images to be packaged in apk.
         if (USE_SINGLE_IMAGE) {
-            String url=EnvConstants.APP_BASE_URL + "/upload/pattern/" + a_pattern;
+            String url = EnvConstants.APP_BASE_URL + "/upload/pattern/" + a_pattern;
             Bitmap augmentedImageBitmap = loadAugmentedImageBitmap(url);
             if (augmentedImageBitmap == null) {
                 return false;
@@ -135,6 +134,7 @@ public class AugmentedImageFragment extends ArFragment {
         }
         return null;
     }
+
     private Bitmap loadAugmentedImageBitmap(String uri) {
         try {
             java.net.URL url = new java.net.URL(uri);
