@@ -283,13 +283,15 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
             builder.setTitle("Do you have marker with you");
             builder.setMessage("Please Place the marker at the smooth Surfing Place");
             builder.setPositiveButton("YES", (dialog, which) -> {
-                Bundle bundle = new Bundle();
-                bundle.putString("patternname", article_pattern);
-                AugmentedImageFragment fragobj = new AugmentedImageFragment();
-                fragobj.setArguments(bundle);
+//                Bundle bundle = new Bundle();
+//                bundle.putString("patternname", article_pattern);
+//                AugmentedImageFragment fragobj = new AugmentedImageFragment();
+//                fragobj.setArguments(bundle);
+                EnvConstants.article_pattern = article_pattern;
+                Log.e(TAG, "onCreateView: ywqeyyewqiuyeiuqwyiueyqwiueiuwq" + article_pattern);
                 Intent intent = new Intent(getContext(), AugmentedImageActivity.class);
                 intent.putExtra("objname", article_id);
-                 startActivity(intent);
+                startActivity(intent);
             });
             builder.setNegativeButton("NO", (dialog, which) -> {
                 Intent intent = new Intent(getContext(), AugmentActivity.class);

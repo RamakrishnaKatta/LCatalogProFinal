@@ -66,7 +66,9 @@ public class AugmentedImageFragment extends ArFragment {
     public View onCreateView(
             LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
-         a_pattern = getArguments().getString("patternname");
+//         a_pattern = getArguments().getString("patternname");
+        a_pattern=EnvConstants.article_pattern;
+         Log.e(TAG,"a_patterjn"+a_pattern);
         // Turn off the plane discovery since we're only looking for images
         getPlaneDiscoveryController().hide();
         getPlaneDiscoveryController().setInstructionView(null);
