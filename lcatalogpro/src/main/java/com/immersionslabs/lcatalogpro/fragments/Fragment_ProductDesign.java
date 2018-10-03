@@ -283,8 +283,9 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
             builder.setTitle("Do you have marker with you");
             builder.setMessage("Please Place the marker at the smooth Surfing Place");
             builder.setPositiveButton("YES", (dialog, which) -> {
-                EnvConstants.article_pattern = article_pattern;
-                Log.e(TAG, "Article Pattern" + article_pattern);
+
+                EnvConstants.article_pattern = image1;
+                Log.e(TAG, "Article Pattern" + image1);
                 Intent intent = new Intent(getContext(), AugmentedImageActivity.class);
                 intent.putExtra("objname", article_id);
                 startActivity(intent);
