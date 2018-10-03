@@ -16,7 +16,6 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageButton;
-import android.support.v7.widget.AppCompatImageView;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -32,7 +31,6 @@ import com.immersionslabs.lcatalogpro.utils.SessionManager;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,7 +48,6 @@ public class UserTypeActivity extends AppCompatActivity {
     Toast toast;
     TextView app_name;
     AppCompatImageButton _customer, _newCustomer, _shopper;
-    AppCompatImageView delete_cache;
     SessionManager sessionmanager;
     private PrefManager prefManager1;
     private boolean success = true;
@@ -67,47 +64,6 @@ public class UserTypeActivity extends AppCompatActivity {
             finish();
         }
         RequestPermissions();
-
-        delete_cache = findViewById(R.id.icon);
-        delete_cache.setOnClickListener(v -> {
-
-            boolean delete_patterns = false;
-            boolean delete_data = false;
-
-            File dir_patterns = new File(Environment.getExternalStorageDirectory() + "/L_CATALOG/cache/Data/patterns");
-            File dir_data = new File(Environment.getExternalStorageDirectory() + "/L_CATALOG/cache/Data");
-
-            if (dir_patterns.isDirectory()) {
-                String[] children_patterns = dir_patterns.list();
-
-                Log.e(TAG, "" + Arrays.toString(children_patterns));
-
-                for (String children_pattern : children_patterns) {
-                    delete_patterns = new File(dir_patterns, children_pattern).delete();
-                }
-                Log.e(TAG, "Files inside Patterns Folder deleted : " + delete_patterns);
-            }
-
-            if (dir_data.isDirectory()) {
-                String[] children_data = dir_data.list();
-
-                Log.e(TAG, "" + Arrays.toString(children_data));
-
-                for (String aChildren_data : children_data) {
-                    delete_data = new File(dir_data, aChildren_data).delete();
-                }
-                Log.e(TAG, "Files inside Data Folder deleted : " + delete_data);
-            }
-
-            if (delete_patterns || delete_data) {
-                Toast.makeText(getBaseContext(), "Debugging: Cache Files Removed", Toast.LENGTH_SHORT).show();
-            } else {
-                if (toast != null)
-                    toast.cancel();
-                toast = Toast.makeText(getBaseContext(), "Debugging: Cache doesn't exist", Toast.LENGTH_SHORT);
-                toast.show();
-            }
-        });
 
         _customer = findViewById(R.id.btn_customer);
         _customer.setOnClickListener(v -> {
@@ -173,20 +129,17 @@ public class UserTypeActivity extends AppCompatActivity {
     }
 
     private void CreateFolderStructure() {
-        String root_Path = Environment.getExternalStorageDirectory().toString() + "//L_CATALOG";
-        String screenshots_Path = Environment.getExternalStorageDirectory().toString() + "//L_CATALOG/Screenshots";
-        String cache_Path = Environment.getExternalStorageDirectory().toString() + "//L_CATALOG/cache";
+        String root_Path = Environment.getExternalStorageDirectory().toString() + "//L_CATALOG_PRO";
+        String screenshots_Path = Environment.getExternalStorageDirectory().toString() + "//L_CATALOG_PRO/Screenshots";
 
-        File Root_Folder, Screenshots_Folder, Cache_Folder;
+        File Root_Folder, Screenshots_Folder;
 
         if (Environment.getExternalStorageState().contains(Environment.MEDIA_MOUNTED)) {
             Root_Folder = new File(root_Path);
             Screenshots_Folder = new File(screenshots_Path);
-            Cache_Folder = new File(cache_Path);
         } else {
             Root_Folder = new File(root_Path);
             Screenshots_Folder = new File(screenshots_Path);
-            Cache_Folder = new File(cache_Path);
         }
 
         if (Root_Folder.exists()) {
@@ -198,9 +151,6 @@ public class UserTypeActivity extends AppCompatActivity {
             }
             if (!Screenshots_Folder.exists()) {
                 success = Screenshots_Folder.mkdirs();
-            }
-            if (!Cache_Folder.exists()) {
-                success = Cache_Folder.mkdirs();
             }
             if (success) {
                 CustomMessage.getInstance().CustomMessage(UserTypeActivity.this, "Get Set Go !!");
@@ -266,7 +216,7 @@ public class UserTypeActivity extends AppCompatActivity {
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
         builder.setTitle("Alert");
-        builder.setMessage("Press OK to get out of this App");
+        builder.setMessage("Press OK to leave the App");
         builder.setPositiveButton("OK", (dialog, which) -> {
 
             Intent intent = new Intent(Intent.ACTION_MAIN);

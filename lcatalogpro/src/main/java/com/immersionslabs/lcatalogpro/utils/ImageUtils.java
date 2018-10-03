@@ -8,7 +8,9 @@ import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.Toast;
+
 import com.immersionslabs.lcatalogpro.R;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,7 +20,7 @@ import java.util.Locale;
 public class ImageUtils {
 
     // SD card screenshots_directory
-    private static final String PHOTO_ALBUM = "/L_CATALOG/Screenshots/";
+    private static final String PHOTO_ALBUM = "/L_CATALOG_PRO/Screenshots/";
 
     private static final String TAG = "Utils";
 

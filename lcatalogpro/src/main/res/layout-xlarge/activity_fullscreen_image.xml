@@ -5,7 +5,7 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <com.immersionslabs.lcatalog.Utils.TouchImageView
+    <com.immersionslabs.lcatalogpro.utils.TouchImageView
         android:id="@+id/imgDisplay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

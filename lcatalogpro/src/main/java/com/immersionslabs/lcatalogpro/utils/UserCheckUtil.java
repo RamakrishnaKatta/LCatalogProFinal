@@ -18,7 +18,7 @@ public class UserCheckUtil {
     public static void writeToFile(String data, String user_type) {
         try {
             Log.e(TAG, "- writeToFile" + "Storage State: " + isExternalStorageReadOnly() + "Storage State(ExternalStorageAvailability): " + isExternalStorageAvailable());
-            String text_file_location = Environment.getExternalStorageDirectory() + "/L_CATALOG/" + user_type + ".txt";
+            String text_file_location = Environment.getExternalStorageDirectory() + "/L_CATALOG_PRO/" + user_type + ".txt";
             FileOutputStream fileOutputStream = new FileOutputStream(text_file_location);
             fileOutputStream.write(data.getBytes());
             fileOutputStream.close();
@@ -30,7 +30,7 @@ public class UserCheckUtil {
     public static String readFromFile(String user_type) {
 
         StringBuilder ret = new StringBuilder();
-        String text_file_location = Environment.getExternalStorageDirectory() + "/L_CATALOG/" + user_type + ".txt";
+        String text_file_location = Environment.getExternalStorageDirectory() + "/L_CATALOG_PRO/" + user_type + ".txt";
 
         try {
             Log.e(TAG, "- readFromFile" + "Storage State(ReadOnlyState): " + !isExternalStorageReadOnly() + " Storage State(ExternalStorageAvailability): " + isExternalStorageAvailable());

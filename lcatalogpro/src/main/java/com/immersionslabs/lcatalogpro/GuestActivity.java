@@ -69,7 +69,7 @@ public class GuestActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        String guest_text_file_location = Environment.getExternalStorageDirectory() + "/L_CATALOG/guest.txt";
+        String guest_text_file_location = Environment.getExternalStorageDirectory() + "/L_CATALOG_PRO/guest.txt";
         file_guest = new File(guest_text_file_location);
 
         //Disables the keyboard to appear on the activity launch

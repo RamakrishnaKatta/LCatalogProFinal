@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity implements ApiCommunication
     private PrefManager prefManager5;
 
     TextView _forgot_password;
-    EditText  _passwordText;
+    EditText _passwordText;
     AutoCompleteTextView _emailText;
     Button _loginButton;
     AppCompatImageButton get_details;
@@ -96,8 +96,8 @@ public class LoginActivity extends AppCompatActivity implements ApiCommunication
 
         Set<String> emailSet = new HashSet<String>();
 
-        for (Account account:accounts){
-            if (EMAIL_PATTERN.matcher(account.name).matches()){
+        for (Account account : accounts) {
+            if (EMAIL_PATTERN.matcher(account.name).matches()) {
                 emailSet.add(account.name);
             }
         }
@@ -113,7 +113,7 @@ public class LoginActivity extends AppCompatActivity implements ApiCommunication
         sessionmanager = new SessionManager(getApplicationContext());
         rijndeal_obj = new CryptionRijndeal();
 
-        String customer_text_file_location = Environment.getExternalStorageDirectory() + "/L_CATALOG/customer.txt";
+        String customer_text_file_location = Environment.getExternalStorageDirectory() + "/L_CATALOG_PRO/customer.txt";
         file_customer = new File(customer_text_file_location);
 
 //        _forgot_password.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);

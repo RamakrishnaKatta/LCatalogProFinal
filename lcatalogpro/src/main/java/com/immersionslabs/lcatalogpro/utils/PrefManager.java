@@ -7,12 +7,12 @@ import android.content.SharedPreferences;
 public class PrefManager {
 
     // Shared preferences file name
-    private static final String PREF_NAME_1 = " L_Catalog_welcome_Screen ";
-    private static final String PREF_NAME_2 = " L_Catalog_UserTypeActivityScreen ";
-    private static final String PREF_NAME_6 = " L_Catalog_LoginActivityScreen";
-    private static final String PREF_NAME_3 = " L_Catalog_GuestActivityScreen ";
-    private static final String PREF_NAME_4 = " L_Catalog_MainActivityScreen ";
-    private static final String PREF_NAME_5 = " L_Catalog_ProductPageActivityScreen ";
+    private static final String PREF_NAME_1 = " L_Catalog_Pro_welcome_Screen ";
+    private static final String PREF_NAME_2 = " L_Catalog_Pro_UserTypeActivityScreen ";
+    private static final String PREF_NAME_6 = " L_Catalog_Pro_LoginActivityScreen";
+    private static final String PREF_NAME_3 = " L_Catalog_Pro_GuestActivityScreen ";
+    private static final String PREF_NAME_4 = " L_Catalog_Pro_MainActivityScreen ";
+    private static final String PREF_NAME_5 = " L_Catalog_Pro_ProductPageActivityScreen ";
 
     private static final String WELCOMEACTIVITY_SCREEN_LAUNCH = "WelcomeActivityScreenLaunch";
     private static final String USERTYPEACTIVITY_LAUNCH_SCREEN = "UserTypeActivityLaunchScreen";
