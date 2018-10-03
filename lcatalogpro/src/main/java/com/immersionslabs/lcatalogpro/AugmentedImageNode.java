@@ -27,12 +27,12 @@ public class AugmentedImageNode extends AnchorNode {
   // first construction of an instance, and then used when the image is set.
   private static CompletableFuture<ModelRenderable> ulCorner;
 
-  public AugmentedImageNode(Context context) {
+  public AugmentedImageNode(Context context, Uri uri) {
     // Upon construction, start loading the models for the corners of the frame.
     if (ulCorner == null) {
       ulCorner =
           ModelRenderable.builder()
-              .setSource(context, Uri.parse("https://d19x0atvvvutip.cloudfront.net/sfbfiles/5b1e8e5b4b1d7010cb022c91.sfb"))
+              .setSource(context,uri)
               .build();
 
     }
