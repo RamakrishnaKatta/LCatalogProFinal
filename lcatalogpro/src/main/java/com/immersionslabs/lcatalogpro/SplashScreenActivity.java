@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.immersionslabs.lcatalogpro.utils.NetworkConnectivity;
@@ -24,15 +25,16 @@ public class SplashScreenActivity extends AppCompatActivity implements Animation
 
     Animation animFadeIn;
     LinearLayout linearLayout;
-    TextView app_name, powered;
+    TextView powered;
+    RelativeLayout application_name_area;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        app_name = findViewById(R.id.application_name);
         powered = findViewById(R.id.immersionslabs);
+        application_name_area = findViewById(R.id.application_area);
 
         if (NetworkConnectivity.checkInternetConnection(SplashScreenActivity.this)) {
             animate();
@@ -80,7 +82,7 @@ public class SplashScreenActivity extends AppCompatActivity implements Animation
         animation_2.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-                app_name.setVisibility(View.VISIBLE);
+                application_name_area.setVisibility(View.VISIBLE);
             }
 
             @Override

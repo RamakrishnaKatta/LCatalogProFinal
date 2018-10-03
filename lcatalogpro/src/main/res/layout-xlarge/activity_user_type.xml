@@ -28,15 +28,41 @@
                 android:adjustViewBounds="true"
                 android:src="@drawable/companyicon" />
 
-            <TextView
-                android:id="@+id/application_name"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/application_area"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/graduate"
-                android:text="@string/app_name"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_tab_max" />
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/application_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/graduate"
+                    android:padding="@dimen/margin_4"
+                    android:text="@string/slide1_title"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_tab_max"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/application_sub_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_10"
+                    android:layout_toEndOf="@id/application_name"
+                    android:background="@drawable/text_background_curves"
+                    android:fontFamily="@font/graduate"
+                    android:padding="@dimen/margin_4"
+                    android:text="@string/slide1_subtitle"
+                    android:textAlignment="center"
+                    android:textColor="@color/primary_darker"
+                    android:textSize="@dimen/text_tab_large"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/immersionslabs"

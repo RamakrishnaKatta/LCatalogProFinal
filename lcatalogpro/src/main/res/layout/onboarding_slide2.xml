@@ -45,9 +45,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingEnd="@dimen/margin_10"
         android:paddingStart="@dimen/margin_10"
-        android:paddingTop="@dimen/margin_10">
+        android:paddingTop="@dimen/margin_10"
+        android:paddingEnd="@dimen/margin_10">
 
         <TextView
             android:id="@+id/txt_welcome_22"
@@ -64,9 +64,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingBottom="@dimen/margin_10"
+        android:paddingStart="@dimen/margin_10"
         android:paddingEnd="@dimen/margin_10"
-        android:paddingStart="@dimen/margin_10">
+        android:paddingBottom="@dimen/margin_10">
 
         <TextView
             android:id="@+id/txt_welcome_23"

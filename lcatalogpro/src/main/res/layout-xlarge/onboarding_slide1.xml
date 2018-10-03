@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical">
@@ -21,26 +21,45 @@
             android:padding="@dimen/margin_20"
             android:src="@drawable/companyicon" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_20">
 
             <TextView
                 android:id="@+id/txt_welcome_11"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/graduate"
-                android:text="@string/app_name"
+                android:padding="@dimen/margin_4"
+                android:text="@string/slide1_title"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="70sp"
+                android:textSize="@dimen/text_tab_max"
                 android:textStyle="bold" />
-        </LinearLayout>
+
+            <TextView
+                android:id="@+id/txt_welcome_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_10"
+                android:layout_toEndOf="@id/txt_welcome_11"
+                android:background="@drawable/text_background_curves"
+                android:fontFamily="@font/graduate"
+                android:padding="@dimen/margin_4"
+                android:text="@string/slide1_subtitle"
+                android:textAlignment="center"
+                android:textColor="@color/primary_darker"
+                android:textSize="@dimen/text_tab_large"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_40"
             android:orientation="vertical"
             android:padding="@dimen/margin_20">
@@ -64,7 +83,7 @@
                 android:text="@string/company_name"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_tab_44"
+                android:textSize="@dimen/text_tab_xxlarge"
                 android:textStyle="bold" />
 
             <TextView
@@ -75,7 +94,8 @@
                 android:text="@string/company_tag_line"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_tab_xlarge" />
+                android:textSize="@dimen/text_tab_xlarge"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
