@@ -188,7 +188,7 @@ public class Fragment_ProductDesign extends Fragment implements OnAnimationEndLi
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+EnvConstants.article_pattern=image1;
         Log.e(TAG, "Article Image 1----" + image1);
         Log.e(TAG, "Article Image 2----" + image2);
         Log.e(TAG, "Article Image 3----" + image3);

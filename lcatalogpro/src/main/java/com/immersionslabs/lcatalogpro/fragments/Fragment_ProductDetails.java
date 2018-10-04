@@ -109,7 +109,7 @@ public class Fragment_ProductDetails extends Fragment implements View.OnClickLis
         Log.e(TAG, "--" + a_pattern);
 
         Glide.with(getContext())
-                .load(EnvConstants.APP_BASE_URL + "/upload/pattern/" + a_pattern)
+                .load(EnvConstants.APP_BASE_URL + "/upload/images/" + EnvConstants.article_pattern)
                 .placeholder(R.drawable.dummy_icon)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(article_pattern_image);
