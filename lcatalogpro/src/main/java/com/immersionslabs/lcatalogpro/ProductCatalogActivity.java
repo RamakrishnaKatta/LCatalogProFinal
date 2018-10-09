@@ -208,7 +208,7 @@ public class ProductCatalogActivity extends AppCompatActivity implements ApiComm
         Log.e(TAG, "dimensions******" + item_dimensions);
         Log.e(TAG, "3ds******" + item_3ds);
         Log.e(TAG, "patterns******" + item_patterns);
-
+item_ids=EnvConstants.objectids;
         grid_Adapter = new GridViewAdapter(this, item_ids, item_names, item_descriptions, item_prices,
                 item_discounts, item_vendors, item_images, item_dimensions, item_3ds, item_patterns);
         horizontal_Adapter = new ListViewHorizontalAdapter(this, item_ids, item_names, item_descriptions, item_prices,

@@ -26,6 +26,8 @@ public class EnvConstants {
     public static String part_articles_description_var = null;
     public static String part_article__discounts_var = null;
     public static String part_articles_price_var = null;
+    public static ArrayList<String> objectids=null;
+
 
     public static ArrayList<String> part_articles_id = new ArrayList<>();
 
