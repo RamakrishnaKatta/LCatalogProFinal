@@ -339,7 +339,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
 
         } else if (id == R.id.nav_augment) {
-            Intent intent = new Intent(MainActivity.this, AugmentActivity.class);
+            Intent intent = new Intent(MainActivity.this, MultiAugmentActivity.class);
+            EnvConstants.AugmentFlag=false;
             startActivity(intent);
         } else if (id == R.id.nav_project_campaign) {
             if (NetworkConnectivity.checkInternetConnection(MainActivity.this)) {

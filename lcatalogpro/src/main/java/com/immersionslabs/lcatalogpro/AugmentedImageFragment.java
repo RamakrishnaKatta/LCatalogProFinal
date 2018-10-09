@@ -36,11 +36,12 @@ public class AugmentedImageFragment extends ArFragment {
     private static final String DEFAULT_IMAGE_NAME = "default.jpg";
 
     // This is a pre-created database containing the sample image.
-    private static final String SAMPLE_IMAGE_DATABASE = "sample_database.imgdb";
+    private static final String SAMPLE_IMAGE_DATABASE = "lcatalogproimages.imgdb";
 
     // Augmented image configuration and rendering.
     // Load a single image (true) or a pre-generated image database (false).
-    private static final boolean USE_SINGLE_IMAGE = true;
+
+    private static final boolean USE_SINGLE_IMAGE = EnvConstants.AugmentFlag;
 
     // Do a runtime check for the OpenGL level available at runtime to avoid Sceneform crashing the
     // application.
@@ -100,7 +101,7 @@ public class AugmentedImageFragment extends ArFragment {
         // * doesn't require images to be packaged in apk.
         if (USE_SINGLE_IMAGE) {
             String url = EnvConstants.APP_BASE_URL + "/upload/images/" + a_pattern;
-            Log.e(TAG, "urll"+url);
+            Log.e(TAG, "urll "+url);
             Bitmap augmentedImageBitmap = loadAugmentedImageBitmap(url);
             if (augmentedImageBitmap == null) {
                 return false;
