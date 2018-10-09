@@ -57,7 +57,8 @@ dependencies {
 
     /*show Case View*/
     implementation 'com.getkeepsafe.taptargetview:taptargetview:1.9.1'
-    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     implementation 'com.github.jd-alexander:LikeButton:0.2.3'
 
     /*AWS Dependencies*/

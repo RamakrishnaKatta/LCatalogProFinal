@@ -16,7 +16,9 @@ import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.immersionslabs.lcatalogpro.network.ApiCommunication;
 import com.immersionslabs.lcatalogpro.network.ApiService;
 import com.immersionslabs.lcatalogpro.utils.EnvConstants;
@@ -118,10 +120,14 @@ public class VendorProfileActivity extends AppCompatActivity implements ApiCommu
                 profile_vendor_location.setText(vendor_address);
                 profile_vendor_articles_list.setText("VENDOR ARTICLES (" + vendor_no_of_articles + ")");
 
+                RequestOptions glideoptions = new RequestOptions()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .priority(Priority.IMMEDIATE)
+                        .placeholder(R.drawable.dummy_icon);
+
                 Glide.with(getApplicationContext())
                         .load(EnvConstants.APP_BASE_URL + "/upload/vendorLogos/" + vendor_image)
-                        .placeholder(R.drawable.dummy_icon)
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .apply(glideoptions)
                         .into(profile_vendor_logo);
 
             } catch (JSONException e) {

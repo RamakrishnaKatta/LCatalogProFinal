@@ -16,7 +16,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.immersionslabs.lcatalogpro.ProjectPartsActivity;
 import com.immersionslabs.lcatalogpro.R;
 import com.immersionslabs.lcatalogpro.utils.CustomMessage;
@@ -90,10 +92,14 @@ public class ProjectPartsAdapter extends RecyclerView.Adapter<ProjectPartsAdapte
                 im1 = images_json.getString(0);
                 Log.e(TAG, "project_part_Image  " + im1);
 
+
+                RequestOptions glideoptions = new RequestOptions()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .priority(Priority.IMMEDIATE)
+                        .placeholder(R.drawable.dummy_icon);
                 Glide.with(activity)
                         .load(EnvConstants.APP_BASE_URL + "/upload/projectpartimages/partimages_" + get_project_id + "_" + im1)
-                        .placeholder(R.drawable.dummy_icon)
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .apply(glideoptions)
                         .into(holder.projectpart_image);
             }
         } catch (JSONException e) {

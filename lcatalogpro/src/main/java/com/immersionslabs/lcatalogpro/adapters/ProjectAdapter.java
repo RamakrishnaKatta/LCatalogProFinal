@@ -15,7 +15,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.immersionslabs.lcatalogpro.ProjectCatalogActivity;
 import com.immersionslabs.lcatalogpro.ProjectPageActivity;
 import com.immersionslabs.lcatalogpro.R;
@@ -91,10 +93,14 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
             e.printStackTrace();
         }
 
+
+        RequestOptions glideoptions = new RequestOptions()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .priority(Priority.IMMEDIATE)
+                .placeholder(R.drawable.dummy_icon);
         Glide.with(activity)
                 .load(EnvConstants.APP_BASE_URL + "/upload/projectimages/" + get_project_id + im1)
-                .placeholder(R.drawable.dummy_icon)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .apply(glideoptions)
                 .into(holder.tv_project_image);
 
         holder.tv_project_name.setText(project_names.get(position));

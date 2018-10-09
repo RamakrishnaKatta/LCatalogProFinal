@@ -20,7 +20,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.immersionslabs.lcatalogpro.ProductPageActivity;
 import com.immersionslabs.lcatalogpro.R;
 import com.immersionslabs.lcatalogpro.utils.CustomMessage;
@@ -115,10 +117,14 @@ public class BudgetListAdapter extends RecyclerView.Adapter<BudgetListAdapter.Vi
                 im1 = images_json.getString(0);
                 Log.e(TAG, "onBindViewHolder: image1" + im1);
 
+
+                RequestOptions glideoptions = new RequestOptions()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .priority(Priority.IMMEDIATE)
+                        .placeholder(R.drawable.dummy_icon);
                 Glide.with(activity)
                         .load(EnvConstants.APP_BASE_URL + "/upload/images/" + im1)
-                        .placeholder(R.drawable.dummy_icon)
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .apply(glideoptions)
                         .into(viewHolder.item_image);
             }
         } catch (JSONException e) {

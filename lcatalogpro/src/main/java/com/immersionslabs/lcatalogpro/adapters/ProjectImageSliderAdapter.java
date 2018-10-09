@@ -11,7 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.immersionslabs.lcatalogpro.R;
 import com.immersionslabs.lcatalogpro.utils.EnvConstants;
 
@@ -51,10 +53,14 @@ public class ProjectImageSliderAdapter extends PagerAdapter {
         String urls = Images.get(position);
         Log.e(TAG, "Image urls " + urls);
 
+
+        RequestOptions glideoptions = new RequestOptions()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .priority(Priority.IMMEDIATE)
+                .placeholder(R.drawable.dummy_icon);
         Glide.with(context)
                 .load(EnvConstants.APP_BASE_URL + "/upload/projectimages/" + project_id + urls)
-                .placeholder(R.drawable.dummy_icon)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .apply(glideoptions)
                 .into(images);
 
         container.addView(v);

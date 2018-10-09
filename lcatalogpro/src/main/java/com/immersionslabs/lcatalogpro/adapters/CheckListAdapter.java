@@ -18,7 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.immersionslabs.lcatalogpro.ProductPageActivity;
 import com.immersionslabs.lcatalogpro.R;
 import com.immersionslabs.lcatalogpro.utils.CustomMessage;
@@ -117,10 +119,13 @@ public class CheckListAdapter extends RecyclerView.Adapter<CheckListAdapter.View
             e.printStackTrace();
         }
 
+        RequestOptions glideoptions = new RequestOptions()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .priority(Priority.IMMEDIATE)
+                .placeholder(R.drawable.dummy_icon);
         Glide.with(activity)
                 .load(EnvConstants.APP_BASE_URL + "/upload/images/" + im1)
-                .placeholder(R.drawable.dummy_icon)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .apply(glideoptions)
                 .into(viewHolder.item_image);
 
         Integer x = Integer.parseInt(item_prices.get(position));

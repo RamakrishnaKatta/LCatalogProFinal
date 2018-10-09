@@ -12,7 +12,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.immersionslabs.lcatalogpro.R;
 import com.immersionslabs.lcatalogpro.utils.EnvConstants;
 import com.immersionslabs.lcatalogpro.utils.SessionManager;
@@ -85,16 +87,20 @@ public class Fragment_ProjectDetails extends Fragment {
         project_vendor_name.setText(vendor_name);
         Log.e(TAG, " Pattern URL" + project_pattern);
 
+
+        RequestOptions glideoptions = new RequestOptions()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .priority(Priority.IMMEDIATE)
+                .placeholder(R.drawable.dummy_icon);
+
         Glide.with(getContext())
                 .load(EnvConstants.APP_BASE_URL + "/upload/vendorLogos/" + vendor_image)
-                .placeholder(R.drawable.dummy_icon)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .apply(glideoptions)
                 .into(vendor_logo);
 
         Glide.with(getContext())
                 .load(EnvConstants.APP_BASE_URL + "/upload/projectpatternimg/" + project_id + project_pattern)
-                .placeholder(R.drawable.dummy_icon)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .apply(glideoptions)
                 .into(pattern_image);
 
         return view;

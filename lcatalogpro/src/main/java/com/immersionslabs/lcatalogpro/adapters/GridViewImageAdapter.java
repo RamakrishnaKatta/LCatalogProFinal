@@ -12,7 +12,9 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.immersionslabs.lcatalogpro.FullScreenImageViewActivity;
 import com.immersionslabs.lcatalogpro.GalleryActivity;
 import com.immersionslabs.lcatalogpro.R;
@@ -24,7 +26,7 @@ public class GridViewImageAdapter extends RecyclerView.Adapter<GridViewImageAdap
     public static final String TAG = GridViewImageAdapter.class.getSimpleName();
 
     private Activity _activity;
-    private ArrayList<String> _filePaths = new ArrayList<>();
+    private ArrayList<String> _filePaths;
 
     public GridViewImageAdapter(GalleryActivity activity,
                                 ArrayList<String> imagePaths) {
@@ -41,10 +43,14 @@ public class GridViewImageAdapter extends RecyclerView.Adapter<GridViewImageAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+
+        RequestOptions glideoptions = new RequestOptions()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .priority(Priority.IMMEDIATE)
+                .placeholder(R.drawable.dummy_icon);
         Glide.with(_activity)
                 .load(_filePaths.get(position))
-                .placeholder(R.drawable.dummy_icon)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .apply(glideoptions)
                 .into(holder.imageView);
         Log.e(TAG, " images" + holder.imageView);
 

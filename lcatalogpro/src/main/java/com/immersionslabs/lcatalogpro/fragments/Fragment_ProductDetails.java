@@ -19,7 +19,9 @@ import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.immersionslabs.lcatalogpro.R;
 import com.immersionslabs.lcatalogpro.VendorProfileActivity;
 import com.immersionslabs.lcatalogpro.network.ApiCommunication;
@@ -29,6 +31,8 @@ import com.immersionslabs.lcatalogpro.utils.EnvConstants;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Objects;
 
 public class Fragment_ProductDetails extends Fragment implements View.OnClickListener, ApiCommunication {
 
@@ -108,10 +112,14 @@ public class Fragment_ProductDetails extends Fragment implements View.OnClickLis
         a_pattern = getArguments().getString("article_pattern_file");
         Log.e(TAG, "--" + a_pattern);
 
-        Glide.with(getContext())
-                .load(EnvConstants.APP_BASE_URL + "/upload/images/" + EnvConstants.article_pattern)
-                .placeholder(R.drawable.dummy_icon)
+
+        RequestOptions glideoptions = new RequestOptions()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .priority(Priority.IMMEDIATE)
+                .placeholder(R.drawable.dummy_icon);
+        Glide.with(Objects.requireNonNull(getContext()))
+                .load(EnvConstants.APP_BASE_URL + "/upload/images/" + EnvConstants.article_pattern)
+                .apply(glideoptions)
                 .into(article_pattern_image);
 
         a_vendor_id = getArguments().getString("article_vendor_id");
@@ -139,8 +147,6 @@ public class Fragment_ProductDetails extends Fragment implements View.OnClickLis
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        if (context instanceof Activity) {
-        }
     }
 
     @Override
@@ -160,7 +166,7 @@ public class Fragment_ProductDetails extends Fragment implements View.OnClickLis
     @Override
     public void onResponseCallback(JSONObject response, String flag) {
         if (flag.equals("VENDOR_DATA")) {
-            String response_type = null;
+            String response_type;
             try {
                 response_type = response.getString("success");
 
@@ -190,10 +196,13 @@ public class Fragment_ProductDetails extends Fragment implements View.OnClickLis
         article_vendor_name.setText(vendor_name);
         article_vendor_location.setText(vendor_address);
 
-        Glide.with(getContext())
-                .load(EnvConstants.APP_BASE_URL + "/upload/vendorLogos/" + vendor_image)
-                .placeholder(R.drawable.dummy_icon)
+        RequestOptions glideoptions = new RequestOptions()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .priority(Priority.IMMEDIATE)
+                .placeholder(R.drawable.dummy_icon);
+        Glide.with(Objects.requireNonNull(getContext()))
+                .load(EnvConstants.APP_BASE_URL + "/upload/vendorLogos/" + vendor_image)
+                .apply(glideoptions)
                 .into(article_vendor_logo);
     }
 
