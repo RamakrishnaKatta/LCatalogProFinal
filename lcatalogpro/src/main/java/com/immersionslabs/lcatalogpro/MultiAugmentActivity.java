@@ -85,7 +85,7 @@ public class MultiAugmentActivity extends AppCompatActivity {
 
                     // Create a new anchor for newly found images.
                     if (augmentedImage.getName().contains(objectname)) {
-                        AugmentedImageNode node = new AugmentedImageNode(this,uri);
+                        AugmentedImageNode node = new AugmentedImageNode(this, uri);
                         node.setImage(augmentedImage);
                         augmentedImageMap.put(augmentedImage, node);
                         arFragment.getArSceneView().getScene().addChild(node);
