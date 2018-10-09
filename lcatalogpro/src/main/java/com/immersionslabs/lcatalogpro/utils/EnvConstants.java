@@ -12,6 +12,7 @@ public class EnvConstants {
     public static String user_type = null;
     public static boolean flag_article_details = false;
     public static int position = 0;
+    public static boolean AugmentFlag=false;
 
     public static String article_pattern = null;
 
