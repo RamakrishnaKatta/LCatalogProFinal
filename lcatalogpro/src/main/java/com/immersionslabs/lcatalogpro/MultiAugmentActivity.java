@@ -22,7 +22,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class MultiAugmentActivity extends AppCompatActivity {
-private ArrayList<String> objectlist=EnvConstants.objectids;
+    private ArrayList<String> objectlist = EnvConstants.objectids;
     private String objectname;
     private static final String TAG = AugmentedImageActivity.class.getSimpleName();
     private String url = "https://d19x0atvvvutip.cloudfront.net/sfbfiles/";
@@ -84,27 +84,27 @@ private ArrayList<String> objectlist=EnvConstants.objectids;
                     fitToScanView.setVisibility(View.GONE);
 
                     // Create a new anchor for newly found images.
-                    Iterator iterator=objectlist.iterator();
-                   while(iterator.hasNext()) {
-                       objectname = iterator.next().toString();
-                       if (augmentedImage.getName().contains(objectname)) {
-                           Log.e(TAG, "imagename" + augmentedImage.getName());
-                           url += objectname + ".sfb";
-                           uri = Uri.parse(url);
-                           Log.e(TAG, "uri" + uri);
-                           AugmentedImageNode node = new AugmentedImageNode(this, uri);
-                           node.setImage(augmentedImage);
-                           augmentedImageMap.put(augmentedImage, node);
-                           arFragment.getArSceneView().getScene().addChild(node);
-                       }
-                       if (augmentedImage.getName().contains(objectname)) {
-                           AugmentedImageNode node = new AugmentedImageNode(this, uri);
-                           node.setImage(augmentedImage);
-                           augmentedImageMap.put(augmentedImage, node);
-                           arFragment.getArSceneView().getScene().addChild(node);
-                       }
-                   }
-break;
+                    Iterator iterator = objectlist.iterator();
+                    while (iterator.hasNext()) {
+                        objectname = iterator.next().toString();
+                        if (augmentedImage.getName().contains(objectname)) {
+                            Log.e(TAG, "imagename" + augmentedImage.getName());
+                            url += objectname + ".sfb";
+                            uri = Uri.parse(url);
+                            Log.e(TAG, "uri" + uri);
+                            AugmentedImageNode node = new AugmentedImageNode(this, uri);
+                            node.setImage(augmentedImage);
+                            augmentedImageMap.put(augmentedImage, node);
+                            arFragment.getArSceneView().getScene().addChild(node);
+                        }
+                        if (augmentedImage.getName().contains(objectname)) {
+                            AugmentedImageNode node = new AugmentedImageNode(this, uri);
+                            node.setImage(augmentedImage);
+                            augmentedImageMap.put(augmentedImage, node);
+                            arFragment.getArSceneView().getScene().addChild(node);
+                        }
+                    }
+                    break;
                 case STOPPED:
                     augmentedImageMap.remove(augmentedImage);
                     break;

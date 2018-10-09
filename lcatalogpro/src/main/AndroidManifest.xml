@@ -18,7 +18,6 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
 
-
     <uses-feature android:name="android.hardware.camera.any" />
 
     <uses-feature
@@ -202,10 +201,12 @@
             android:label="@string/title_activity_budget_list"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Dark" />
-        <activity android:name=".MultiAugmentActivity"
+        <activity
+            android:name=".MultiAugmentActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/multi_augment_activity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Dark"/>
+            android:theme="@style/AppTheme.Dark" />
 
         <activity android:name=".notifications.NotificationCountSetClass" />
 
