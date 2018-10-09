@@ -101,7 +101,7 @@ public class AugmentedImageFragment extends ArFragment {
         // * doesn't require images to be packaged in apk.
         if (USE_SINGLE_IMAGE) {
             String url = EnvConstants.APP_BASE_URL + "/upload/images/" + a_pattern;
-            Log.e(TAG, "urll "+url);
+            Log.e(TAG, "url " + url);
             Bitmap augmentedImageBitmap = loadAugmentedImageBitmap(url);
             if (augmentedImageBitmap == null) {
                 return false;

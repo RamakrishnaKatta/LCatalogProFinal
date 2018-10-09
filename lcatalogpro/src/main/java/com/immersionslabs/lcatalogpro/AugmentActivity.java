@@ -29,7 +29,7 @@ public class AugmentActivity extends AppCompatActivity {
     private String url = "https://d19x0atvvvutip.cloudfront.net/sfbfiles/";
     private ArFragment arFragment;
     private ModelRenderable renderable;
-    private String objectname;
+    String objectname;
 
     @Override
     @SuppressWarnings({"AndroidApiChecker", "FutureReturnValueIgnored"})

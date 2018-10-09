@@ -352,5 +352,6 @@
 <p>Welcome to Immersion  Software Labs Pvt Ltd. </p> ]]>
  <![CDATA[<b>Thank you will get back you soon</b>]]>
     </string>
+    <string name="multi_augment_activity">multiaugmentactivity</string>
 
 </resources>

@@ -13,16 +13,13 @@ import com.google.ar.core.TrackingState;
 import com.google.ar.sceneform.FrameTime;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.immersionslabs.lcatalogpro.utils.CustomMessage;
-import com.immersionslabs.lcatalogpro.utils.EnvConstants;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 public class MultiAugmentActivity extends AppCompatActivity {
-private ArrayList<String> objectlist=EnvConstants.objectids;
+
     private String objectname;
     private static final String TAG = AugmentedImageActivity.class.getSimpleName();
     private String url = "https://d19x0atvvvutip.cloudfront.net/sfbfiles/";
@@ -38,7 +35,10 @@ private ArrayList<String> objectlist=EnvConstants.objectids;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        objectname = getIntent().getStringExtra("objname");
+        url += objectname + ".sfb";
+        uri = Uri.parse(url);
+        Log.e(TAG, "uri" + uri);
         setContentView(R.layout.activity_augmentimage);
 
         arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
@@ -84,22 +84,14 @@ private ArrayList<String> objectlist=EnvConstants.objectids;
                     fitToScanView.setVisibility(View.GONE);
 
                     // Create a new anchor for newly found images.
-                    Iterator iterator=objectlist.iterator();
-                   while(iterator.hasNext()) {
-                        objectname=iterator.next().toString();
-                        if (augmentedImage.getName().contains(objectname)) {
-                            Log.e(TAG, "imagename" + augmentedImage.getName());
-                             url += objectname + ".sfb";
-                            uri = Uri.parse(url);
-                            Log.e(TAG, "uri" + uri);
-                            AugmentedImageNode node = new AugmentedImageNode(this, uri);
-                            node.setImage(augmentedImage);
-                            augmentedImageMap.put(augmentedImage, node);
-                            arFragment.getArSceneView().getScene().addChild(node);
-                        }
+                    if (augmentedImage.getName().contains(objectname)) {
+                        AugmentedImageNode node = new AugmentedImageNode(this, uri);
+                        node.setImage(augmentedImage);
+                        augmentedImageMap.put(augmentedImage, node);
+                        arFragment.getArSceneView().getScene().addChild(node);
                     }
+                    break;
 
-break;
                 case STOPPED:
                     augmentedImageMap.remove(augmentedImage);
                     break;
