@@ -20,7 +20,6 @@ import java.util.Map;
 
 public class AugmentedImageActivity extends AppCompatActivity {
 
-
     private String objectname;
     private static final String TAG = AugmentedImageActivity.class.getSimpleName();
     private String url = "https://d19x0atvvvutip.cloudfront.net/sfbfiles/";
@@ -38,7 +37,7 @@ public class AugmentedImageActivity extends AppCompatActivity {
 
         objectname = getIntent().getStringExtra("objname");
         url += objectname + ".sfb";
-         uri = Uri.parse(url);
+        uri = Uri.parse(url);
         Log.e(TAG, "uri" + uri);
         setContentView(R.layout.activity_augmentimage);
 
@@ -86,7 +85,7 @@ public class AugmentedImageActivity extends AppCompatActivity {
 
                     // Create a new anchor for newly found images.
                     if (!augmentedImageMap.containsKey(augmentedImage)) {
-                        AugmentedImageNode node = new AugmentedImageNode(this,uri);
+                        AugmentedImageNode node = new AugmentedImageNode(this, uri);
                         node.setImage(augmentedImage);
                         augmentedImageMap.put(augmentedImage, node);
                         arFragment.getArSceneView().getScene().addChild(node);

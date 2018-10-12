@@ -35,7 +35,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class BudgetListAdapter extends RecyclerView.Adapter<BudgetListAdapter.ViewHolder> {
 

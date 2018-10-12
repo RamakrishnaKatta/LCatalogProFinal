@@ -1,6 +1,5 @@
 package com.immersionslabs.lcatalogpro.fragments;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -31,8 +30,6 @@ import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.immersionslabs.lcatalogpro.Article3dViewActivity;
 import com.immersionslabs.lcatalogpro.AugmentActivity;
 import com.immersionslabs.lcatalogpro.AugmentedImageActivity;
-import com.immersionslabs.lcatalogpro.AugmentedImageFragment;
-import com.immersionslabs.lcatalogpro.OnBoarding;
 import com.immersionslabs.lcatalogpro.R;
 import com.immersionslabs.lcatalogpro.adapters.ProductImageSliderAdapter;
 import com.immersionslabs.lcatalogpro.network.ApiCommunication;

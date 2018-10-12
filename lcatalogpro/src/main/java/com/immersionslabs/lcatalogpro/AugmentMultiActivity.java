@@ -21,7 +21,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class MultiAugmentActivity extends AppCompatActivity {
+public class AugmentMultiActivity extends AppCompatActivity {
+
     private ArrayList<String> objectlist;
     String objectname;
     private static final String TAG = AugmentedImageActivity.class.getSimpleName();

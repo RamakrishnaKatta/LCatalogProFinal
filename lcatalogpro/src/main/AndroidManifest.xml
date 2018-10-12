@@ -202,7 +202,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Dark" />
         <activity
-            android:name=".MultiAugmentActivity"
+            android:name=".AugmentMultiActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/multi_augment_activity"
             android:screenOrientation="portrait"

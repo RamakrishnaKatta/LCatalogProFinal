@@ -25,5 +25,4 @@ public class Fragment_Illustration extends Fragment {
     public void onPause() {
         super.onPause();
     }
-
 }
