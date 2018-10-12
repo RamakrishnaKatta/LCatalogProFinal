@@ -53,13 +53,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private static final String VENDOR_URL = EnvConstants.APP_BASE_URL + "/vendors";
     private static final String VENDOR_SPECIFIC_URL = EnvConstants.APP_BASE_URL + "/vendors/specific/";
-
+    private static final String REGISTER_URL = EnvConstants.APP_BASE_URL + "/vendorArticles";
     boolean doubleBackToExitPressedOnce = false;
     String name, email, phone, address, user_log_type;
     String guest_name, guest_phone;
     TextView user_type, user_email, user_name;
     HashMap hashMap;
     SessionManager sessionmanager;
+    ArrayList<String> object_ids;
 
     int doubleClick = 1;
     NavigationView navigationView;
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         hash_vendor = new HashMap<>();
         vendor_ids = new ArrayList<>();
-
+object_ids=new ArrayList<>();
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitleTextAppearance(this, R.style.LCatalogCustomText_ToolBar);
         setSupportActionBar(toolbar);
@@ -124,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         user_name = header.findViewById(R.id.user_name);
         user_type = header.findViewById(R.id.user_type_text);
         user_email = header.findViewById(R.id.user_email);
-
+        ApiService.getInstance(this).getData(this,false,"MAIN_ACTIVITY",REGISTER_URL,"item_ids");
         if (sessionmanager.isUserLoggedIn()) {
 
             hashMap = new HashMap();
@@ -540,6 +541,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 e.printStackTrace();
             }
         }
+        if(flag.equals("item_ids"))
+        {
+            try
+            {
+                JSONArray jsonArray=response.getJSONArray("data");
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jsonObject;
+                    jsonObject = jsonArray.getJSONObject(i);
+                    String id=jsonObject.getString("_id");
+                    object_ids.add(id);
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+EnvConstants.objectids=object_ids;
+        Log.e(TAG, "envobjectids " + EnvConstants.objectids);
     }
 
     private void GetFullDetails(JSONObject jsonObject) {
