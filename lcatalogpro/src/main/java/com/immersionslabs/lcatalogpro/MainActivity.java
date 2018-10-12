@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         hash_vendor = new HashMap<>();
         vendor_ids = new ArrayList<>();
-object_ids=new ArrayList<>();
+        object_ids = new ArrayList<>();
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitleTextAppearance(this, R.style.LCatalogCustomText_ToolBar);
         setSupportActionBar(toolbar);
@@ -125,7 +125,7 @@ object_ids=new ArrayList<>();
         user_name = header.findViewById(R.id.user_name);
         user_type = header.findViewById(R.id.user_type_text);
         user_email = header.findViewById(R.id.user_email);
-        ApiService.getInstance(this).getData(this,false,"MAIN_ACTIVITY",REGISTER_URL,"item_ids");
+        ApiService.getInstance(this).getData(this, false, "MAIN_ACTIVITY", REGISTER_URL, "item_ids");
         if (sessionmanager.isUserLoggedIn()) {
 
             hashMap = new HashMap();
@@ -341,7 +341,7 @@ object_ids=new ArrayList<>();
 
         } else if (id == R.id.nav_augment) {
             Intent intent = new Intent(MainActivity.this, MultiAugmentActivity.class);
-            EnvConstants.AugmentFlag=false;
+            EnvConstants.AugmentFlag = false;
             startActivity(intent);
         } else if (id == R.id.nav_project_campaign) {
             if (NetworkConnectivity.checkInternetConnection(MainActivity.this)) {
@@ -541,15 +541,13 @@ object_ids=new ArrayList<>();
                 e.printStackTrace();
             }
         }
-        if(flag.equals("item_ids"))
-        {
-            try
-            {
-                JSONArray jsonArray=response.getJSONArray("data");
+        if (flag.equals("item_ids")) {
+            try {
+                JSONArray jsonArray = response.getJSONArray("data");
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject;
                     jsonObject = jsonArray.getJSONObject(i);
-                    String id=jsonObject.getString("_id");
+                    String id = jsonObject.getString("_id");
                     object_ids.add(id);
                 }
 
@@ -558,7 +556,7 @@ object_ids=new ArrayList<>();
             }
         }
 
-EnvConstants.objectids=object_ids;
+        EnvConstants.objectids = object_ids;
         Log.e(TAG, "envobjectids " + EnvConstants.objectids);
     }
 

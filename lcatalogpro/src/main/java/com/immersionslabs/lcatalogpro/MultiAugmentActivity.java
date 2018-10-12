@@ -23,7 +23,7 @@ import java.util.Map;
 
 public class MultiAugmentActivity extends AppCompatActivity {
     private ArrayList<String> objectlist;
-    private String objectname;
+    String objectname;
     private static final String TAG = AugmentedImageActivity.class.getSimpleName();
     private String url = "https://d19x0atvvvutip.cloudfront.net/sfbfiles/";
     Uri uri;
@@ -37,7 +37,7 @@ public class MultiAugmentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        objectlist=EnvConstants.objectids;
+        objectlist = EnvConstants.objectids;
         Log.e(TAG, "objectlist" + objectlist);
 
         setContentView(R.layout.activity_augmentimage);
