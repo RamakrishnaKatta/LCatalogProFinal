@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -49,54 +50,56 @@ public class AugmentActivity extends AppCompatActivity {
         }
      else
         {
-            int layout = getResources().getIdentifier("layout/activity_augment", null, this.getPackageName());
+          int layout = getResources().getIdentifier("layout/activity_augment", null, this.getPackageName());
             if (!checkIsSupportedDeviceOrFinish(this)) {
                 return;
             }
 
             setContentView(layout);
+            arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
             imageButton1=findViewById(R.id.imageButton1);
             imageButton2=findViewById(R.id.imageButton2);
             imageButton3=findViewById(R.id.imageButton3);
             imageButton1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+rendermodel("5b1e91199d445f60f1efe5fb");
                 }
             });
             imageButton2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    rendermodel("5b1e8fb64b1d7010cb022c93");
                 }
             });
             imageButton3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+rendermodel("5b1e93764b1d7010cb022c94");
                 }
             });
         }
 
     }
-    public void rendermodel(String objectname)
-    {
+    public void rendermodel(String objectname)    {
+
         url += objectname + ".sfb";
         Uri uri = Uri.parse(url);
         Log.e(TAG, "uri" + uri);
-        int layout = getResources().getIdentifier("layout/activity_augment", null, this.getPackageName());
-        if (!checkIsSupportedDeviceOrFinish(this)) {
-            return;
-        }
+        if(this.objectname!=null) {
+            int layout = getResources().getIdentifier("layout/activity_augment", null, this.getPackageName());
+            if (!checkIsSupportedDeviceOrFinish(this)) {
+                return;
+            }
 
-        setContentView(layout);
-        if(this.objectname!=null)
-        {
+            setContentView(layout);
             linearLayout=findViewById(R.id.optionslayout);
             linearLayout.setVisibility(View.GONE);
-        }
 
+
+        }
         arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
+
 
 
         // When you build a Renderable, Sceneform loads its resources in the background while returning
