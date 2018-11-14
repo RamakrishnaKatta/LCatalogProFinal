@@ -83,8 +83,8 @@ rendermodel("5b1e93764b1d7010cb022c94");
     }
     public void rendermodel(String objectname)    {
 
-        url += objectname + ".sfb";
-        Uri uri = Uri.parse(url);
+       String Url =url+ objectname + ".sfb";
+        Uri uri = Uri.parse(Url);
         Log.e(TAG, "uri" + uri);
         if(this.objectname!=null) {
             int layout = getResources().getIdentifier("layout/activity_augment", null, this.getPackageName());
@@ -95,11 +95,8 @@ rendermodel("5b1e93764b1d7010cb022c94");
             setContentView(layout);
             linearLayout=findViewById(R.id.optionslayout);
             linearLayout.setVisibility(View.GONE);
-
-
         }
         arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
-
 
 
         // When you build a Renderable, Sceneform loads its resources in the background while returning
