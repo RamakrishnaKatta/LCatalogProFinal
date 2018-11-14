@@ -10,6 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.ar.core.Anchor;
@@ -30,6 +33,8 @@ public class AugmentActivity extends AppCompatActivity {
     private ArFragment arFragment;
     private ModelRenderable renderable;
     String objectname;
+    ImageButton imageButton1,imageButton2,imageButton3;
+    LinearLayout linearLayout;
 
     @Override
     @SuppressWarnings({"AndroidApiChecker", "FutureReturnValueIgnored"})
@@ -38,6 +43,44 @@ public class AugmentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         objectname = getIntent().getStringExtra("objname");
+        if(objectname!=null)
+        {
+            rendermodel(objectname);
+        }
+     else
+        {
+            int layout = getResources().getIdentifier("layout/activity_augment", null, this.getPackageName());
+            if (!checkIsSupportedDeviceOrFinish(this)) {
+                return;
+            }
+
+            setContentView(layout);
+            imageButton1=findViewById(R.id.imageButton1);
+            imageButton2=findViewById(R.id.imageButton2);
+            imageButton3=findViewById(R.id.imageButton3);
+            imageButton1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+            imageButton2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+            imageButton3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+        }
+
+    }
+    public void rendermodel(String objectname)
+    {
         url += objectname + ".sfb";
         Uri uri = Uri.parse(url);
         Log.e(TAG, "uri" + uri);
@@ -47,7 +90,14 @@ public class AugmentActivity extends AppCompatActivity {
         }
 
         setContentView(layout);
+        if(this.objectname!=null)
+        {
+            linearLayout=findViewById(R.id.optionslayout);
+            linearLayout.setVisibility(View.GONE);
+        }
+
         arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.ux_fragment);
+
 
         // When you build a Renderable, Sceneform loads its resources in the background while returning
         // a CompletableFuture. Call thenAccept(), handle(), or check isDone() before calling get().
@@ -88,12 +138,6 @@ public class AugmentActivity extends AppCompatActivity {
     }
 
     public static boolean checkIsSupportedDeviceOrFinish(final Activity activity) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-            Log.e(TAG, "Sceneform requires Android N or later");
-            Toast.makeText(activity, "Sceneform requires Android N or later", Toast.LENGTH_LONG).show();
-            activity.finish();
-            return false;
-        }
         String openGlVersionString =
                 ((ActivityManager) activity.getSystemService(Context.ACTIVITY_SERVICE))
                         .getDeviceConfigurationInfo()

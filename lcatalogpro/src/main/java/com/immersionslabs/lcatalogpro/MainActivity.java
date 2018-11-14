@@ -1,5 +1,6 @@
 package com.immersionslabs.lcatalogpro;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -340,10 +341,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
 
         } else if (id == R.id.nav_augment) {
-            Intent intent = new Intent(MainActivity.this, AugmentMultiActivity.class);
-            EnvConstants.AugmentFlag = false;
-            startActivity(intent);
-        } else if (id == R.id.nav_project_campaign) {
+
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle);
+            builder.setTitle("You are about to enter Augment Enabled Camera");
+            builder.setMessage("Do you have a pattern image ?");
+            builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    Intent intent = new Intent(MainActivity.this, AugmentMultiActivity.class);
+                    EnvConstants.AugmentFlag = false;
+                    startActivity(intent);
+                }
+            });
+            builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(MainActivity.this, AugmentActivity.class);
+                    EnvConstants.AugmentFlag = false;
+                    startActivity(intent);
+
+                }
+            });
+            builder.show();
+        }
+
+        else if (id == R.id.nav_project_campaign) {
             if (NetworkConnectivity.checkInternetConnection(MainActivity.this)) {
                 Intent intent = new Intent(this, ProjectCatalogActivity.class);
                 startActivity(intent);
